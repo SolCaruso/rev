@@ -1,22 +1,15 @@
 // app/layout.jsx
-import { Providers } from '@/app/providers'
-import { HeaderRoot } from '@/components/HeaderRoot'
 import '@/styles/tailwind.css'
+import { Providers } from '@/app/providers'
 
-export const metadata = {
-  title: {
-    template: '%s - Protocol API Reference',
-    default: 'Protocol API Reference',
-  },
-}
+export const metadata = { title: 'Root Layout' }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col bg-white antialiased dark:bg-zinc-900">
+    <html lang="en">
+      <body className="flex min-h-screen flex-col bg-white dark:bg-zinc-900">
         <Providers>
-          <HeaderRoot />
-          <main className="flex-1">{children}</main>
+          {children}
         </Providers>
       </body>
     </html>

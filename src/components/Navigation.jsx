@@ -225,9 +225,9 @@ export function Navigation(props) {
       </Link>
       </div>
       <ul role="list">
-        <TopLevelNavItem href="/">API</TopLevelNavItem>
-        <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-        <TopLevelNavItem href="#">Support</TopLevelNavItem>
+        <TopLevelNavItem href="/">NFT</TopLevelNavItem>
+        <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
+        <TopLevelNavItem href="#">Docs</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}

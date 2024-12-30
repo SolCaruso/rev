@@ -16,20 +16,25 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
+    "/(landing)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/(landing)/layout.js"
     ],
-    "/docs/layout": [
+    "/(landing)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/docs/layout.js"
+      "static/chunks/app/(landing)/page.js"
     ],
-    "/docs/page": [
+    "/(docs)/docs/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/docs/page.js"
+      "static/chunks/app/(docs)/docs/layout.js"
+    ],
+    "/(docs)/docs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(docs)/docs/page.js"
     ]
   }
 }
