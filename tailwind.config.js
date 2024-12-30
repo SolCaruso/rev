@@ -6,7 +6,7 @@ const typographyStyles = require('./typography')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,mjs,jsx,ts,tsx,mdx}'],
-  darkMode: 'selector',
+  darkMode: 'class',
   theme: {
     fontSize: {
       '2xs': ['0.75rem', { lineHeight: '1.25rem' }],

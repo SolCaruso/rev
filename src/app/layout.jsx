@@ -1,8 +1,6 @@
-import glob from 'fast-glob'
-
+// app/layout.jsx
 import { Providers } from '@/app/providers'
-import { Layout } from '@/components/Layout'
-
+import { HeaderRoot } from '@/components/HeaderRoot'
 import '@/styles/tailwind.css'
 
 export const metadata = {
@@ -12,23 +10,13 @@ export const metadata = {
   },
 }
 
-export default async function RootLayout({ children }) {
-  let pages = await glob('**/*.mdx', { cwd: 'src/app' })
-  let allSectionsEntries = await Promise.all(
-    pages.map(async (filename) => [
-      '/' + filename.replace(/(^|\/)page\.mdx$/, ''),
-      (await import(`./${filename}`)).sections,
-    ]),
-  )
-  let allSections = Object.fromEntries(allSectionsEntries)
-
+export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
-      <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900">
+      <body className="flex min-h-screen flex-col bg-white antialiased dark:bg-zinc-900">
         <Providers>
-          <div className="w-full">
-            <Layout allSections={allSections}>{children}</Layout>
-          </div>
+          <HeaderRoot />
+          <main className="flex-1">{children}</main>
         </Providers>
       </body>
     </html>
