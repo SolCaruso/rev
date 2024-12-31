@@ -198,36 +198,45 @@ export const navigation = [
       { title: 'Introduction', href: '/' },
       { title: 'Quickstart', href: '/quickstart' },
       { title: 'SDKs', href: '/sdks' },
-      { title: 'Authentication', href: '/authentication' },
-      { title: 'Pagination', href: '/pagination' },
-      { title: 'Errors', href: '/errors' },
-      { title: 'Webhooks', href: '/webhooks' },
+      // ...
     ],
   },
   {
     title: 'Resources',
     links: [
       { title: 'Contacts', href: '/contacts' },
-      { title: 'Conversations', href: '/conversations' },
-      { title: 'Messages', href: '/messages' },
-      { title: 'Groups', href: '/groups' },
-      { title: 'Attachments', href: '/attachments' },
+      // ...
     ],
   },
 ]
 
 export function Navigation(props) {
+  const pathname = usePathname()
+  const isLanding = pathname === '/'
+
+  // If on landing, hide the entire doc sidebar:
+  if (isLanding) {
+    return null
+  }
+
+  // Otherwise, proceed with doc nav
   return (
     <nav {...props}>
-      {/* Desktop logo up top, hidden on mobile */}
       <div className="hidden lg:block mb-6">
-      <Link href="/" aria-label="Home">
-      </Link>
+        <Link href="/" aria-label="Home">
+          {/* Desktop doc logo if you want */}
+        </Link>
       </div>
       <ul role="list">
-        <TopLevelNavItem href="/">NFT</TopLevelNavItem>
-        <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
-        <TopLevelNavItem href="#">Docs</TopLevelNavItem>
+        {/* Example top items */}
+        <li className="md:hidden">
+          <Link href="/" className="block py-1 text-sm text-zinc-600 ...">
+            NFT
+          </Link>
+        </li>
+        {/* ... more items ... */}
+
+        {/* Doc navigation groups */}
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}

@@ -1,35 +1,50 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
 
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { Logo } from '@/components/Logo'
-import { Navigation } from '@/components/Navigation'
-import { SectionProvider } from '@/components/SectionProvider'
+import { Footer } from "@/components/Footer"
+import { Header } from "@/components/Header"
+import { Logo } from "@/components/Logo"
+import { Navigation } from "@/components/Navigation"
+import { SectionProvider } from "@/components/SectionProvider"
 
 export function Layout({ children, allSections }) {
-  let pathname = usePathname()
+  const pathname = usePathname()
+  const isDocs = pathname.startsWith("/docs")
 
   return (
     <SectionProvider sections={allSections[pathname] ?? []}>
-      <div className="h-full lg:ml-72 xl:ml-80">
-        <motion.header
-          layoutScroll
-          className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex"
-        >
-          <div className="contents lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-zinc-900/10 lg:px-6 lg:pb-8 lg:pt-4 xl:w-80 lg:dark:border-white/10">
-            <div className="hidden lg:flex">
-              <Link href="/" aria-label="Home">
-                <Logo className="h-6" />
-              </Link>
+      {/* If doc route, shift everything right for pinned sidebar */}
+      <div className={isDocs ? "h-full lg:ml-72 xl:ml-80" : "h-full"}>
+        {isDocs ? (
+          // DOC MODE: pinned layout
+          <motion.header
+            layoutScroll
+            className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex"
+          >
+            <div
+              className="contents lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto
+                         lg:border-r lg:border-zinc-900/10 lg:px-6 lg:pb-8 lg:pt-4 xl:w-80
+                         lg:dark:border-white/10"
+            >
+              {/* Desktop doc logo up top */}
+              <div className="hidden lg:flex mb-4">
+                <Link href="/" aria-label="Home">
+                  <Logo className="h-6" />
+                </Link>
+              </div>
+              <Header />
+              <Navigation className="hidden lg:mt-10 lg:block" />
             </div>
-            <Header />
-            <Navigation className="hidden lg:mt-10 lg:block" />
-          </div>
-        </motion.header>
+          </motion.header>
+        ) : (
+          // NON-DOC ROUTE
+          <Header />
+        )}
+
+        {/* The main content area under the header */}
         <div className="relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8">
           <main className="flex-auto">{children}</main>
           <Footer />
