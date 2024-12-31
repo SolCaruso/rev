@@ -1,3 +1,5 @@
+"use client"
+
 import { forwardRef } from "react"
 import Link from "next/link"
 import clsx from "clsx"
@@ -29,7 +31,7 @@ function TopLevelNavItem({ href, children }) {
 
 export const Header = forwardRef(function Header({ className, ...props }, ref) {
   const pathname = usePathname()
-  const isDocs = pathname.startsWith("/docs") // doc or not
+  const isDocs = pathname.startsWith("/docs") // doc or not?
 
   const { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
   const isInsideMobileNavigation = useIsInsideMobileNavigation()
@@ -45,9 +47,10 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
       className={clsx(
         className,
         "fixed inset-x-0 top-0 z-50 flex h-14 items-center gap-12 px-4 transition sm:px-6",
-        // If doc route + not in mobile nav, shift pinned offset
-        isDocs && !isInsideMobileNavigation && "lg:left-72 xl:left-80 backdrop-blur-sm dark:backdrop-blur",
-        // Otherwise, if mobile nav or not doc, just apply the base BG
+        // If doc route + not mobile nav, shift pinned offset & apply blur
+        isDocs && !isInsideMobileNavigation && 
+          "lg:left-72 xl:left-80 backdrop-blur-sm dark:backdrop-blur",
+        // Otherwise, normal BG
         isInsideMobileNavigation
           ? "bg-white dark:bg-zinc-900"
           : "bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]",
@@ -57,7 +60,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         "--bg-opacity-dark": bgOpacityDark,
       }}
     >
-      {/* Thin bottom border under the header bar */}
+      {/* Thin border under header */}
       <div
         className={clsx(
           "absolute inset-x-0 top-full h-px transition",
@@ -66,10 +69,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         )}
       />
 
-      {/* 
-        1) Show doc search bar if in doc route 
-        2) Otherwise skip 
-      */}
+      {/* Doc route => show search bar, else skip */}
       {isDocs && <Search />}
 
       {/* Mobile left side: hamburger + mobile logo */}
@@ -80,13 +80,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         </Link>
       </div>
 
-      {/* 
-        Desktop row for non-doc routes:
-        We'll create a 3-column approach:
-        Left = Desktop logo
-        Center = Nav items
-        Right = theme + sign-in
-      */}
+      {/* Non-doc route => desktop row with L=logo, C=links, R=theme+sign-in */}
       {!isDocs && (
         <div className="hidden lg:flex w-full items-center">
           {/* Left: Desktop logo */}
@@ -101,7 +95,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
           </nav>
-          {/* Right: theme toggle + sign in */}
+          {/* Right side: theme toggle + sign in */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Button href="#">Sign in</Button>
@@ -109,10 +103,18 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         </div>
       )}
 
-      {/* 
-        Right side for doc routes:
-        (doc top-level nav, mobile doc search, theme toggle, sign in)
-      */}
+      {/* Non-doc route => mobile row with R=theme+sign-in */}
+      {!isDocs && (
+        <div className="flex lg:hidden w-full items-center justify-end">
+          {/* Right side: theme toggle + sign in */}
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Button href="#" className="hidden xs-440:block">Sign in</Button>
+          </div>
+        </div>
+      )}
+
+      {/* If doc route => doc nav items, doc mobile search, theme, sign in on the right */}
       {isDocs && (
         <div className="ml-auto flex items-center gap-5">
           <nav className="hidden md:block">

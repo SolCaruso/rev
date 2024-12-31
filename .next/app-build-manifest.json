@@ -21,11 +21,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/docs/groups/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/docs/groups/page.js"
-    ],
     "/docs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

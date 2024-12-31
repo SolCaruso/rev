@@ -27,10 +27,6 @@ export function ThemeToggle() {
   let [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    console.log('[ThemeToggle]', 'resolvedTheme=', resolvedTheme)
-  }, [resolvedTheme])
-
-  useEffect(() => {
     setMounted(true)
   }, [])
 
