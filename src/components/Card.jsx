@@ -1,13 +1,7 @@
 import React from "react";
+import CardIcon from "@/components/icons/CardIcon";
 
-// EXAMPLE: If you want to import all possible icons:
-import GreenCardIcon from "@/components/icons/GreenCardIcon";
-import PurpleCardIcon from "@/components/icons/PurpleCardIcon";
-import BlueCardIcon from "@/components/icons/BlueCardIcon";
-import RedCardIcon from "@/components/icons/RedCardIcon";
-import YellowCardIcon from "@/components/icons/YellowCardIcon";
-
-// Import game icons:
+// Optional game icons. If you don’t have them all, remove or stub out the imports.
 import BlackjackIcon from "@/components/icons/Blackjack";
 import BasketballIcon from "@/components/icons/Basketball";
 import RouletteIcon from "@/components/icons/Roulette";
@@ -20,17 +14,9 @@ import DominoesIcon from "@/components/icons/Dominoes";
 import PokerIcon from "@/components/icons/Poker";
 import CrapsIcon from "@/components/icons/Craps";
 import SoccerIcon from "@/components/icons/Soccer";
-import TexasHoldEmIcon from "@/components/icons/TexasHoldEm";
+import TexasHoldEmIcon from "@/components/icons/Texas";
 
-// Create a lookup so we can dynamically pick the right icon component
-const cardIconMap = {
-  GreenCardIcon,
-  PurpleCardIcon,
-  BlueCardIcon,
-  RedCardIcon,
-  YellowCardIcon,
-};
-
+// Map each game name to its respective icon component
 const gameIconMap = {
   Blackjack: BlackjackIcon,
   Basketball: BasketballIcon,
@@ -48,28 +34,27 @@ const gameIconMap = {
 };
 
 export default function Card({
-  image,
-  colors,
-  cardIcon,
-  game,
-  gameIcon,
+  image,       // e.g. "/images/dog1.png"
+  colors,      // e.g. ["#698D65", "#A9BBA8"]
+  game,        // e.g. "Blackjack"
+  gameIcon,    // e.g. "Blackjack"
   style,
 }) {
-  // This picks the correct CardIcon component or undefined
-  const CardIconComponent = cardIconMap[cardIcon];
-  // This picks the correct GameIcon component or undefined
+  // Grab the correct game icon component
   const GameIconComponent = gameIconMap[gameIcon];
 
   return (
     // OUTER WRAPPER: 2px gradient border
     <div
       style={{
-        ...style, // if we want to allow parent container's style (width, etc.)
+        ...style,
         background: "linear-gradient(to bottom left, #919191, #303030)",
         borderRadius: "15px",
+        width: "307px",
+        height: "428px",
         padding: "1px",
         position: "relative",
-        flex: "0 0 auto", // ensures the card won't shrink
+        flex: "0 0 auto",
         minWidth: "307px",
         minHeight: "428px",
       }}
@@ -82,12 +67,12 @@ export default function Card({
           position: "relative",
           overflow: "hidden",
           borderRadius: "15px",
-          // This is the gradient for the actual card background
+          // Use the two hex codes in `colors`
           background: `linear-gradient(to bottom right, ${colors[0]}, ${colors[1]})`,
           boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
         }}
       >
-        {/* TOP-LEFT: Card Icon + Game Icon + game Title */}
+        {/* TOP-LEFT: Card Icon behind + Game Icon on top + Title text */}
         <div
           style={{
             position: "absolute",
@@ -99,23 +84,31 @@ export default function Card({
             zIndex: 10,
           }}
         >
-          {/* If you have a CardIcon component: */}
-          {CardIconComponent && (
-            <div style={{ position: "relative", width: "45px", height: "45px" }}>
-              <CardIconComponent style={{ width: "45px", height: "45px" }} />
-            </div>
-          )}
+          <div style={{ position: "relative", width: "45px", height: "45px" }}>
+            {/* Main card icon with a dynamic stroke color = the second color */}
+            <CardIcon
+              style={{ width: "45px", height: "45px" }}
+              strokeColor={colors[1]}
+            />
+            {/* Overlap the game icon in the center (like the “Spade” in your old code) */}
+            {GameIconComponent && (
+              <GameIconComponent
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            )}
+          </div>
 
-          {/* If you have a separate game icon: */}
-          {GameIconComponent && (
-            <div style={{ position: "relative", width: "24px", height: "24px" }}>
-              <GameIconComponent />
-            </div>
-          )}
-
+          {/* Title text (same metallic color as your old example) */}
           <span
             style={{
-              color: "#FFF",
+              color: "#A9BBA8",
               fontWeight: "bold",
               fontSize: "20px",
             }}
