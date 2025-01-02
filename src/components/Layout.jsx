@@ -11,52 +11,53 @@ import { Navigation } from "@/components/Navigation"
 import { SectionProvider } from "@/components/SectionProvider"
 
 export function Layout({ children, allSections }) {
-  const pathname = usePathname()
-  // We consider any route under /docs to be a doc route
-  const isDocs = pathname.startsWith("/docs")
+  let pathname = usePathname()
+  let isDocs = pathname.startsWith('/docs')
+  let docSections = isDocs ? allSections[pathname] ?? [] : []
 
-  // Grab the relevant doc sections if any
-  const sectionsForThisPage = allSections[pathname] ?? []
+  // Grab doc sections only if it's a doc route
+  let sections = isDocs ? allSections[pathname] ?? [] : []
 
   return (
-    <SectionProvider sections={sectionsForThisPage}>
-      {/* 
-        If doc route, offset left for pinned sidebar 
-        Else normal layout 
-      */}
-      <div className={isDocs ? "h-full lg:ml-72 xl:ml-80" : "h-full"}>
+    <SectionProvider sections={docSections}>
+      <div className="h-full">
         {isDocs ? (
-          /* ------------- DOC ROUTE PINNED LAYOUT ------------- */
+          /* ---------- DOC ROUTE => pinned sidebar + doc header ---------- */
           <motion.header
             layoutScroll
             className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex"
           >
             <div
-              className="contents lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto 
-                         lg:border-r lg:border-zinc-900/10 lg:px-6 lg:pb-8 lg:pt-4 xl:w-80
+              className="contents lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto
+                         lg:border-r lg:border-zinc-900/10 lg:px-6 lg:pb-8 lg:pt-3.5 xl:w-80
                          lg:dark:border-white/10"
             >
-              {/* Pinned doc logo (desktop only) */}
-              <div className="hidden lg:flex mb-4">
+              {/* Desktop doc logo (top-left) */}
+              <div className="hidden lg:flex">
                 <Link href="/" aria-label="Home">
-                  <Logo className="h-6" />
+                  <Logo className="h-7" />
                 </Link>
               </div>
-              {/* Renders doc route’s search & nav on top, or you can skip */}
+
+              {/* The doc-specific header with search, doc nav items, etc. */}
               <Header />
+              {/* Pinned doc nav for desktop */}
               <Navigation className="hidden lg:mt-10 lg:block" />
             </div>
           </motion.header>
         ) : (
-          /* ------------- NON-DOC ROUTE ------------- */
+          /* ---------- NON-DOC ROUTE => no pinned sidebar ---------- */
           <Header />
         )}
 
-        {/* 
-          Main content area, under the header 
-          We do pt-14 to avoid overlap with the fixed header 
-        */}
-        <div className="relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8">
+        {/* Main content area: shift right only for doc routes */}
+        <div
+          className={
+            isDocs
+              ? "relative flex h-full flex-col lg:ml-72 xl:ml-80 px-4 pt-14 sm:px-6 lg:px-8"
+              : "relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8"
+          }
+        >
           <main className="flex-auto">{children}</main>
           <Footer />
         </div>

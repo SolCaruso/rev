@@ -4,9 +4,9 @@ module.exports = function typographyStyles({ theme }) {
       css: {
         '--tw-prose-body': theme('colors.zinc.700'),
         '--tw-prose-headings': theme('colors.zinc.900'),
-        '--tw-prose-links': theme('colors.emerald.500'),
-        '--tw-prose-links-hover': theme('colors.emerald.600'),
-        '--tw-prose-links-underline': theme('colors.emerald.500 / 0.3'),
+        '--tw-prose-invert-links': '#E71744',
+        '--tw-prose-invert-links-hover': '#E71744',
+        '--tw-prose-invert-links-underline': '#E71744 / 0.3',
         '--tw-prose-bold': theme('colors.zinc.900'),
         '--tw-prose-counters': theme('colors.zinc.500'),
         '--tw-prose-bullets': theme('colors.zinc.300'),

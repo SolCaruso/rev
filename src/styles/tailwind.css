@@ -1,18 +1,42 @@
 @layer base {
   :root {
     --shiki-color-text: theme('colors.white');
-    --shiki-token-constant: theme('colors.emerald.300');
-    --shiki-token-string: theme('colors.emerald.300');
+    --shiki-token-constant: var('#E71744');
+    --shiki-token-string: var('#E71744');
     --shiki-token-comment: theme('colors.zinc.500');
     --shiki-token-keyword: theme('colors.sky.300');
     --shiki-token-parameter: theme('colors.pink.300');
     --shiki-token-function: theme('colors.violet.300');
-    --shiki-token-string-expression: theme('colors.emerald.300');
+    --shiki-token-string-expression: var('#E71744');
     --shiki-token-punctuation: theme('colors.zinc.200');
   }
 
   [inert] ::-webkit-scrollbar {
     display: none;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+
+  .arrowBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(137deg, #111214 5%, #0c0d0f 76%);
+    border-top: 1px solid hsla(0, 0%, 100%, 0.06);
+    border-right: 1px solid hsla(0, 0%, 100%, 0.06);
+    border-left: 1px solid hsla(0, 0%, 100%, 0.06);
+    border-radius: 86px;
+    box-shadow: inset 0 1px 0 0 hsla(0, 0%, 100%, 0.1);
+    transition: background 0.3s ease;
+  }
+  
+  .arrowBtn:hover {
+    background: linear-gradient(137deg, #222 5%, #1a1b1c 76%);
   }
 }
 

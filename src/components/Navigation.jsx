@@ -104,7 +104,7 @@ function ActivePageMarker({ group, pathname }) {
   return (
     <motion.div
       layout
-      className="absolute left-2 h-6 w-px bg-emerald-500"
+      className="absolute left-2 h-6 w-px bg-[#E71744]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2 } }}
       exit={{ opacity: 0 }}
@@ -195,48 +195,34 @@ export const navigation = [
   {
     title: 'Guides',
     links: [
-      { title: 'Introduction', href: '/' },
-      { title: 'Quickstart', href: '/quickstart' },
-      { title: 'SDKs', href: '/sdks' },
-      // ...
+      { title: 'Introduction', href: '/docs' },
+      { title: 'Quickstart', href: '/docs/quickstart' },
+      { title: 'SDKs', href: '/docs/sdks' },
+      { title: 'Authentication', href: '/docs/authentication' },
+      { title: 'Pagination', href: '/docs/pagination' },
+      { title: 'Errors', href: '/docs/errors' },
+      { title: 'Webhooks', href: '/docs/webhooks' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { title: 'Contacts', href: '/contacts' },
-      // ...
+      { title: 'Contacts', href: '/docs/contacts' },
+      { title: 'Conversations', href: '/docs/conversations' },
+      { title: 'Messages', href: '/docs/messages' },
+      { title: 'Groups', href: '/docs/groups' },
+      { title: 'Attachments', href: '/docs/attachments' },
     ],
   },
 ]
 
 export function Navigation(props) {
-  const pathname = usePathname()
-  const isLanding = pathname === '/'
-
-  // If on landing, hide the entire doc sidebar:
-  if (isLanding) {
-    return null
-  }
-
-  // Otherwise, proceed with doc nav
   return (
     <nav {...props}>
-      <div className="hidden lg:block mb-6">
-        <Link href="/" aria-label="Home">
-          {/* Desktop doc logo if you want */}
-        </Link>
-      </div>
       <ul role="list">
-        {/* Example top items */}
-        <li className="md:hidden">
-          <Link href="/" className="block py-1 text-sm text-zinc-600 ...">
-            NFT
-          </Link>
-        </li>
-        {/* ... more items ... */}
-
-        {/* Doc navigation groups */}
+        <TopLevelNavItem href="#">NFT</TopLevelNavItem>
+        <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
+        <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
@@ -244,7 +230,7 @@ export function Navigation(props) {
             className={groupIndex === 0 ? 'md:mt-0' : ''}
           />
         ))}
-        <li className="sticky bottom-0 z-10 mt-6 xs-440:hidden">
+        <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
           <Button href="#" variant="filled" className="w-full">
             Sign in
           </Button>

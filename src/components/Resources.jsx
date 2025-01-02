@@ -10,9 +10,12 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
+/**
+ * 1) Adjusted paths to /docs/...
+ */
 const resources = [
   {
-    href: '/contacts',
+    href: '/docs/contacts',
     name: 'Contacts',
     description:
       'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
@@ -26,7 +29,7 @@ const resources = [
     },
   },
   {
-    href: '/conversations',
+    href: '/docs/conversations',
     name: 'Conversations',
     description:
       'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
@@ -40,7 +43,7 @@ const resources = [
     },
   },
   {
-    href: '/messages',
+    href: '/docs/messages',
     name: 'Messages',
     description:
       'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
@@ -54,7 +57,7 @@ const resources = [
     },
   },
   {
-    href: '/groups',
+    href: '/docs/groups',
     name: 'Groups',
     description:
       'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
@@ -68,8 +71,27 @@ const resources = [
 
 function ResourceIcon({ icon: Icon }) {
   return (
-    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
-      <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
+    <div
+      className="
+        flex h-7 w-7 items-center justify-center 
+        rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 
+        backdrop-blur-[2px] transition duration-300
+        /* 2) Light mode hover => faint brand color */
+        group-hover:bg-[#FF494D]/10 group-hover:ring-[#FF494D]/25 
+        dark:bg-white/7.5 dark:ring-white/15 
+        /* 3) Dark mode can stay slightly stronger if desired */
+        dark:group-hover:bg-[#FF494D]/10 dark:group-hover:ring-[#FF494D]/50
+      "
+    >
+      <Icon
+        className="
+          h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 
+          /* Light mode icon stroke changes to brand color on hover? */
+          group-hover:stroke-zinc-900 
+          dark:fill-white/10 dark:stroke-zinc-400 
+          dark:group-hover:fill-[#FF494D]/10 dark:group-hover:stroke-[#FF494D]
+        "
+      />
     </div>
   )
 }
@@ -80,28 +102,49 @@ function ResourcePattern({ mouseX, mouseY, ...gridProps }) {
 
   return (
     <div className="pointer-events-none">
+      {/* Faint pattern behind */}
       <div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
         <GridPattern
           width={72}
           height={56}
           x="50%"
-          className="absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.02] stroke-black/5 dark:fill-white/1 dark:stroke-white/2.5"
+          className="
+            absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] 
+            fill-black/[0.02] stroke-black/5 
+            dark:fill-white/1 dark:stroke-white/2.5
+          "
           {...gridProps}
         />
       </div>
+
+      {/* 4) Light mode brand gradient => lower alpha. 
+            Dark mode can remain or also be toned down. */}
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#D7EDEA] to-[#F4FBDF] opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
+        className="
+          absolute inset-0 rounded-2xl 
+          bg-gradient-to-r from-[#E71744]/10 to-[#FF494D]/10 
+          opacity-0 transition duration-300 group-hover:opacity-100
+          dark:from-[#E71744]/10 dark:to-[#FF494D]/10
+        "
         style={style}
       />
       <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition duration-300 group-hover:opacity-100"
+        className="
+          absolute inset-0 rounded-2xl 
+          opacity-0 mix-blend-overlay transition duration-300 
+          group-hover:opacity-100
+        "
         style={style}
       >
         <GridPattern
           width={72}
           height={56}
           x="50%"
-          className="absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/50 stroke-black/70 dark:fill-white/2.5 dark:stroke-white/10"
+          className="
+            absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] 
+            fill-black/50 stroke-black/70 
+            dark:fill-white/2.5 dark:stroke-white/10
+          "
           {...gridProps}
         />
       </motion.div>
@@ -123,10 +166,20 @@ function Resource({ resource }) {
     <div
       key={resource.href}
       onMouseMove={onMouseMove}
-      className="group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/2.5 dark:hover:shadow-black/5"
+      className="
+        group relative flex rounded-2xl 
+        bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 
+        dark:bg-white/2.5 dark:hover:shadow-black/5
+      "
     >
       <ResourcePattern {...resource.pattern} mouseX={mouseX} mouseY={mouseY} />
-      <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/7.5 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
+      <div
+        className="
+          absolute inset-0 rounded-2xl ring-1 ring-inset 
+          ring-zinc-900/7.5 group-hover:ring-zinc-900/10 
+          dark:ring-white/10 dark:group-hover:ring-white/20
+        "
+      />
       <div className="relative rounded-2xl px-4 pb-4 pt-16">
         <ResourceIcon icon={resource.icon} />
         <h3 className="mt-4 text-sm font-semibold leading-7 text-zinc-900 dark:text-white">
@@ -149,7 +202,14 @@ export function Resources() {
       <Heading level={2} id="resources">
         Resources
       </Heading>
-      <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 sm:grid-cols-2 xl:grid-cols-4 dark:border-white/5">
+      <div
+        className="
+          not-prose mt-4 grid grid-cols-1 gap-8 
+          border-t border-zinc-900/5 pt-10 
+          sm:grid-cols-2 xl:grid-cols-4 
+          dark:border-white/5
+        "
+      >
         {resources.map((resource) => (
           <Resource key={resource.href} resource={resource} />
         ))}

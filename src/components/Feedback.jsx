@@ -4,6 +4,10 @@ import { forwardRef, useState } from 'react'
 import { Transition } from '@headlessui/react'
 import clsx from 'clsx'
 
+/**
+ * CheckIcon with fill/stroke referencing brand color. 
+ * Feel free to tweak as desired.
+ */
 function CheckIcon(props) {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
@@ -19,6 +23,10 @@ function CheckIcon(props) {
   )
 }
 
+/**
+ * We’ll keep the ‘Yes’/’No’ buttons fairly neutral
+ * but you can update them to brand colors if desired.
+ */
 function FeedbackButton(props) {
   return (
     <button
@@ -31,7 +39,7 @@ function FeedbackButton(props) {
 
 const FeedbackForm = forwardRef(function FeedbackForm(
   { onSubmit, className, ...props },
-  ref,
+  ref
 ) {
   return (
     <form
@@ -40,7 +48,7 @@ const FeedbackForm = forwardRef(function FeedbackForm(
       onSubmit={onSubmit}
       className={clsx(
         className,
-        'absolute inset-0 flex items-center justify-center gap-6 md:justify-start',
+        'absolute inset-0 flex items-center justify-center gap-6 md:justify-start'
       )}
     >
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -55,9 +63,22 @@ const FeedbackForm = forwardRef(function FeedbackForm(
   )
 })
 
+/**
+ * Updated the “Thanks for your feedback!” bubble
+ * to use brand colors instead of emerald references.
+ *
+ * We’ve replaced:
+ * - bg-emerald-50/50 => brand color background with a bit of transparency
+ * - text-emerald-900 => brand color text
+ * - ring-emerald-500/20 => brand color ring
+ * - dark:bg-emerald-500/5 => brand color background for dark mode
+ * - dark:text-emerald-200 => brand color for dark text
+ * - dark:ring-emerald-500/30 => brand color ring for dark mode
+ * - fill-emerald-500 => brand color fill for check icon
+ */
 const FeedbackThanks = forwardRef(function FeedbackThanks(
   { className, ...props },
-  ref,
+  ref
 ) {
   return (
     <div
@@ -65,11 +86,27 @@ const FeedbackThanks = forwardRef(function FeedbackThanks(
       ref={ref}
       className={clsx(
         className,
-        'absolute inset-0 flex justify-center md:justify-start',
+        'absolute inset-0 flex justify-center md:justify-start'
       )}
     >
-      <div className="flex items-center gap-3 rounded-full bg-emerald-50/50 py-1 pl-1.5 pr-3 text-sm text-emerald-900 ring-1 ring-inset ring-emerald-500/20 dark:bg-emerald-500/5 dark:text-emerald-200 dark:ring-emerald-500/30">
-        <CheckIcon className="h-5 w-5 flex-none fill-emerald-500 stroke-white dark:fill-emerald-200/20 dark:stroke-emerald-200" />
+      <div
+        className={clsx(
+          'flex items-center gap-3 rounded-full py-1 pl-1.5 pr-3 text-sm ring-1 ring-inset',
+          // Light mode background: brand color with slight transparency
+          'bg-[#E71744]/10 text-[#E71744] ring-[#E71744]/20',
+          // Dark mode background: brand color with a bit less transparency
+          'dark:bg-[#E71744]/5 dark:text-[#E71744]/80 dark:ring-[#E71744]/30'
+        )}
+      >
+        <CheckIcon
+          className={clsx(
+            'h-5 w-5 flex-none stroke-white',
+            // Light mode fill => brand color
+            'fill-[#E71744]',
+            // Dark mode fill => brand color with transparency
+            'dark:fill-[#E71744]/30 dark:stroke-[#E71744]'
+          )}
+        />
         Thanks for your feedback!
       </div>
     </div>
@@ -81,10 +118,7 @@ export function Feedback() {
 
   function onSubmit(event) {
     event.preventDefault()
-
-    // event.nativeEvent.submitter.dataset.response
-    // => "yes" or "no"
-
+    // event.nativeEvent.submitter.dataset.response => "yes" or "no"
     setSubmitted(true)
   }
 

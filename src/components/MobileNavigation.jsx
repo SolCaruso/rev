@@ -1,18 +1,18 @@
-"use client"
+'use client'
 
-import { createContext, Suspense, useContext, useEffect, useRef } from "react"
-import { usePathname, useSearchParams } from "next/navigation"
+import { createContext, Suspense, useContext, useEffect, useRef } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
 import {
   Dialog,
   DialogPanel,
   DialogBackdrop,
   TransitionChild,
-} from "@headlessui/react"
-import { motion } from "framer-motion"
-import { create } from "zustand"
+} from '@headlessui/react'
+import { motion } from 'framer-motion'
+import { create } from 'zustand'
 
-import { Header } from "@/components/Header"
-import { Navigation } from "@/components/Navigation"
+import { Header } from '@/components/Header'
+import { Navigation } from '@/components/Navigation'
 
 function MenuIcon(props) {
   return (
@@ -60,7 +60,8 @@ function MobileNavigationDialog({ isOpen, close }) {
     if (!(event.target instanceof HTMLElement)) {
       return
     }
-    let link = event.target.closest("a")
+
+    let link = event.target.closest('a')
     if (
       link &&
       link.pathname + link.search + link.hash ===
@@ -69,8 +70,6 @@ function MobileNavigationDialog({ isOpen, close }) {
       close()
     }
   }
-
-  let isDocs = pathname.startsWith("/docs")
 
   return (
     <Dialog
@@ -81,49 +80,20 @@ function MobileNavigationDialog({ isOpen, close }) {
     >
       <DialogBackdrop
         transition
-        className="fixed inset-0 top-14 bg-zinc-400/20 backdrop-blur-sm 
-                   data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 
-                   data-[enter]:ease-out data-[leave]:ease-in dark:bg-black/40"
+        className="fixed inset-0 top-14 bg-zinc-400/20 backdrop-blur-sm data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in dark:bg-black/40"
       />
 
       <DialogPanel>
         <TransitionChild>
-          {/* We typically show <Header> here so the mobile nav can reuse doc logic if isDocs */}
-          <Header className="data-[closed]:opacity-0 data-[enter]:duration-300 
-                           data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
-          />
+          <Header className="data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in" />
         </TransitionChild>
 
         <TransitionChild>
           <motion.div
             layoutScroll
-            className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6
-                       shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/7.5 duration-500 ease-in-out
-                       data-[closed]:-translate-x-full min-[416px]:max-w-sm sm:px-6 sm:pb-10
-                       dark:bg-zinc-900 dark:ring-zinc-800"
+            className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-zinc-900/7.5 duration-500 ease-in-out data-[closed]:-translate-x-full min-[416px]:max-w-sm sm:px-6 sm:pb-10 dark:bg-black/50 dark:ring-zinc-900 dark:backdrop-blur-md"
           >
-            {/* If doc route => show doc nav. Else => show a simpler landing nav */}
-            {isDocs ? (
-              <Navigation />
-            ) : (
-              <ul className="space-y-4 text-sm">
-                <li>
-                  <a href="#" className="text-zinc-600 dark:text-white text-base font-semibold">
-                    NFT
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-zinc-600 dark:text-white text-base font-semibold">
-                    Bettors Club
-                  </a>
-                </li>
-                <li>
-                  <a href="/docs" className="text-zinc-600 dark:text-white text-base font-semibold">
-                    Docs
-                  </a>
-                </li>
-              </ul>
-            )}
+            <Navigation />
           </motion.div>
         </TransitionChild>
       </DialogPanel>
@@ -151,8 +121,7 @@ export function MobileNavigation() {
     <IsInsideMobileNavigationContext.Provider value={true}>
       <button
         type="button"
-        className="flex h-6 w-6 items-center justify-center rounded-md
-                   transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
+        className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
         aria-label="Toggle navigation"
         onClick={toggle}
       >

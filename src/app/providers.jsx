@@ -29,7 +29,7 @@ function ThemeWatcher() {
 
 export function Providers({ children }) {
   return (
-    <ThemeProvider attribute="class" disableTransitionOnChange>
+    <ThemeProvider attribute="class"  defaultTheme="dark" disableTransitionOnChange>
       <ThemeWatcher />
       {children}
     </ThemeProvider>

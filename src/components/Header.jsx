@@ -5,8 +5,6 @@ import Link from "next/link"
 import clsx from "clsx"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { usePathname } from "next/navigation"
-
-import { Button } from "@/components/Button"
 import { Logo } from "@/components/Logo"
 import {
   MobileNavigation,
@@ -15,6 +13,7 @@ import {
 import { useMobileNavigationStore } from "@/components/MobileNavigation"
 import { MobileSearch, Search } from "@/components/Search"
 import { ThemeToggle } from "@/components/ThemeToggle"
+import SportsButton from "@/components/SportsButton";
 
 function TopLevelNavItem({ href, children }) {
   return (
@@ -31,14 +30,11 @@ function TopLevelNavItem({ href, children }) {
 
 export const Header = forwardRef(function Header({ className, ...props }, ref) {
   const pathname = usePathname()
-  const isDocs = pathname.startsWith("/docs") // doc or not?
+  const isDocs = pathname.startsWith("/docs")
 
-  const { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
-  const isInsideMobileNavigation = useIsInsideMobileNavigation()
+  let { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
+  let isInsideMobileNavigation = useIsInsideMobileNavigation()
 
-  const { scrollY } = useScroll()
-  const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
-  const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
 
   return (
     <motion.div
@@ -47,79 +43,82 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
       className={clsx(
         className,
         "fixed inset-x-0 top-0 z-50 flex h-14 items-center gap-12 px-4 transition sm:px-6",
-        // If doc route + not mobile nav, shift pinned offset & apply blur
-        isDocs && !isInsideMobileNavigation && 
-          "lg:left-72 xl:left-80 backdrop-blur-sm dark:backdrop-blur",
+        // If doc route + not inside mobile nav => pinned offset + blur
+        isDocs && !isInsideMobileNavigation && "lg:left-72 xl:left-80 backdrop-blur-sm dark:backdrop-blur-lg dark:bg-black/50",
         // Otherwise, normal BG
         isInsideMobileNavigation
-          ? "bg-white dark:bg-zinc-900"
-          : "bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]",
+          ? "bg-white dark:bg-black"
+          : "bg-white/[var(--bg-opacity-light)]",
       )}
-      style={{
-        "--bg-opacity-light": bgOpacityLight,
-        "--bg-opacity-dark": bgOpacityDark,
-      }}
     >
-      {/* Thin border under header */}
+      {/* Thin border under the header */}
       <div
         className={clsx(
           "absolute inset-x-0 top-full h-px transition",
           (isInsideMobileNavigation || !mobileNavIsOpen) &&
-            "bg-zinc-900/7.5 dark:bg-white/7.5",
+          (isDocs
+            ? "bg-zinc-900/7.5 dark:bg-white/7.5"
+            : "bg-transparent"
+            )
         )}
       />
 
-      {/* Doc route => show search bar, else skip */}
+      {/* 
+        If doc route, show doc search bar
+        If not doc, skip search
+      */}
       {isDocs && <Search />}
 
-      {/* Mobile left side: hamburger + mobile logo */}
+      {/* Mobile: hamburger + logo, same for doc or non-doc */}
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />
         <Link href="/" aria-label="Home">
-          <Logo className="h-6" variant="mobile" />
+          <Logo className="h-7" variant="mobile" />
         </Link>
       </div>
 
-      {/* Non-doc route => desktop row with L=logo, C=links, R=theme+sign-in */}
+      {/* 
+        Non-doc desktop row:
+        Left = Desktop logo
+        Center = nav links
+        Right = sign-in + theme toggle
+      */}
       {!isDocs && (
-        <div className="hidden lg:flex w-full items-center">
-          {/* Left: Desktop logo */}
-          <Link href="/" aria-label="Home" className="mr-4">
-            <Logo className="h-6" variant="desktop" />
+        <div className="flex w-full items-center">
+          {/* Left: desktop logo */}
+          <Link href="/" aria-label="Home" className="mr-4 hidden lg:block">
+            <Logo className="h-7" variant="desktop" />
           </Link>
-          {/* Center: nav items (mx-auto) */}
+
+          {/* Center: your landing links (NFT, Bettors, Docs, etc.) */}
           <nav className="mx-auto">
-            <ul role="list" className="flex items-center gap-8">
+            <ul className="md:flex items-center gap-8 hidden absolute top-4 left-1/2 transform -translate-x-1/2 font-semibold">
               <TopLevelNavItem href="#">NFT</TopLevelNavItem>
               <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
           </nav>
+
           {/* Right side: theme toggle + sign in */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <Button href="#">Sign in</Button>
+          <div className="flex items-center gap-5">
+            {/* <ThemeToggle /> */}
+            <div className="hidden xs-440:block">
+              <SportsButton  href="#">Sportsbook</SportsButton>
+            </div>
+            
           </div>
         </div>
       )}
 
-      {/* Non-doc route => mobile row with R=theme+sign-in */}
-      {!isDocs && (
-        <div className="flex lg:hidden w-full items-center justify-end">
-          {/* Right side: theme toggle + sign in */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <Button href="#" className="hidden xs-440:block">Sign in</Button>
-          </div>
-        </div>
-      )}
-
-      {/* If doc route => doc nav items, doc mobile search, theme, sign in on the right */}
+      {/* 
+        Doc route => doc nav on the right side:
+        doc top-level nav, mobile search, theme toggle, sign in
+      */}
       {isDocs && (
         <div className="ml-auto flex items-center gap-5">
           <nav className="hidden md:block">
             <ul role="list" className="flex items-center gap-8">
-              <TopLevelNavItem href="#">NFT</TopLevelNavItem>
+              <TopLevelNavItem href="#" >NFT</TopLevelNavItem>
               <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
@@ -127,10 +126,10 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
           <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
           <div className="flex gap-4">
             <MobileSearch />
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </div>
           <div className="hidden xs-440:contents">
-            <Button href="#">Sign in</Button>
+            <SportsButton href="#">Sportsbook</SportsButton>
           </div>
         </div>
       )}
