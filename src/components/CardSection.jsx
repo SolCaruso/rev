@@ -89,7 +89,7 @@ const cards = [
     id: 10,
     image: "/images/dog10.png",
     color: "yellow",
-    game: "Texas hold 'em",
+    game: "Poker",
     gameIcon: "TexasHoldEm",
   },
   {
@@ -124,8 +124,8 @@ const cards = [
     id: 15,
     image: "/images/dog15.png",
     color: "red",
-    game: "Poker",
-    gameIcon: "Poker",
+    game: "Football",
+    gameIcon: "Football",
   },
   {
     id: 16,
@@ -207,9 +207,9 @@ const cards = [
   {
     id: 27,
     image: "/images/dog27.png",
-    color: "yellow",
-    game: "Texas hold 'em",
-    gameIcon: "TexasHoldEm",
+    color: "green",
+    game: "Blackjack",
+    gameIcon: "Blackjack",
   },
   {
     id: 28,
@@ -264,7 +264,7 @@ const cards = [
     id: 35,
     image: "/images/dog35.png",
     color: "yellow",
-    game: "Texas hold 'em",
+    game: "Poker",
     gameIcon: "TexasHoldEm",
   },
   {
@@ -285,7 +285,7 @@ const cards = [
     id: 38,
     image: "/images/dog38.png",
     color: "yellow",
-    game: "Texas hold 'em",
+    game: "Poker",
     gameIcon: "TexasHoldEm",
   },
 ];
