@@ -6,6 +6,7 @@ import DiscordIcon from "@/components/icons/Discord";
 import RightArrowIcon from "@/components/icons/RightArrow";
 import WishList from "@/components/WishList";
 import pokerImage from "@/images/png/poker.png";
+import Link from "next/link";
 
 const arrowVariants = {
   rest: { x: 0 },
@@ -45,7 +46,8 @@ export default function Hero() {
         {/* Buttons */}
         <div className="flex items-center justify-center gap-4 sm:gap-8 m-12 flex-col xs-440:flex-row ">
           {/* "Read more" button */}
-          <button
+          <Link href="/docs" passHref>
+          <motion.div
             className="
               inline-flex 
               items-center 
@@ -71,13 +73,18 @@ export default function Hero() {
               hover:opacity-100
               text-black
             "
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
           >
             <DocsIcon className="sm:w-4 h-4" />
             <span>Read more</span>
-          </button>
+          </motion.div>
+        </Link>
 
           {/* Motion-enabled "Join the pack" button */}
-          <motion.button
+          <Link href="https://discord.gg/revolver-ag" passHref>
+          <motion.div
             className="
               inline-flex
               items-center
@@ -85,7 +92,8 @@ export default function Hero() {
               py-1.5
               xs:text-sm
               font-medium
-              text-white
+              text-[#E6E6E6]
+                hover:text-[#FFF]
               rounded-md
               bg-transparent
             "
@@ -100,8 +108,9 @@ export default function Hero() {
             <motion.div className="ml-2" variants={arrowVariants}>
               <RightArrowIcon className="w-4 h-4" />
             </motion.div>
-          </motion.button>
-        </div>
+          </motion.div>
+        </Link>
+      </div>
 
         <WishList />
       </div>

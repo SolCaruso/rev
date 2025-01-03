@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Card from "@/components/Card";
@@ -405,27 +406,24 @@ export default function CardSection() {
       <div className="max-w-5xl lg:max-w-7xl mx-auto mt-8 px-4 flex items-center justify-between">
         {/* Turn the "Learn about the benefits" into a button */}
 
-        <motion.button
-            type="button"
-            onClick={() => {
-              // handle click here if needed
-              console.log("Benefits button clicked!");
-            }}
-            className="mt-1 text-base font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center "
-            style={{
-              // same gradient text style as before
-              backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
-            }}
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-          >
-            Learn about the benefits
-            {/* Only the arrow moves on button hover */}
-            <motion.div className="ml-2" variants={arrowVariants}>
-              <RightArrowIcon strokeColor="#4F4F4F" className="w-4 h-4" />
-            </motion.div>
-          </motion.button>
+        <Link href="/docs/underdawg#benefits" passHref>
+        <motion.div
+          className="mt-1 text-base font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center cursor-pointer"
+          style={{
+            // Same gradient text style as before
+            backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
+          }}
+          initial="rest"
+          whileHover="hover"
+          animate="rest"
+        >
+          Learn <span className="hidden xs-440:block">&nbsp;about the&nbsp;</span>benefits
+          {/* Only the arrow moves on button hover */}
+          <motion.div className="ml-2" variants={arrowVariants}>
+            <RightArrowIcon strokeColor="#4F4F4F" className="w-4 h-4" />
+          </motion.div>
+        </motion.div>
+      </Link>
 
         {/* The existing left/right arrow buttons */}
         <div className="flex items-center gap-2">
