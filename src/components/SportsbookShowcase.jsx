@@ -187,7 +187,7 @@ export default function SportsbookShowcase() {
             "radial-gradient(ellipse at 50% 50%, black 70%, transparent 100%)",
         }}
       >
-        <div className="relative w-[1300px] h-[900px] mx-auto mt-14">
+        <div className="relative w-[1600px] h-[900px] mx-auto mt-14">
           {stars.map((star) => (
             <Star key={star.id} star={star} />
           ))}
