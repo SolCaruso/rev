@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import DocsIcon from "@/components/icons/Docs";
 import DiscordIcon from "@/components/icons/Discord";
 import RightArrowIcon from "@/components/icons/RightArrow";
-import WishList from "@/components/WishList";
+import WishList from "./WishList";
 import pokerImage from "@/images/png/poker.png";
 import Link from "next/link";
 

@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
-import Sportsbook from "./../images/jpg/Sportsbook.jpg";
-import Sportsbook3 from "./../images/jpg/Sportsbook3.jpg";
-// Import the small-screen image
-import BetSlip from "@/images/png/betslip.png";
+import BetSlip from "@/images/png/betslip.png"; // Keep BetSlip as it is
+
+// Updated to use images from the public folder
+const sportsbookImg = "/images/Sportsbook.jpg";
+const sportsbook3Img = "/images/Sportsbook3.jpg";
 
 /** Generate star data (unchanged) */
 function generateStars(topCount = 20, bottomCount = 80) {
@@ -100,24 +101,14 @@ function Star({ star }) {
 export default function SportsbookShowcase() {
   const [stars, setStars] = useState([]);
   const [expanded, setExpanded] = useState(false);
-  // Whether we allow hover/click to open fullscreen
   const [allowFullscreen, setAllowFullscreen] = useState(false);
-
-  // Whether to show BetSlip image (under 800px) or Sportsbook (800px+)
   const [useBetSlip, setUseBetSlip] = useState(false);
-
-  // For storing the user's scroll position so we can restore it
   const scrollYRef = useRef(0);
 
-  /** 1) Generate star data once on mount. */
   useEffect(() => {
     setStars(generateStars(20, 80));
   }, []);
 
-  /** 2) Check screen widths:
-   *    - if 800px => useBetSlip = false, else true
-   *    - if 1500px => allowFullscreen = true, else false
-   */
   useEffect(() => {
     if (typeof window !== "undefined") {
       const w = window.innerWidth;
@@ -126,14 +117,9 @@ export default function SportsbookShowcase() {
     }
   }, []);
 
-  /**
-   * 3) Lock scroll position when expanded (no flicker).
-   */
   useEffect(() => {
     if (expanded) {
-      // Save current scroll Y
       scrollYRef.current = window.scrollY;
-      // Fix the body in place
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollYRef.current}px`;
       document.body.style.left = "0";
@@ -150,67 +136,48 @@ export default function SportsbookShowcase() {
     }
   }, [expanded]);
 
-  /** 
-   * 4) Normal rectangle + screenshot (small).
-   *    - We swap the <img> src depending on `useBetSlip`
-   *    - For small screens (<800), we pin the container to the right with Tailwind utility classes 
-   */
   const normalGroup = (
     <motion.div
-    whileHover={allowFullscreen ? { scale: 1.01 } : {}}
-    whileTap={allowFullscreen ? { scale: 0.99 } : {}}
-    transition={{
-      type: "spring",
-      bounce: 0.15,
-      duration: 0.3,
-    }}
-    style={{
-      cursor: allowFullscreen ? "pointer" : "default",
-    }}
-    onClick={() => {
-      if (allowFullscreen) {
-        setExpanded(true);
-      }
-    }}
-    className={`
-      mt-14
-      ${
-        useBetSlip
-          ? // For BetSlip: remove background, border, shadow, etc.
-            "mr-0 ml-auto max-w-xs"
-          : // For Sportsbook: keep background, border, shadow, etc.
-            "mx-auto w-full bg-[#15151a]/40 md:rounded-3xl rounded-xl border border-[#2a2a2a] backdrop-blur-[3.94px] [box-shadow:0px_-5px_58.2px_0px_rgba(155,155,155,0.12),inset_-0.9841px_-0.9841px_3.9364px_3.9364px_rgba(177,177,177,0.03)]"
-      }
-    `}
-  >
-    {/* Conditionally apply 8px padding. */}
-    <div className={useBetSlip ? "" : "p-[8px]"}>
-      <img
-        src={useBetSlip ? BetSlip.src : Sportsbook.src}
-        alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
-        className={
-          useBetSlip
-            ? // Bet slip style: left side rounded, right side none
-              "md:rounded-l-[15px] md:rounded-r-none rounded-l-[7px] rounded-r-none w-full h-auto"
-            : // Sportsbook style: both sides rounded
-              "md:rounded-[15px] rounded-[7px] w-full h-auto"
+      whileHover={allowFullscreen ? { scale: 1.01 } : {}}
+      whileTap={allowFullscreen ? { scale: 0.99 } : {}}
+      transition={{
+        type: "spring",
+        bounce: 0.15,
+        duration: 0.3,
+      }}
+      style={{
+        cursor: allowFullscreen ? "pointer" : "default",
+      }}
+      onClick={() => {
+        if (allowFullscreen) {
+          setExpanded(true);
         }
-      />
-    </div>
-  </motion.div>
+      }}
+      className={`
+        mt-14
+        ${
+          useBetSlip
+            ? "mr-0 ml-auto max-w-xs"
+            : "mx-auto w-full bg-[#15151a]/40 md:rounded-3xl rounded-xl border border-[#2a2a2a] backdrop-blur-[3.94px]"
+        }
+      `}
+    >
+      <div className={useBetSlip ? "" : "p-[8px]"}>
+        <img
+          src={useBetSlip ? BetSlip.src : sportsbookImg}
+          alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
+          className={
+            useBetSlip
+              ? "md:rounded-l-[15px] md:rounded-r-none rounded-l-[7px] rounded-r-none w-full h-auto"
+              : "md:rounded-[15px] rounded-[7px] w-full h-auto"
+          }
+        />
+      </div>
+    </motion.div>
   );
 
   return (
-    <section
-      className="
-        relative
-        text-white
-        overflow-hidden
-        min-h-[1200px]
-        pt-28
-      "
-    >
-      {/* Starfield background */}
+    <section className="relative text-white overflow-hidden min-h-[1200px] pt-28">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -227,25 +194,19 @@ export default function SportsbookShowcase() {
         </div>
       </div>
 
-      {/* Heading */}
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-xl font-bold">Revolver sportsbook and casino.</h2>
         <p
-          className="
-            mt-1 text-xl font-bold 
-            text-transparent bg-clip-text 
-            max-w-md mx-auto
-          "
-          style={{ backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)" }}
+          className="mt-1 text-xl font-bold text-transparent bg-clip-text max-w-md mx-auto"
+          style={{
+            backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
+          }}
         >
           The best odds and highest limits on Solana.
         </p>
-
-        {/* Show normal layout if not expanded */}
         {!expanded && normalGroup}
       </div>
 
-      {/* Fullscreen overlay (only if expanded) */}
       <AnimatePresence>
         {expanded && (
           <motion.div
@@ -266,24 +227,14 @@ export default function SportsbookShowcase() {
             onClick={() => setExpanded(false)}
           >
             <motion.div
-              className="
-                bg-[#15151a]/40
-                rounded-3xl
-                border border-[#2a2a2a]
-                backdrop-blur-[3.94px]
-                [box-shadow:
-                  0px_-5px_58.2px_0px_rgba(155,155,155,0.12),
-                  inset_-0.9841px_-0.9841px_3.9364px_3.9364px_rgba(177,177,177,0.03)
-                ]
-                p-[8px]
-              "
+              className="bg-[#15151a]/40 rounded-3xl border border-[#2a2a2a] backdrop-blur-[3.94px] p-[8px]"
               style={{
                 width: "80%",
                 cursor: "pointer",
               }}
             >
               <img
-                src={Sportsbook3.src}
+                src={sportsbook3Img}
                 alt="Sportsbook Screenshot Expanded"
                 className="rounded-[15px] w-full h-auto"
               />
