@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import DocsIcon from "@/components/icons/Docs";
 import DiscordIcon from "@/components/icons/Discord";
 import RightArrowIcon from "@/components/icons/RightArrow";
-import WishList from "@/components/WishList";
 import pokerImage from "@/images/png/poker.png";
 import Link from "next/link";
+import styles from "./WishList.module.css";
 
 const arrowVariants = {
   rest: { x: 0 },
@@ -107,12 +107,22 @@ export default function Hero() {
             {/* Only the arrow moves on button hover */}
             <motion.div className="ml-2" variants={arrowVariants}>
               <RightArrowIcon className="w-4 h-4" />
-            </motion.div>
-          </motion.div>
-        </Link>
+              </motion.div>
+              </motion.div>
+            </Link>
       </div>
 
-        <WishList />
+      <div className="flex justify-center mt-8">
+      <div className={`${styles.wishlistOuter} ${styles.wishlistAnimate}`}>
+        <div className={styles.wishlistAnnouncement}>
+          <span>Wishlist now open</span>
+          <span className={styles.wishlistMuted}>
+            Join wishlist
+            <RightArrowIcon />
+          </span>
+        </div>
+      </div>
+    </div>
       </div>
 
       {/* Absolutely-positioned background image */}
