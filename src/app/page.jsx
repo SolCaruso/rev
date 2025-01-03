@@ -8,7 +8,7 @@ export default function Home() {
     <LandingLayout>
       <Hero />
       <CardSection />
-      {/* <SportsbookShowcase /> */}
+      <SportsbookShowcase />
     </LandingLayout>
   )
 }

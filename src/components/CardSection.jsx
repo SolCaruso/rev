@@ -3,6 +3,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Card from "@/components/Card";
+import RightArrowIcon  from "@/components/icons/RightArrow"; 
+
+const arrowVariants = {
+  rest: { x: 0 },
+  hover: { x: 2 }, 
+};
 
 /**
  * Single area to define colors:
@@ -218,7 +224,7 @@ const cards = [
     game: "Baseball",
     gameIcon: "Baseball",
   },
-  {
+  { 
     id: 29,
     image: "/images/dog29.png",
     color: "blue",
@@ -263,9 +269,9 @@ const cards = [
   {
     id: 35,
     image: "/images/dog35.png",
-    color: "yellow",
-    game: "Poker",
-    gameIcon: "TexasHoldEm",
+    color: "green",
+    game: "Blackjack",
+    gameIcon: "Blackjack",
   },
   {
     id: 36,
@@ -284,9 +290,9 @@ const cards = [
   {
     id: 38,
     image: "/images/dog38.png",
-    color: "yellow",
-    game: "Poker",
-    gameIcon: "TexasHoldEm",
+    color: "red",
+    game: "Football",
+    gameIcon: "Football",
   },
 ];
 
@@ -395,15 +401,33 @@ export default function CardSection() {
         </motion.div>
       </div>
 
+      {/* Footer row */}
       <div className="max-w-2xl lg:max-w-5xl mx-auto mt-8 px-4 flex items-center justify-between">
-        <div
-          className="mt-1 text-base font-bold text-transparent bg-clip-text max-w-sm"
-          style={{
-            backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
-          }}
-        >
-          Learn about the benefits &rarr;
-        </div>
+        {/* Turn the "Learn about the benefits" into a button */}
+
+        <motion.button
+            type="button"
+            onClick={() => {
+              // handle click here if needed
+              console.log("Benefits button clicked!");
+            }}
+            className="mt-1 text-base font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center "
+            style={{
+              // same gradient text style as before
+              backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
+            }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
+            Learn about the benefits
+            {/* Only the arrow moves on button hover */}
+            <motion.div className="ml-2" variants={arrowVariants}>
+              <RightArrowIcon strokeColor="#4F4F4F" className="w-4 h-4" />
+            </motion.div>
+          </motion.button>
+
+        {/* The existing left/right arrow buttons */}
         <div className="flex items-center gap-2">
           <button onClick={handlePrev} className="arrowBtn flex items-center gap-2">
             <svg

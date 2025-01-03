@@ -204,16 +204,6 @@ export const navigation = [
       { title: 'Webhooks', href: '/docs/webhooks' },
     ],
   },
-  {
-    title: 'Resources',
-    links: [
-      { title: 'Contacts', href: '/docs/contacts' },
-      { title: 'Conversations', href: '/docs/conversations' },
-      { title: 'Messages', href: '/docs/messages' },
-      { title: 'Groups', href: '/docs/groups' },
-      { title: 'Attachments', href: '/docs/attachments' },
-    ],
-  },
 ]
 
 export function Navigation(props) {
