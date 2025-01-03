@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
-import Sportsbook from "@/images/jpg/Sportsbook.jpg";
-import Sportsbook3 from "@/images/jpg/Sportsbook3.jpg";
+import Sportsbook from "./../images/jpg/Sportsbook.jpg";
+import Sportsbook3 from "./../images/jpg/Sportsbook3.jpg";
 // Import the small-screen image
 import BetSlip from "@/images/png/betslip.png";
 
