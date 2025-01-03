@@ -11,37 +11,37 @@ import logoRuby from '@/images/logos/ruby.svg'
 const libraries = [
   {
     href: '#',
-    name: 'PHP',
+    name: 'No sign-up',
     description:
-      'A popular general-purpose scripting language that is especially suited to web development.',
+      'No sign-up needed, just connect your Solana wallet and play. ',
     logo: logoPhp,
   },
   {
     href: '#',
-    name: 'Ruby',
+    name: 'Best odds',
     description:
-      'A dynamic, open source programming language with a focus on simplicity and productivity.',
+      'Play with the lowest vig on Revolver! ',
     logo: logoRuby,
   },
   {
     href: '#',
-    name: 'Node.js',
+    name: 'Highest betting limits',
     description:
-      'Node.js® is an open-source, cross-platform JavaScript runtime environment.',
+      'Bet large amounts of $RVR, even on niche markets.',
     logo: logoNode,
   },
   {
     href: '#',
-    name: 'Python',
+    name: 'Prop markets',
     description:
-      'Python is a programming language that lets you work quickly and integrate systems more effectively.',
+      'Solana, crypto-focused, and other fun prop markets (with more added at user request!)',
     logo: logoPython,
   },
   {
     href: '#',
-    name: 'Go',
+    name: 'Community-driven',
     description:
-      'An open-source programming language supported by Google with built-in concurrency.',
+      'A portion of house revenue is burned, while the remaining returns to the project treasury.',
     logo: logoGo,
   },
 ]
@@ -50,7 +50,7 @@ export function Libraries() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="official-libraries">
-        Official libraries
+        Key Features
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3 dark:border-white/5">
         {libraries.map((library) => (
@@ -61,11 +61,6 @@ export function Libraries() {
               </h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 {library.description}
-              </p>
-              <p className="mt-4">
-                <Button href={library.href} variant="text" arrow="right">
-                  Read more
-                </Button>
               </p>
             </div>
             <Image

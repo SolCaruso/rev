@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
 import { Button } from '@/components/Button'
 import { navigation } from '@/components/Navigation'
 
@@ -105,30 +104,39 @@ function SmallPrint() {
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">
-      <SocialLink 
-        href="https://x.com/Revolver_ag" 
-        icon={XIcon} 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        Follow us on X
-      </SocialLink>
-      <SocialLink 
-        href="https://discord.gg/revolver-ag" 
-        icon={DiscordIcon} 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        Join our Discord server
-      </SocialLink>
+        <SocialLink
+          href="https://x.com/Revolver_ag"
+          icon={XIcon}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Follow us on X
+        </SocialLink>
+        <SocialLink
+          href="https://discord.gg/revolver-ag"
+          icon={DiscordIcon}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join our Discord server
+        </SocialLink>
       </div>
     </div>
   )
 }
 
 export function Footer() {
+  const pathname = usePathname()
+  const isDocs = pathname?.startsWith('/docs')
+
   return (
-    <footer className="mx-auto w-full max-w-2xl space-y-10 pb-16 lg:max-w-5xl">
+    <footer
+      className={
+        isDocs
+          ? 'mx-auto w-full max-w-2xl space-y-10 pb-16 lg:max-w-5xl'
+          : 'mx-auto w-full max-w-7xl space-y-10 pb-16'
+      }
+    >
       <PageNavigation />
       <SmallPrint />
     </footer>

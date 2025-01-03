@@ -196,12 +196,11 @@ export const navigation = [
     title: 'Litepaper',
     links: [
       { title: 'Introduction', href: '/docs' },
-      { title: 'Quickstart', href: '/docs/quickstart' },
-      { title: 'SDKs', href: '/docs/sdks' },
-      { title: 'Authentication', href: '/docs/authentication' },
-      { title: 'Pagination', href: '/docs/pagination' },
-      { title: 'Errors', href: '/docs/errors' },
-      { title: 'Webhooks', href: '/docs/webhooks' },
+      { title: 'Sharpshooter', href: '/docs/sharpshooter' },
+      { title: 'Sportsbook & Casino', href: '/docs/sportsbook' },
+      { title: 'Underdawg NFT', href: '/docs/underdawg' },
+      { title: '$RVR Token', href: '/docs/token' },
+      { title: 'Team', href: '/docs/team' },
     ],
   },
 ]

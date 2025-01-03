@@ -350,7 +350,7 @@ export default function CardSection() {
 
   return (
     <section className="pb-16 text-white">
-      <div className="max-w-5xl mx-auto px-4 mb-16">
+      <div className="max-w-5xl lg:max-w-7xl mx-auto px-4 mb-16">
         <h2 className="text-xl font-bold">Dawgs only.</h2>
         <p
           className="mt-1 text-xl font-bold text-transparent bg-clip-text max-w-sm"
@@ -402,7 +402,7 @@ export default function CardSection() {
       </div>
 
       {/* Footer row */}
-      <div className="max-w-5xl mx-auto mt-8 px-4 flex items-center justify-between">
+      <div className="max-w-5xl lg:max-w-7xl mx-auto mt-8 px-4 flex items-center justify-between">
         {/* Turn the "Learn about the benefits" into a button */}
 
         <motion.button

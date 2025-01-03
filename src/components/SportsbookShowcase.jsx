@@ -228,7 +228,7 @@ export default function SportsbookShowcase() {
       </div>
 
       {/* Heading */}
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-xl font-bold">Revolver sportsbook and casino.</h2>
         <p
           className="

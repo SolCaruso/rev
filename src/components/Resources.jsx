@@ -15,10 +15,10 @@ import { UsersIcon } from '@/components/icons/UsersIcon'
  */
 const resources = [
   {
-    href: '/docs/contacts',
-    name: 'Contacts',
+    href: '/docs/sharpshooter',
+    name: 'Sharpshooter Ai Agent',
     description:
-      'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
+      'Reviews picks and analyses from experts across various sports (the Revolver Handicapper Index).',
     icon: UserIcon,
     pattern: {
       y: 16,
