@@ -29,10 +29,10 @@ const resources = [
     },
   },
   {
-    href: '/docs/conversations',
-    name: 'Conversations',
+    href: '/docs/sportsbook',
+    name: 'Revolver Sportsbook & Casino',
     description:
-      'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
+      'An online sportsbook and casino that uses the $RVR token for all deposits, wagers, and withdrawals.',
     icon: ChatBubbleIcon,
     pattern: {
       y: -6,
@@ -43,10 +43,10 @@ const resources = [
     },
   },
   {
-    href: '/docs/messages',
-    name: 'Messages',
+    href: '/docs/underdawg',
+    name: 'Underdawg NFT',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
+      'The Revolver Underdawg NFT collection is a generative, hand-drawn NFT collection on Solana.',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
@@ -57,10 +57,10 @@ const resources = [
     },
   },
   {
-    href: '/docs/groups',
-    name: 'Groups',
+    href: '/docs/token',
+    name: '$RVR Token',
     description:
-      'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
+      "$RVR is Revolver's token on Solana.",
     icon: UsersIcon,
     pattern: {
       y: 22,

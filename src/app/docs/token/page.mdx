@@ -1,16 +1,16 @@
 export const metadata = {
-  title: 'Pagination',
+  title: '$RVR Token',
   description:
-    'In this guide, we will look at how to work with paginated responses when querying the Protocol API',
+    "$RVR is Revolver's token on Solana. ",
 }
 
-# Pagination
+# $RVR Token
 
-In this guide, we will look at how to work with paginated responses when querying the Protocol API. By default, all responses limit results to ten. However, you can go as high as 100 by adding a `limit` parameter to your requests. If you are using one of the official Protocol API client libraries, you don't need to worry about pagination, as it's all being taken care of behind the scenes. {{ className: 'lead' }}
+$RVR is Revolver's token on Solana. $RVR aimed at providing fun and experimental initiatives to members, such as the [Revolver Community Sportsbook and Casino](#).  {{ className: 'lead' }}
 
-When an API response returns a list of objects, no matter the amount, pagination is supported. In paginated responses, objects are nested in a `data` attribute and have a `has_more` attribute that indicates whether you have reached the end of the last page. You can use the `starting_after` and `endding_before` query parameters to browse pages.
+## Tokenomics and Airdrop
 
-## Example using cursors
+$RVR will be airdropped to all NFT holders at a time to be announced after mint. The $RVR tokenomics are detailed below and subject to change. {{ className: 'lead' }}
 
 <Row>
   <Col>
@@ -18,46 +18,22 @@ When an API response returns a list of objects, no matter the amount, pagination
     In this example, we request the page that starts after the conversation with id `s4WycXedwhQrEFuM`. As a result, we get a list of three conversations and can tell by the `has_more` attribute that we have reached the end of the resultset.
 
     <Properties>
-      <Property name="starting_after" type="string">
-        The last ID on the page you're currently on when you want to fetch the next page.
-      </Property>
-      <Property name="ending_before" type="string">
-        The first ID on the page you're currently on when you want to fetch the previous page.
-      </Property>
-      <Property name="limit" type="integer">
-        Limit the number of items returned.
+      <Property name="TOKENOMICS GRAPH" type="1,000,000,000 total tokens.">
+        - Airdrop to Underdawg NFT holders and eligible communities 25% 
+        - Revolver Sportsbook & Casino Risk Management and Rewards allocation 15% 
+        - Treasury for project management, liquidity, future initiatives and general promotion 40% 
+        - Team 20%
+
       </Property>
     </Properties>
 
   </Col>
   <Col>
 
-    ```bash {{ title: 'Manual pagination using cURL' }}
-    curl -G https://api.protocol.chat/v1/conversations \
-      -H "Authorization: Bearer {token}" \
-      -d starting_after="s4WycXedwhQrEFuM" \
-      -d limit=10
-    ```
+## Uitlity
 
-    ```json {{ title: 'Paginated response' }}
-    {
-      "has_more": false,
-      "data": [
-        {
-          "id": "WAz8eIbvDR60rouK",
-          // ...
-        },
-        {
-          "id": "hSIhXBhNe8X1d8Et"
-          // ...
-        },
-        {
-          "id": "fbwYwpi9C2ybt6Yb"
-          // ...
-        }
-      ]
-    }
-    ```
+$RVR can be wagered on the Revolver Sportsbook and Casino. Sportsbook & Casino house $RVR revenue is burned. {{ className: 'lead' }}
+
 
   </Col>
 </Row>
