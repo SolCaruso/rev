@@ -38,6 +38,8 @@
   .arrowBtn:hover {
     background: linear-gradient(137deg, #222 5%, #1a1b1c 76%);
   }
+
+  
 }
 
 @tailwind base;

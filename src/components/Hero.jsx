@@ -14,15 +14,17 @@ const arrowVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative pt-52 pb-32">
+    <section className="relative pt-32 md:pt-52 pb-32">
       {/* The main hero content is above the background (z-10) */}
       <div className="max-w-[540px] mx-auto text-center relative z-10">
         {/* Headline */}
         <h1
           className="
-            text-[3.3rem]
+            text-[2.5rem]
+            md:text-[3.3rem]
             font-bold
-            leading-tight
+            md:leading-tight
+            leading-10
             [text-shadow:0_4px_4px_rgba(0,0,0,0.15)]
             [font-feature-settings:'ss08'_on,'ss02'_on,'liga'_off]
           "
@@ -35,13 +37,13 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base font-medium leading-snug text-white">
+        <p className="mt-6 text-xs md:text-base font-medium leading-snug text-white">
           Join Solana’s top betting society, with AI-optimized picks from
           profitable handicappers, and a dedicated, community-focused sportsbook.
         </p>
 
         {/* Buttons */}
-        <div className="flex items-center justify-center gap-8 m-12">
+        <div className="flex items-center justify-center gap-4 sm:gap-8 m-12 flex-col xs-440:flex-row ">
           {/* "Read more" button */}
           <button
             className="
@@ -70,7 +72,7 @@ export default function Hero() {
               text-black
             "
           >
-            <DocsIcon className="w-4 h-4" />
+            <DocsIcon className="sm:w-4 h-4" />
             <span>Read more</span>
           </button>
 
@@ -81,7 +83,7 @@ export default function Hero() {
               items-center
               px-3.5
               py-1.5
-              text-sm
+              xs:text-sm
               font-medium
               text-white
               rounded-md
