@@ -38,7 +38,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-xs md:text-base font-medium leading-snug text-white">
+        <p className="transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] bg-clip-text text-transparent mt-4 font-medium">
           Join Solana’s top betting society, with AI-optimized picks from
           profitable handicappers, and a dedicated, community-focused sportsbook.
         </p>
