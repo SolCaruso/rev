@@ -6,7 +6,7 @@ import * as motion from "motion/react-client";
 import BetSlip from "@/images/png/betslip.png"; // Keep BetSlip as it is
 
 // Updated to use images from the public folder
-const sportsbookImg = "/images/Sportsbook.jpg";
+const sportsbookImg = "/images/Sportsbook2.jpg";
 const sportsbook3Img = "/images/Sportsbook3.jpg";
 
 /** Generate star data (unchanged) */
@@ -113,7 +113,7 @@ export default function SportsbookShowcase() {
     if (typeof window !== "undefined") {
       const w = window.innerWidth;
       setUseBetSlip(w < 800);
-      setAllowFullscreen(w >= 1500);
+      setAllowFullscreen(w >= 1800);
     }
   }, []);
 
@@ -136,6 +136,8 @@ export default function SportsbookShowcase() {
     }
   }, [expanded]);
 
+  // REPLACED FRAME:
+  // We use the Tailwind + radial gradient approach from MyFramedImageTailwind
   const normalGroup = (
     <motion.div
       whileHover={allowFullscreen ? { scale: 1.01 } : {}}
@@ -145,34 +147,40 @@ export default function SportsbookShowcase() {
         bounce: 0.15,
         duration: 0.3,
       }}
+      // Combine cursor + our radial gradient style in one object
       style={{
         cursor: allowFullscreen ? "pointer" : "default",
+        maxWidth: "min(100%)",
+        height: "auto",
+        transform: "translateZ(0)",
+        background:
+          "radial-gradient(85.77% 49.97% at 51% 5.12%, hsla(0, 100%, 79%, .11) 0, rgba(222, 226, 255, .08) 45.83%, rgba(241, 242, 255, .02) 100%), rgba(0, 0, 0, .44)",
+        boxShadow: "0 0 40px 20px hsla(0,0%,100%,.03),inset 0 .5px 0 0 hsla(0,0%,100%,.3)",
       }}
       onClick={() => {
         if (allowFullscreen) {
           setExpanded(true);
         }
       }}
-      className={`
-        mt-14
-        ${
-          useBetSlip
-            ? "mr-0 ml-auto max-w-xs"
-            : "mx-auto w-full bg-[#15151a]/40 md:rounded-3xl rounded-xl border border-[#2a2a2a] backdrop-blur-[3.94px]"
-        }
-      `}
+      // Tailwind classes for border, shadow, etc.
+      className={[
+        "mt-14",
+        "mx-auto",
+        "relative",
+        "w-full",
+        "p-2",
+        "border",
+        "border-[hsla(0,0%,100%,0.08)]",
+        "shadow-[0_40px_20px_rgba(255,255,255,0.03),_inset_0_0.5px_0_rgba(255,255,255,0.3)]",
+        "backdrop-blur-[2px]",
+        "rounded-3xl", // optional rounding
+      ].join(" ")}
     >
-      <div className={useBetSlip ? "" : "p-[8px]"}>
-        <img
-          src={useBetSlip ? BetSlip.src : sportsbookImg}
-          alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
-          className={
-            useBetSlip
-              ? "md:rounded-l-[15px] md:rounded-r-none rounded-l-[7px] rounded-r-none w-full h-auto"
-              : "md:rounded-[15px] rounded-[7px] w-full h-auto"
-          }
-        />
-      </div>
+      <img
+        src={useBetSlip ? BetSlip.src : sportsbookImg}
+        alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
+        className="w-full h-auto block rounded-xl border-2 border-zinc-800/50 shadow-sm"
+      />
     </motion.div>
   );
 

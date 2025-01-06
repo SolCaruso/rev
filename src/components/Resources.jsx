@@ -16,7 +16,7 @@ import { UsersIcon } from '@/components/icons/UsersIcon'
 const resources = [
   {
     href: '/docs/sharpshooter',
-    name: 'Sharpshooter Ai Agent',
+    name: 'Sharpshooter AI Agent',
     description:
       'Reviews picks and analyses from experts across various sports (the Revolver Handicapper Index).',
     icon: UserIcon,

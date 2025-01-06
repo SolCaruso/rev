@@ -56,20 +56,14 @@ function MobileNavigationDialog({ isOpen, close }) {
     }
   }, [pathname, searchParams, close, initialPathname, initialSearchParams])
 
-  function onClickDialog(event) {
-    if (!(event.target instanceof HTMLElement)) {
-      return
-    }
+function onClickDialog(event) {
+  if (!(event.target instanceof HTMLElement)) return
 
-    let link = event.target.closest('a')
-    if (
-      link &&
-      link.pathname + link.search + link.hash ===
-        window.location.pathname + window.location.search + window.location.hash
-    ) {
-      close()
-    }
+  let link = event.target.closest('a')
+  if (link) {
+    close()
   }
+}
 
   return (
     <Dialog

@@ -30,13 +30,7 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({
-  href,
-  children,
-  tag,
-  active = false,
-  isAnchorLink = false,
-}) {
+function NavLink({ href, children, tag, active = false, isAnchorLink = false }) {
   return (
     <Link
       href={href}
@@ -46,7 +40,7 @@ function NavLink({
         isAnchorLink ? 'pl-7' : 'pl-4',
         active
           ? 'text-zinc-900 dark:text-white'
-          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white',
+          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
       )}
     >
       <span className="truncate">{children}</span>
@@ -65,15 +59,15 @@ function VisibleSectionHighlight({ group, pathname }) {
       useSectionStore((s) => s.sections),
       useSectionStore((s) => s.visibleSections),
     ],
-    useIsInsideMobileNavigation(),
+    useIsInsideMobileNavigation()
   )
 
   let isPresent = useIsPresent()
   let firstVisibleSectionIndex = Math.max(
     0,
     [{ id: '_top' }, ...sections].findIndex(
-      (section) => section.id === visibleSections[0],
-    ),
+      (section) => section.id === visibleSections[0]
+    )
   )
   let itemHeight = remToPx(2)
   let height = isPresent
@@ -114,13 +108,10 @@ function ActivePageMarker({ group, pathname }) {
 }
 
 function NavigationGroup({ group, className }) {
-  // If this is the mobile navigation then we always render the initial
-  // state, so that the state does not change during the close animation.
-  // The state will still update when we re-open (re-render) the navigation.
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
   let [pathname, sections] = useInitialValue(
     [usePathname(), useSectionStore((s) => s.sections)],
-    isInsideMobileNavigation,
+    isInsideMobileNavigation
   )
 
   let isActiveGroup =
@@ -207,10 +198,14 @@ export const navigation = [
 
 export function Navigation(props) {
   return (
-    <nav {...props}>
+    <nav
+      // Always black at 50% opacity
+      className="bg-black/50 w-full"
+      {...props}
+    >
       <ul role="list">
         <TopLevelNavItem href="#">NFT</TopLevelNavItem>
-        <TopLevelNavItem href="#">Bettors Club</TopLevelNavItem>
+        <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
         <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
