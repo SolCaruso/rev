@@ -1,13 +1,5 @@
-"use client";
-
-import * as motion from "motion/react-client";
-import { Cursor } from "motion-cursor";
-import { useState } from "react";
-import { AnimatePresence } from "motion/react";
 
 export default function BettorsClub() {
-  const [tooltip, setTooltip] = useState<string | null>(null);
-
   return (
     <div className="relative flex flex-col items-center w-full min-h-screen py-12 px-4 text-white">
       {/* -------------- AI Stroke Row -------------- */}
@@ -37,9 +29,7 @@ export default function BettorsClub() {
         </svg>
 
         {/* “AI” text in the middle */}
-        <span className="text-sm font-medium text-red-400 tracking-wide px-4">
-          AI
-        </span>
+        <span className="text-sm font-medium text-red-400 tracking-wide px-4">AI</span>
 
         {/* Right gradient stroke */}
         <svg
@@ -71,96 +61,96 @@ export default function BettorsClub() {
         Sharpshooter AI Agent
       </h1>
       <p className="mt-1 text-base text-gray-400 sm:text-lg">
-        Your AI Betting Companion
+        Your Betting Companion
       </p>
 
       {/* -------------- Main “window” area -------------- */}
       <div className="relative mt-12 w-full max-w-4xl mb-24">
-        {/* Outer frame container */}
-        <div
-          className="relative p-2 rounded-2xl bg-gradient-to-br from-[#d32e3b] via-[#110818] to-[#45223e] border border-[#3a3a3a]"
-          style={{
-            boxShadow: `
-            0 0 40px 20px rgba(255, 255, 255, 0.03),
-            inset 0 0.5px 0 rgba(255, 255, 255, 0.3)`,
-          }}
-        >
-          {/* Inner frame */}
-          <div className="relative mx-auto w-full p-6 rounded-xl border border-[hsla(0,0%,100%,0.08)] bg-gradient-to-b from-black via-[#131313] to-[#0c0c0c] backdrop-blur-md shadow-xl">
-            {/* Big radial gradient shape in the background */}
-            <div
-              className="absolute -top-40 -right-24 w-[700px] h-[700px] bg-red-600/50 rounded-full blur-[140px] pointer-events-none opacity-70"
-            />
+{/* Outer frame container */}
+<div
+  className="relative p-2 rounded-2xl bg-gradient-to-br from-[#d32e3b] via-[#110818] to-[#45223e] border border-[#3a3a3a]"
+  style={{
+    boxShadow: `
+      0 0 40px 20px rgba(255, 255, 255, 0.03),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.3)`,
+  }}
+>
+  {/* Inner frame */}
+  <div className="relative mx-auto w-full p-6 rounded-xl border border-[hsla(0,0%,100%,0.08)] bg-gradient-to-b from-black via-[#131313] to-[#0c0c0c] backdrop-blur-md shadow-xl">
+    {/* Big radial gradient shape in the background */}
+    <div
+      className="absolute -top-40 -right-24 w-[700px] h-[700px] bg-red-600/50 rounded-full blur-[140px] pointer-events-none opacity-70"
+    />
 
-            {/* Content area */}
-            <div className="flex flex-col sm:flex-row relative z-10 gap-6">
-              {/* Sidebar with profile image */}
-              <div
-                className="flex flex-col w-48 md:w-56 text-gray-200 p-3 mt-6 flex-shrink-0 self-center"
-                onMouseEnter={() => setTooltip("Wildhart")}
-                onMouseLeave={() => setTooltip(null)}
-              >
-                <img
-                  src="/images/wildhart-pfp.webp"
-                  alt="user"
-                  className="w-full rounded-full border border-[#212121] bg-slate-600/5 backdrop-blur-3xl"
-                />
-              </div>
+    {/* Floating note (like the one in the frame design) */}
+    <div className="absolute top-4 left-4 flex items-center space-x-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="12"
+        viewBox="0 0 48 12"
+        fill="none"
+      >
+        <circle cx="6" cy="6" r="6" fill="#ED5656" />
+        <circle cx="24" cy="6" r="6" fill="#353749" />
+        <circle cx="42" cy="6" r="6" fill="#353749" />
+      </svg>
+    </div>
 
-              {/* Cursor */}
-              <AnimatePresence>
-                {tooltip && (
-                  <Cursor
-                    follow
-                    offset={{ x: 20, y: 20 }}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      padding: "0.5rem 1rem",
-                      fontSize: "0.9rem",
-                      fontWeight: "bold",
-                      background: "#fff",
-                      borderRadius: "8px",
-                      boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-                      color: "#000",
-                      pointerEvents: "none",
-                    }}
-                  >
-                    {tooltip}
-                  </Cursor>
-                )}
-              </AnimatePresence>
-
-              {/* Main content area */}
-              <div className="self-center">
-                <h3 className="font-bold text-lg mb-2">
-                  What is the difference between useEffect and useLayoutEffect?
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-300">
-                  The main difference between useEffect and useLayoutEffect in
-                  React is the timing at which they are fired.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+    {/* Content area */}
+    <div className="flex flex-col sm:flex-row relative z-10 gap-6 ">
+      {/* Sidebar with profile image */}
+      <div className="flex flex-col w-48 md:w-56 text-gray-200  p-3 mt-6 flex-shrink-0 self-center">
+        <img
+          src="/images/wildhart-pfp.webp"
+          alt="user"
+          className="w-full rounded-full border border-slate-200/5 bg-slate-600/5 backdrop-blur-3xl"
+        />
       </div>
+
+      {/* Main content area */}
+      <div className="self-center pt-6">
+        <h3 className="text-2xl font-semibold mb-2 sm:text-3xl sm:text-left text-center">
+          Lily Wildhart
+        </h3>
+        <p className="text-base transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] bg-clip-text text-transparent sm:text-lg sm:text-left text-center">
+          Lily compiles expert picks in the Revolver Handicapper Index and shares profitable ones with Bettors Club members, along with a score reflecting consensus, historical strengths, and market data.
+        </p>
+       <button className="mt-6" >Learn more</button>
+      </div>
+    </div>
+
+    {/* Example action bar at the bottom (like search or other options) */}
+    <div className="mt-8 flex items-center space-x-4">
+      <div className="flex-grow">
+        <span className="block w-full h-[1px] transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] opacity-40"></span>
+      </div>
+      <p className="text-sm transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] bg-clip-text text-transparent">Quering handicapper index..</p>
+    </div>
+  </div>
+</div>
+</div>
+
+     {/* Wildhart Float*/}
+     
+ 
 
       {/* -------------- TESTIMONIALS SECTION -------------- */}
       <section
+
+      
         className=" mx-auto px-4"
         // Inline style to replicate that radial BG + border gradient
         style={{
-          maxWidth: "1064px",
+          maxWidth: '1064px',
           background:
-            "radial-gradient(49.41% 64.58% at 49.4% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)",
-          borderTop: "1px solid",
+            'radial-gradient(49.41% 64.58% at 49.4% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)',
+          borderTop: '1px solid',
           borderImageSource:
-            "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.19) 30%,rgba(255,255,255,0.19) 70%,transparent)",
+            'linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.19) 30%,rgba(255,255,255,0.19) 70%,transparent)',
           borderImageSlice: 1,
-          padding: "var(--spacing-6) 0 0", // or tailwind style of your choice
-          margin: "0 auto",
+          padding: 'var(--spacing-6) 0 0', // or tailwind style of your choice
+          margin: '0 auto',
         }}
       >
         {/* Title Above the Cards (centered) */}
@@ -169,6 +159,56 @@ export default function BettorsClub() {
             Built for professionals like you.
           </h2>
           <p className="text-gray-400 mt-1">Used by seriously productive people.</p>
+        </div>
+
+        {/* This is your “testimonial” content in a grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto_1fr] items-start">
+          {/* Left: “Top Extension” & “Favorite Feature” */}
+          <div className="flex flex-col gap-8">
+            {/* Top Extension */}
+            <div>
+              <p className="text-sm text-gray-400 uppercase font-medium tracking-wide mb-2">
+                Top Extension:
+              </p>
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-white bg-gray-600 rounded-md">
+                  {/* Icon or emoji */}
+                  <span>🎨</span> Image Modification
+                </span>
+              </div>
+              <p className="text-sm text-gray-300">
+                “Image Modification on your fingertips. Trust me, you will love it.”
+              </p>
+            </div>
+
+            {/* Favorite Feature */}
+            <div>
+              <p className="text-sm text-gray-400 uppercase font-medium tracking-wide mb-2">
+                Favorite Feature:
+              </p>
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-white bg-gray-600 rounded-md">
+                  <span>🔥</span> Emoji Picker
+                </span>
+              </div>
+              <p className="text-sm text-gray-300">
+                “So fast and better than the native OS.”
+              </p>
+            </div>
+          </div>
+
+          {/* Divider (vertical on desktop, horizontal on mobile) */}
+          <div className="hidden md:block w-[2px] bg-gray-600 my-auto md:mx-8" />
+          <div className="block md:hidden w-full h-[1px] bg-gray-600" />
+
+          {/* Right: Big Quote */}
+          <div className="flex items-center justify-center md:justify-start">
+            <blockquote className="relative text-gray-300 max-w-xl text-center md:text-left leading-relaxed">
+              <p className="text-lg sm:text-xl font-medium mb-2">
+                Simply replaces so many tools at once.
+              </p>
+            </blockquote>
+          </div>
         </div>
       </section>
     </div>

@@ -177,10 +177,13 @@ export default function SportsbookShowcase() {
       ].join(" ")}
     >
       <img
-        src={useBetSlip ? BetSlip.src : sportsbookImg}
-        alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
-        className="w-full h-auto block rounded-xl border-2 border-zinc-800/50 shadow-sm"
-      />
+      src={useBetSlip ? BetSlip.src : sportsbookImg}
+      alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
+      className={
+        "w-90 h-auto rounded-xl border-2 " +
+        (useBetSlip ? "border-blue-500 shadow-lg" : "border-green-500 shadow-md")
+      }
+    />;
     </motion.div>
   );
 
