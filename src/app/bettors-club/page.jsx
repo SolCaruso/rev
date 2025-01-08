@@ -1,7 +1,8 @@
 import React from 'react'
 import LandingLayout from '@/components/LandingLayout'
 import BettorsClub from '@/components/BettorsClub'
-import '@/styles/tailwind.css'        // your tailwind
+import SharpShooter from '@/components/SharpShooter'
+import '@/styles/tailwind.css' 
 
 export const metadata = {
   title: 'Revolver Bettors Club',
@@ -12,6 +13,7 @@ export default function BettorsClubPage() {
   return (
     <LandingLayout>
       <BettorsClub />
+      <SharpShooter />
     </LandingLayout>
   )
 }
