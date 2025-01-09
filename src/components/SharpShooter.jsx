@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import RightArrow from "@/components/icons/RightArrow"; // Adjust path as needed
+import RightArrow from "@/components/icons/RightArrow"; // Adjust path if needed
 
 export default function SharpShooter() {
   const [isHovered, setIsHovered] = useState(false);
@@ -81,16 +81,9 @@ export default function SharpShooter() {
       {/* -------------- Main “window” area -------------- */}
       <motion.div
         className="relative mt-14 w-full max-w-4xl mb-24"
-        /* 
-         * Animate the entire card on hover: 
-         * scale slightly, store hover state in isHovered 
-         */
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => {
-          // Link to docs page
-          window.location.href = "/docs";
-        }}
+        onClick={() => (window.location.href = "/docs")}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 250, damping: 18 }}
         style={{ cursor: "pointer" }}
@@ -110,7 +103,7 @@ export default function SharpShooter() {
             {/* Big radial gradient shape in the background */}
             <div className="absolute -top-40 -right-24 w-[700px] h-[700px] bg-red-600/50 rounded-full blur-[140px] pointer-events-none opacity-70" />
 
-            {/* Floating note (like the one in the frame design) */}
+            {/* Floating note (like in the frame design) */}
             <div className="absolute top-4 left-4 flex items-center space-x-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,55 +131,59 @@ export default function SharpShooter() {
 
               {/* Main content area */}
               <div className="self-center pt-6">
-                <h3 className=" mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
+                <h3 className="mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
                   Lily Wildhart
                 </h3>
-                <p className="text-sm text-gray-300 sm:text-left text-center pb-8 font-mono">
+                {/* The p text that should turn white on hover */}
+                <motion.p
+                  className="text-sm pb-8 font-mono text-center sm:text-left"
+                  // If hovered → white, else original gray
+                  animate={{ color: isHovered ? "#FFFFFF" : "#9CA3AF" }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
                   Lily compiles expert picks in the Revolver Handicapper Index and shares profitable ones with Bettors Club members
                   <span className="md:inline hidden">
                     , along with a score reflecting consensus, historical strengths, and market data.
                   </span>
                   <span className="md:hidden">.</span>
-                </p>
+                </motion.p>
               </div>
             </div>
 
             {/* Action bar: “More about Lily” + check + arrow */}
             <div className="flex justify-end w-full mt-2 items-center space-x-2">
-              {/* Check Icon (stacked images for a smooth fade) */}
-              <div className="relative w-24 h-24 overflow-hidden">
+              {/* Check Icon (two images stacked for a smoother fade) */}
+              <div className="relative w-24 h-24 overflow-hidden -right-8  -bottom-10" style={{ margin: 0, padding: 0 }}>
                 {/* BW version */}
                 <motion.img
                   src="/images/check-bw.webp"
                   alt="Check BW"
-                  className="absolute top-0 left-0 w-24 h-24 object-contain"
+                  className="absolute inset-0 w-full h-full object-contain"
                   animate={{ opacity: isHovered ? 0 : 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                 />
-
                 {/* Color version */}
                 <motion.img
                   src="/images/check.webp"
                   alt="Check color"
-                  className="absolute top-0 left-0 w-24 h-24 object-contain"
+                  className="absolute inset-0 w-full h-full object-contain"
                   animate={{ opacity: isHovered ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                 />
               </div>
 
-              {/* “More about Lily” text: turn white on hover */}
+              {/* “More about Lily” text: also turns white on hover */}
               <motion.p
                 className="text-sm font-semibold transition-colors"
-                style={{
-                  color: isHovered ? "#fff" : "#cacaca",
-                }}
+                animate={{ color: isHovered ? "#FFFFFF" : "#cacaca" }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 More about Lily
               </motion.p>
 
               {/* Right arrow slides to the right on hover */}
               <motion.div
-                animate={{ x: isHovered ? 3 : 0 }}
+                animate={{ x: isHovered ? 5 : 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
               >
                 <RightArrow className="w-4 h-4" />
