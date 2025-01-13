@@ -9,10 +9,9 @@ import BetSlip from "@/images/png/betslip.png"; // Keep BetSlip as it is
 const sportsbookImg = "/images/Sportsbook2.jpg";
 const sportsbook3Img = "/images/Sportsbook3.jpg";
 
-/** Generate star data (unchanged) */
 function generateStars(topCount = 20, bottomCount = 80) {
   const stars = [];
-  // top 0..35% => fewer
+  // top 0..35%
   for (let i = 0; i < topCount; i++) {
     stars.push({
       id: `top-${i}`,
@@ -24,7 +23,7 @@ function generateStars(topCount = 20, bottomCount = 80) {
       offTime: 2 + Math.random() * 3,
     });
   }
-  // bottom 35..100% => more
+  // bottom 35..100%
   for (let i = 0; i < bottomCount; i++) {
     stars.push({
       id: `bot-${i}`,
@@ -39,7 +38,6 @@ function generateStars(topCount = 20, bottomCount = 80) {
   return stars;
 }
 
-/** Single star that twinkles with manual animation */
 function Star({ star }) {
   const [phase, setPhase] = useState("off"); // "off" | "fadingIn" | "fadingOut"
   const [opacity, setOpacity] = useState(0);
@@ -97,7 +95,6 @@ function Star({ star }) {
   );
 }
 
-/** Main Sportsbook showcase component */
 export default function SportsbookShowcase() {
   const [stars, setStars] = useState([]);
   const [expanded, setExpanded] = useState(false);
@@ -136,8 +133,6 @@ export default function SportsbookShowcase() {
     }
   }, [expanded]);
 
-  // REPLACED FRAME:
-  // We use the Tailwind + radial gradient approach from MyFramedImageTailwind
   const normalGroup = (
     <motion.div
       whileHover={allowFullscreen ? { scale: 1.01 } : {}}
@@ -147,7 +142,6 @@ export default function SportsbookShowcase() {
         bounce: 0.15,
         duration: 0.3,
       }}
-      // Combine cursor + our radial gradient style in one object
       style={{
         cursor: allowFullscreen ? "pointer" : "default",
         maxWidth: "min(100%)",
@@ -155,14 +149,14 @@ export default function SportsbookShowcase() {
         transform: "translateZ(0)",
         background:
           "radial-gradient(85.77% 49.97% at 51% 5.12%, hsla(0, 100%, 79%, .11) 0, rgba(222, 226, 255, .08) 45.83%, rgba(241, 242, 255, .02) 100%), rgba(0, 0, 0, .44)",
-        boxShadow: "0 0 40px 20px hsla(0,0%,100%,.03),inset 0 .5px 0 0 hsla(0,0%,100%,.3)",
+        boxShadow:
+          "0 0 40px 20px hsla(0,0%,100%,.03),inset 0 .5px 0 0 hsla(0,0%,100%,.3)",
       }}
       onClick={() => {
         if (allowFullscreen) {
           setExpanded(true);
         }
       }}
-      // Tailwind classes for border, shadow, etc.
       className={[
         "mt-14",
         "mx-auto",
@@ -173,22 +167,23 @@ export default function SportsbookShowcase() {
         "border-[hsla(0,0%,100%,0.08)]",
         "shadow-[0_40px_20px_rgba(255,255,255,0.03),_inset_0_0.5px_0_rgba(255,255,255,0.3)]",
         "backdrop-blur-[2px]",
-        "rounded-3xl", // optional rounding
+        "rounded-xl", // Ensure corners match
       ].join(" ")}
     >
       <img
-      src={useBetSlip ? BetSlip.src : sportsbookImg}
-      alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
-      className={
-        "w-90 h-auto rounded-xl border-2 " +
-        (useBetSlip ? "border-blue-500 shadow-lg" : "border-green-500 shadow-md")
-      }
-    />;
+        src={useBetSlip ? BetSlip.src : sportsbookImg}
+        alt={useBetSlip ? "BetSlip Image" : "Sportsbook Screenshot"}
+        // The same corner radius, so all 4 corners are consistently rounded
+        className={
+          "w-90 h-auto rounded-xl" +
+          (useBetSlip ? "shadow-lg" : "shadow-md")
+        }
+      />
     </motion.div>
   );
 
   return (
-    <section className="relative text-white overflow-hidden min-h-[1200px] pt-28">
+    <section className="relative text-white overflow-hidden min-h-[1200px] pt-28 pb-44">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -238,7 +233,7 @@ export default function SportsbookShowcase() {
             onClick={() => setExpanded(false)}
           >
             <motion.div
-              className="bg-[#15151a]/40 rounded-3xl border border-[#2a2a2a] backdrop-blur-[3.94px] p-[8px]"
+              className="bg-[#15151a]/40 rounded-xl border border-[#2a2a2a] backdrop-blur-[3.94px] p-[8px]"
               style={{
                 width: "80%",
                 cursor: "pointer",
@@ -247,7 +242,7 @@ export default function SportsbookShowcase() {
               <img
                 src={sportsbook3Img}
                 alt="Sportsbook Screenshot Expanded"
-                className="rounded-[15px] w-full h-auto"
+                className="rounded-xl w-full h-auto"
               />
             </motion.div>
           </motion.div>

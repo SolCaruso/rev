@@ -1,82 +1,95 @@
 "use client";
 
 import React, { useState } from "react";
-// Import AnimatePresence and motion from framer-motion
 import { AnimatePresence, motion } from "framer-motion";
-
 import Carousel from "@/components/Carousel";
 
-// Sample testimonial data
+// Updated testimonial data
 const testimonialData = [
   {
-    // This object corresponds to team[0]
-    firstRowTitle: "Pro Benefits:",
-    firstRowToken: "RVR Token",
-    firstRowText:
-      "Image Modification on your fingertips. Trust me, you will love it.",
-
-    secondRowTitle: "Pro Benefits:",
-    secondRowToken: "RVR Token",
-    secondRowText:
-      "Image Modification on your fingertips. Trust me, you will love it.",
-
-    bigQuote: "Simply replaces so many tools at once.",
+    // 1) AI Picks
+    groupTitle: "AI Picks",
+    groupSubtitle: "Our Edge",
+    firstRowTitle: "Consensus",
+    firstRowIcon: "👥",
+    firstRowToken: "Experts",
+    firstRowText: "Combines top cappers’ plays for consistent, profitable picks.",
+    secondRowTitle: "Scoring",
+    secondRowIcon: "📊",
+    secondRowToken: "Market",
+    secondRowText: "Uses conflict data, historical stats, and market to refine accuracy.",
+    bigQuoteHtml: `Sharpshooter only looks at plays and data from the Revolver Handicapper Index, which contains <span class="text-white">only cappers with long-term profit</span>.`,
   },
   {
-    // This corresponds to team[1]
-    firstRowTitle: "Pro Benefits for Member 2:",
-    firstRowToken: "Some Different Perk",
-    firstRowText: "Another kind of testimonial for second member.",
-    secondRowTitle: "Another Title for Member 2:",
-    secondRowToken: "RVR Token",
-    secondRowText: "Completely unique second row text for #2.",
-    bigQuote: "A second big quote for item 2.",
+    // 2) Win Potential
+    groupTitle: "Win Potential",
+    groupSubtitle: "Long Term",
+    firstRowTitle: "Profit",
+    firstRowIcon: "📈",
+    firstRowToken: "500+Units",
+    firstRowText: "Cappers netted over 500 units in 2024, showcasing strong performance.",
+    secondRowTitle: "Variance",
+    secondRowIcon: "⚖️",
+    secondRowToken: "Streaks",
+    secondRowText: "Big winning streaks and tough losses are part of gambling reality.",
+    bigQuoteHtml: `Handicappers included in scope combined for over 500 units profit in 2024 tailing their picks with $100 betting units <span class="text-white">would have resulted in over $50,000 profit!</span>`,
   },
   {
-    // This corresponds to team[2]
-    firstRowTitle: "Pro Benefits for Member 3:",
-    firstRowToken: "RVR Token",
-    firstRowText: "Powerful modification features. Enjoy them!",
-    secondRowTitle: "Member 3's Additional Info:",
-    secondRowToken: "VIP Access",
-    secondRowText: "Even more interesting stuff for #3.",
-    bigQuote: "Third big quote—amazing functionality!",
+    // 3) Pick Access
+    groupTitle: "Pick Access",
+    groupSubtitle: "Members Only",
+    firstRowTitle: "Discord",
+    firstRowIcon: "🎯",
+    firstRowToken: "Portal",
+    firstRowText: "Exclusive picks are revealed to members only in private server channels.",
+    secondRowTitle: "Paid",
+    secondRowIcon: "💰",
+    secondRowToken: "Free",
+    secondRowText: "Both paid and free cappers’ selections feed Sharpshooter’s profitable analysis.",
+    bigQuoteHtml: `<span class="text-white">Sharpshooter’s scope</span> includes handicappers that provide free picks and handicappers that provide paid picks.`,
   },
   {
-    // This corresponds to team[3]
-    firstRowTitle: "Member 4 Title",
-    firstRowToken: "Exclusive Perk",
-    firstRowText: "Testimonial text for #4",
-    secondRowTitle: "Member 4 Additional Title",
-    secondRowToken: "VIP Access again!",
-    secondRowText: "Another mention. Great synergy.",
-    bigQuote: "Fourth big quote to highlight something.",
+    // 4) NFT Club
+    groupTitle: "NFT Club",
+    groupSubtitle: "Private Access",
+    firstRowTitle: "Underdawg",
+    firstRowIcon: "🐶",
+    firstRowToken: "Asset",
+    firstRowText: "Each NFT grants membership, offering picks, airdrops, and community benefits.",
+    secondRowTitle: "Tradable",
+    secondRowIcon: "🔄",
+    secondRowToken: "Perks",
+    secondRowText: "Ownership can be sold anytime, unlike traditional private betting clubs.",
+    bigQuoteHtml: `A tradable membership card Revolver Underdawg NFT, if you ever want to move on, your membership can be <span class="text-white">sold to someone else</span>.`,
   },
   {
-    // This corresponds to team[4]
-    firstRowTitle: "Member 5 Title",
-    firstRowToken: "RVR Token or something else",
-    firstRowText: "Testimonial text for #5",
-    secondRowTitle: "Extra Info for #5",
-    secondRowToken: "VIPish Access",
-    secondRowText: "All sorts of fancy stuff here for #5.",
-    bigQuote: "Fifth big quote—fantastic for the final item!",
+    // 5) Token Airdrop
+    groupTitle: "Token Airdrop",
+    groupSubtitle: "Community Gains",
+    firstRowTitle: "RVR",
+    firstRowIcon: "🪙",
+    firstRowToken: "Token",
+    firstRowText: "Members receive eligibility for the $RVR token airdrop and initiatives.",
+    secondRowTitle: "Casino",
+    secondRowIcon: "🎲",
+    secondRowToken: "Fun",
+    secondRowText: "Future experiments include a community sportsbook and casino on Solana.",
+    bigQuoteHtml: `Eligibility for airdrop of the $RVR token…such as the Revolver Community<span class="text-white"> Sportsbook and Casino</span>.`,
   },
 ];
 
 export default function BettorsClub() {
-  // Move activeIndex state to the parent
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <>
       {/* Page Heading */}
-      <div className="max-w-5xl lg:max-w-7xl mx-auto pt-40 text-center items-center flex flex-col ">
-        <h2 className="text-lg font-semibold text-center sm:text-xl">
+      <div className="max-w-5xl lg:max-w-7xl mx-auto pt-20 md:pt-28 text-center items-center flex flex-col">
+        <h2 className="text-base font-semibold text-center sm:text-xl">
           Revolver Bettors Club Perks
         </h2>
         <p
-          className="text-xl font-semibold text-transparent bg-clip-text max-w-md"
+          className="text-base sm:text-xl font-semibold text-transparent bg-clip-text max-w-md"
           style={{
             backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
           }}
@@ -90,7 +103,7 @@ export default function BettorsClub() {
 
       {/* Testimonial Section */}
       <section
-        className="px-4"
+        className="px-4 mt-10"
         style={{
           maxWidth: "1064px",
           background:
@@ -99,50 +112,101 @@ export default function BettorsClub() {
           borderImageSource:
             "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.19) 30%,rgba(255,255,255,0.19) 70%,transparent)",
           borderImageSlice: 1,
-          padding: "var(--spacing-6) 0 0",
           margin: "0 auto",
+          paddingTop: "2rem",
+          paddingBottom: "2rem",
         }}
       >
         <AnimatePresence mode="wait">
-          {/* Important: the key must change when activeIndex changes */}
           <motion.div
             key={activeIndex}
-            /**
-             * Instead of going from "#000" to "transparent",
-             * we use RGBA to avoid the warning:
-             */
             initial={{ opacity: 0, backgroundColor: "rgba(0,0,0,1)" }}
             animate={{ opacity: 1, backgroundColor: "rgba(0,0,0,0)" }}
             exit={{ opacity: 0, backgroundColor: "rgba(0,0,0,1)" }}
             transition={{ duration: 0.3 }}
           >
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto_1fr] items-start pt-28">
-              {/* Left: “Top Extension” & “Favorite Feature” */}
-              <div className="flex flex-col gap-16">
-                {/* First Row */}
-                <div className="flex gap-8">
-                  <p className="text-sm text-gray-400 font-medium font-mono tracking-wide mb-2 flex-shrink-0 py-1">
+
+            {/* Main Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8 items-start pt-8 md:pt-24">
+              {/* Left 2x2 Grid (Title/Token combos) */}
+              <div>
+                <div
+                  className="
+                    grid
+                    grid-cols-1
+                    gap-y-8
+                    md:grid-cols-[auto_1fr]
+                    md:grid-rows-2
+                    md:gap-x-4
+                  "
+                >
+                  {/* First Row Title */}
+                  <p
+                    className="
+                      text-sm 
+                      text-gray-400 
+                      font-medium 
+                      font-mono 
+                      tracking-wide
+                      mb-0
+                      md:row-start-1 
+                      md:col-start-1
+                    "
+                  >
                     {testimonialData[activeIndex].firstRowTitle}
                   </p>
-                  <div className="items-center mb-2 ">
-                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-4">
-                      <span className="pr-.5">💲</span>{" "}
+
+                  {/* First Row Icon/Token/Text */}
+                  <div
+                    className="
+                      flex 
+                      flex-col 
+                      items-start 
+       
+                      md:row-start-1 
+                      md:col-start-2
+                    "
+                  >
+                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-2">
+                      <span>{testimonialData[activeIndex].firstRowIcon}</span>
                       {testimonialData[activeIndex].firstRowToken}
                     </span>
                     <p className="text-sm text-gray-300">
                       {testimonialData[activeIndex].firstRowText}
                     </p>
                   </div>
-                </div>
 
-                {/* Second Row */}
-                <div className="flex gap-8">
-                  <p className="text-sm text-gray-400 font-medium font-mono tracking-wide mb-2 flex-shrink-0 py-1">
+                  {/* Second Row Title */}
+                  <p
+                    className="
+                      text-sm 
+                      text-gray-400 
+                      font-medium 
+                      font-mono 
+                      tracking-wide 
+                      md:row-start-2 
+                      md:col-start-1
+                      mt-4
+                      md:mt-0
+                    "
+                  >
                     {testimonialData[activeIndex].secondRowTitle}
                   </p>
-                  <div className="items-center mb-2 ">
-                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-4">
-                      <span className="pr-.5">💲</span>{" "}
+
+                  {/* Second Row Icon/Token/Text */}
+                  <div
+                    className="
+                      flex 
+                      flex-col 
+                      items-start
+                      md:row-start-2 
+                      md:col-start-2
+                      mt-2
+                      md:mt-0
+                    "
+                  >
+                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-2">
+                      <span>{testimonialData[activeIndex].secondRowIcon}</span>
                       {testimonialData[activeIndex].secondRowToken}
                     </span>
                     <p className="text-sm text-gray-300">
@@ -152,38 +216,43 @@ export default function BettorsClub() {
                 </div>
               </div>
 
-              {/* Divider (vertical on desktop, horizontal on mobile) */}
-              <div className="w-[1.5px] bg-gray-900 h-full my-auto md:mx-8 rounded-full" />
+              {/* Divider */}
+              <div className="w-[1.5px] bg-gray-900 h-full my-auto md:mx-4 rounded-full" />
 
-              {/* Right: Big Quote */}
-              <div className="flex items-center justify-center md:justify-start md:align-middle self-center">
-                <blockquote className="relative text-gray-300 max-w-xl text-center md:text-left leading-relaxed">
+              {/* Quote */}
+              <div className="flex items-center justify-center md:justify-start self-center">
+                <blockquote className="relative leading-relaxed max-w-xl text-left">
                   <p
+                    style={{ color: "#6A6B6C" }}
                     className="
-                      relative 
-                      text-lg 
-                      sm:text-xl 
-                      font-medium 
-                      mb-2 
+                      relative
+                      text-base
+                      sm:text-lg
+                      md:text-xl
+                      font-medium
+                      mb-2
                       leading-relaxed
                       before:font-serif
                       after:font-serif
-                      before:content-['“'] 
-                      after:content-['”'] 
-                      before:absolute 
-                      after:absolute 
-                      before:text-5xl 
-                      after:text-5xl 
-                      before:text-gray-800 
-                      after:text-gray-800 
-                      before:-top-6 
-                      before:-left-6 
-                      after:-bottom-6 
+                      before:content-['“']
+                      after:content-['”']
+                      before:absolute
+                      after:absolute
+                      before:text-4xl
+                      sm:before:text-5xl
+                      after:text-4xl
+                      sm:after:text-5xl
+                      before:text-gray-800
+                      after:text-gray-800
+                      before:-top-6
+                      before:-left-6
+                      after:-bottom-6
                       after:-right-6
                     "
-                  >
-                    {testimonialData[activeIndex].bigQuote}
-                  </p>
+                    dangerouslySetInnerHTML={{
+                      __html: testimonialData[activeIndex].bigQuoteHtml,
+                    }}
+                  />
                 </blockquote>
               </div>
             </div>

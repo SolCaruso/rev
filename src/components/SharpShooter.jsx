@@ -8,7 +8,7 @@ export default function SharpShooter() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center w-full pt-32 pb-40 px-4 text-white">
+    <div className="relative flex flex-col items-center w-full pt-8 md:pt-24 pb-24 px-4 text-white">
       {/* -------------- AI Stroke Row -------------- */}
       <div className="relative mt-4 pb-8 flex items-center justify-center">
         {/* Left gradient stroke */}
@@ -83,7 +83,7 @@ export default function SharpShooter() {
         className="relative mt-14 w-full max-w-4xl mb-24"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => (window.location.href = "/docs")}
+        onClick={() => (window.location.href = "/docs/sharpshooter")}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 250, damping: 18 }}
         style={{ cursor: "pointer" }}
@@ -134,45 +134,22 @@ export default function SharpShooter() {
                 <h3 className="mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
                   Lily Wildhart
                 </h3>
-                {/* The p text that should turn white on hover */}
-                <motion.p
-                  className="text-sm pb-8 font-mono text-center sm:text-left"
-                  // If hovered → white, else original gray
-                  animate={{ color: isHovered ? "#FFFFFF" : "#9CA3AF" }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  Lily compiles expert picks in the Revolver Handicapper Index and shares profitable ones with Bettors Club members
+                {/* Lily's paragraph, remains gray (#9CA3AF) even on hover */}
+                <p className="text-sm pb-8 font-mono text-center sm:text-left text-gray-400">
+                  Lily compiles expert picks in the Revolver Handicapper Index
+                  and shares profitable ones with Bettors Club members
                   <span className="md:inline hidden">
-                    , along with a score reflecting consensus, historical strengths, and market data.
+                    , along with a score reflecting consensus, historical
+                    strengths, and market data.
                   </span>
                   <span className="md:hidden">.</span>
-                </motion.p>
+                </p>
               </div>
             </div>
 
-            {/* Action bar: “More about Lily” + check + arrow */}
-            <div className="flex justify-end w-full mt-2 items-center space-x-2">
-              {/* Check Icon (two images stacked for a smoother fade) */}
-              <div className="relative w-24 h-24 overflow-hidden -right-8  -bottom-10" style={{ margin: 0, padding: 0 }}>
-                {/* BW version */}
-                <motion.img
-                  src="/images/check-bw.webp"
-                  alt="Check BW"
-                  className="absolute inset-0 w-full h-full object-contain"
-                  animate={{ opacity: isHovered ? 0 : 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
-                {/* Color version */}
-                <motion.img
-                  src="/images/check.webp"
-                  alt="Check color"
-                  className="absolute inset-0 w-full h-full object-contain"
-                  animate={{ opacity: isHovered ? 1 : 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
-              </div>
-
-              {/* “More about Lily” text: also turns white on hover */}
+            {/* Action bar: “More about Lily” + arrow */}
+            <div className="flex items-center justify-end w-full mt-2 space-x-2">
+              {/* “More about Lily” text: changes white on hover */}
               <motion.p
                 className="text-sm font-semibold transition-colors"
                 animate={{ color: isHovered ? "#FFFFFF" : "#cacaca" }}
