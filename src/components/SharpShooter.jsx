@@ -8,7 +8,7 @@ export default function SharpShooter() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center w-full pt-8 md:pt-24 pb-24 px-4 text-white">
+    <div className="relative flex flex-col items-center w-full pt-8 md:pt-24 pb-24 px-4 text-white lg:max-w-[1200px] mx-auto">
       {/* -------------- AI Stroke Row -------------- */}
       <div className="relative mt-4 pb-8 flex items-center justify-center">
         {/* Left gradient stroke */}
@@ -80,7 +80,7 @@ export default function SharpShooter() {
 
       {/* -------------- Main “window” area -------------- */}
       <motion.div
-        className="relative mt-14 w-full max-w-4xl mb-24"
+        className="relative mt-14 w-full lg:max-w-full mb-24"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => (window.location.href = "/docs/sharpshooter")}
@@ -134,7 +134,6 @@ export default function SharpShooter() {
                 <h3 className="mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
                   Lily Wildhart
                 </h3>
-                {/* Lily's paragraph, remains gray (#9CA3AF) even on hover */}
                 <p className="text-sm pb-8 font-mono text-center sm:text-left text-gray-400">
                   Lily compiles expert picks in the Revolver Handicapper Index
                   and shares profitable ones with Bettors Club members
@@ -149,14 +148,9 @@ export default function SharpShooter() {
 
             {/* Action bar: “More about Lily” + arrow */}
             <div className="flex items-center justify-end w-full mt-2 space-x-2">
-              {/* “More about Lily” text: changes white on hover */}
-              <motion.p
-                className="text-sm font-semibold transition-colors"
-                animate={{ color: isHovered ? "#FFFFFF" : "#cacaca" }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-              >
+              <p className="text-sm font-semibold text-gray-400">
                 More about Lily
-              </motion.p>
+              </p>
 
               {/* Right arrow slides to the right on hover */}
               <motion.div

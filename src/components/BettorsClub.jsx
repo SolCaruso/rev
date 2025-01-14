@@ -1,264 +1,158 @@
 "use client";
+import React from "react";
 
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Carousel from "@/components/Carousel";
-
-// Updated testimonial data
-const testimonialData = [
-  {
-    // 1) AI Picks
-    groupTitle: "AI Picks",
-    groupSubtitle: "Our Edge",
-    firstRowTitle: "Consensus",
-    firstRowIcon: "👥",
-    firstRowToken: "Experts",
-    firstRowText: "Combines top cappers’ plays for consistent, profitable picks.",
-    secondRowTitle: "Scoring",
-    secondRowIcon: "📊",
-    secondRowToken: "Market",
-    secondRowText: "Uses conflict data, historical stats, and market to refine accuracy.",
-    bigQuoteHtml: `Sharpshooter only looks at plays and data from the Revolver Handicapper Index, which contains <span class="text-white">only cappers with long-term profit</span>.`,
-  },
-  {
-    // 2) Win Potential
-    groupTitle: "Win Potential",
-    groupSubtitle: "Long Term",
-    firstRowTitle: "Profit",
-    firstRowIcon: "📈",
-    firstRowToken: "500+Units",
-    firstRowText: "Cappers netted over 500 units in 2024, showcasing strong performance.",
-    secondRowTitle: "Variance",
-    secondRowIcon: "⚖️",
-    secondRowToken: "Streaks",
-    secondRowText: "Big winning streaks and tough losses are part of gambling reality.",
-    bigQuoteHtml: `Handicappers included in scope combined for over 500 units profit in 2024 tailing their picks with $100 betting units <span class="text-white">would have resulted in over $50,000 profit!</span>`,
-  },
-  {
-    // 3) Pick Access
-    groupTitle: "Pick Access",
-    groupSubtitle: "Members Only",
-    firstRowTitle: "Discord",
-    firstRowIcon: "🎯",
-    firstRowToken: "Portal",
-    firstRowText: "Exclusive picks are revealed to members only in private server channels.",
-    secondRowTitle: "Paid",
-    secondRowIcon: "💰",
-    secondRowToken: "Free",
-    secondRowText: "Both paid and free cappers’ selections feed Sharpshooter’s profitable analysis.",
-    bigQuoteHtml: `<span class="text-white">Sharpshooter’s scope</span> includes handicappers that provide free picks and handicappers that provide paid picks.`,
-  },
-  {
-    // 4) NFT Club
-    groupTitle: "NFT Club",
-    groupSubtitle: "Private Access",
-    firstRowTitle: "Underdawg",
-    firstRowIcon: "🐶",
-    firstRowToken: "Asset",
-    firstRowText: "Each NFT grants membership, offering picks, airdrops, and community benefits.",
-    secondRowTitle: "Tradable",
-    secondRowIcon: "🔄",
-    secondRowToken: "Perks",
-    secondRowText: "Ownership can be sold anytime, unlike traditional private betting clubs.",
-    bigQuoteHtml: `A tradable membership card Revolver Underdawg NFT, if you ever want to move on, your membership can be <span class="text-white">sold to someone else</span>.`,
-  },
-  {
-    // 5) Token Airdrop
-    groupTitle: "Token Airdrop",
-    groupSubtitle: "Community Gains",
-    firstRowTitle: "RVR",
-    firstRowIcon: "🪙",
-    firstRowToken: "Token",
-    firstRowText: "Members receive eligibility for the $RVR token airdrop and initiatives.",
-    secondRowTitle: "Casino",
-    secondRowIcon: "🎲",
-    secondRowToken: "Fun",
-    secondRowText: "Future experiments include a community sportsbook and casino on Solana.",
-    bigQuoteHtml: `Eligibility for airdrop of the $RVR token…such as the Revolver Community<span class="text-white"> Sportsbook and Casino</span>.`,
-  },
-];
+// Icons
+import AirdropIcon from "@/components/icons/Airdrop";
+import CommunityIcon from "@/components/icons/Community";
+import TargetIcon from "@/components/icons/Target";
 
 export default function BettorsClub() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
-    <>
-      {/* Page Heading */}
-      <div className="max-w-5xl lg:max-w-7xl mx-auto pt-20 md:pt-28 text-center items-center flex flex-col">
-        <h2 className="text-base font-semibold text-center sm:text-xl">
-          Revolver Bettors Club Perks
-        </h2>
-        <p
-          className="text-base sm:text-xl font-semibold text-transparent bg-clip-text max-w-md"
-          style={{
-            backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
-          }}
+    <section className="px-4 py-8 md:pt-14 lg:max-w-[1200px] lg:pt-32 mx-auto">
+      {/* Bettors Club Card */}
+      <div
+        className="
+          mx-auto 
+          flex max-w-2xl flex-col gap-8 
+          rounded-xl border border-gray-800 
+          bg-[#0e0e0e] p-4 text-gray-100
+          lg:mb-32 lg:max-w-full lg:flex-row lg:gap-20
+        "
+      >
+        {/* Left: Cowboy image (background behind image = #FF6E6D) */}
+        <div
+          className="
+            flex w-full justify-center 
+            overflow-hidden rounded-xl 
+            bg-[#FF6E6D] 
+            lg:w-96
+          "
         >
-          The most exclusive bettors club on Solana.
-        </p>
+          <img
+            className="xs:max-w-96"
+            src="/images/cowboy.webp"
+            alt="Cowboy underdog"
+          />
+        </div>
+
+        {/* Right: Club info */}
+        <div className="flex flex-col items-center justify-center gap-4 text-center lg:items-start lg:text-left">
+          <h2 className="text-3xl font-bold">Revolver Bettors Club</h2>
+          <p className="text-lg">
+            Underdog NFT holders get access to the Revolver Bettors Club,
+            including the following benefits:
+          </p>
+
+          {/* Bullet Points */}
+          <ul className="flex flex-col sm:flex-row gap-6 py-4 text-base font-medium">
+            <div>
+              <li className="mb-2 flex items-center gap-2">
+                <span className="text-green-400">✔</span>
+                $RVR token
+              </li>
+              <li className="mb-2 flex items-center gap-2">
+                <span className="text-green-400">✔</span>
+                Sharp picks
+              </li>
+            </div>
+            <div>
+              <li className="mb-2 flex items-center gap-2">
+                <span className="text-green-400">✔</span>
+                Revolver.ag Sportsbook &amp; Casino
+              </li>
+              <li className="mb-2 flex items-center gap-2">
+                <span className="text-green-400">✔</span>
+                Sports betting community
+              </li>
+            </div>
+          </ul>
+
+          {/* Join Discord Button */}
+          <a
+            className="
+              inline-block w-full 
+              rounded-full border-2 border-red-500 
+              px-16 py-3 text-base font-bold text-red-500 
+              hover:bg-red-500 hover:text-white 
+              lg:w-auto
+            "
+            href="https://discord.gg/revolver-ag"
+          >
+            Join Discord
+          </a>
+        </div>
       </div>
 
-      {/* Carousel */}
-      <Carousel activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      {/* Club Perks */}
+      <div className="text-center text-white mb-5">
+        <h4 className="py-2 text-4xl font-bold">Club Perks</h4>
+      </div>
 
-      {/* Testimonial Section */}
-      <section
-        className="px-4 mt-10"
-        style={{
-          maxWidth: "1064px",
-          background:
-            "radial-gradient(49.41% 64.58% at 49.4% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)",
-          borderTop: "1px solid",
-          borderImageSource:
-            "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.19) 30%,rgba(255,255,255,0.19) 70%,transparent)",
-          borderImageSlice: 1,
-          margin: "0 auto",
-          paddingTop: "2rem",
-          paddingBottom: "2rem",
-        }}
+      <div
+        className="
+          mx-auto 
+          flex max-w-2xl flex-col gap-5 
+          lg:max-w-full lg:flex-row
+        "
       >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, backgroundColor: "rgba(0,0,0,1)" }}
-            animate={{ opacity: 1, backgroundColor: "rgba(0,0,0,0)" }}
-            exit={{ opacity: 0, backgroundColor: "rgba(0,0,0,1)" }}
-            transition={{ duration: 0.3 }}
-          >
+        {/* Perk 1 */}
+        <div
+          className="
+            flex w-full lg:w-1/3 flex-col items-center justify-center gap-4 
+            rounded-xl border border-gray-800 
+            bg-[#0e0e0e] px-4 py-8 text-center  
+            text-gray-100
+          "
+        >
+          <div className="h-10 w-10 mb-8 self-center align-middle justify-center items-center">
+            <AirdropIcon className="self-center" />
+          </div>
+          <h5 className="text-xl font-bold">Underdog NFT</h5>
+          <p className="text-sm text-gray-300">
+            Receive airdrops and staking rewards for the $RVR token. 
+            Play with $RVR on the Revolver.ag sportsbook and casino.
+          </p>
+        </div>
 
-            {/* Main Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8 items-start pt-8 md:pt-24">
-              {/* Left 2x2 Grid (Title/Token combos) */}
-              <div>
-                <div
-                  className="
-                    grid
-                    grid-cols-1
-                    gap-y-8
-                    md:grid-cols-[auto_1fr]
-                    md:grid-rows-2
-                    md:gap-x-4
-                  "
-                >
-                  {/* First Row Title */}
-                  <p
-                    className="
-                      text-sm 
-                      text-gray-400 
-                      font-medium 
-                      font-mono 
-                      tracking-wide
-                      mb-0
-                      md:row-start-1 
-                      md:col-start-1
-                    "
-                  >
-                    {testimonialData[activeIndex].firstRowTitle}
-                  </p>
+        {/* Perk 2 */}
+        <div
+          className="
+            flex w-full lg:w-1/3 flex-col items-center justify-start gap-4 
+            rounded-xl border border-gray-800 
+            bg-[#0e0e0e] px-4 py-8 text-center 
+            text-gray-100
+          "
+        >
+          <div className="h-10 w-10 mb-4 ">
+            <TargetIcon />
+          </div>
+          <h5 className="text-xl font-bold">Sharp picks</h5>
+          <p className="text-sm text-gray-300">
+            Get profitable plays from our Sharpshooter Aggregator, 
+            combining 50+ historically profitable handicappers for 
+            high-value picks.
+          </p>
+        </div>
 
-                  {/* First Row Icon/Token/Text */}
-                  <div
-                    className="
-                      flex 
-                      flex-col 
-                      items-start 
-       
-                      md:row-start-1 
-                      md:col-start-2
-                    "
-                  >
-                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-2">
-                      <span>{testimonialData[activeIndex].firstRowIcon}</span>
-                      {testimonialData[activeIndex].firstRowToken}
-                    </span>
-                    <p className="text-sm text-gray-300">
-                      {testimonialData[activeIndex].firstRowText}
-                    </p>
-                  </div>
-
-                  {/* Second Row Title */}
-                  <p
-                    className="
-                      text-sm 
-                      text-gray-400 
-                      font-medium 
-                      font-mono 
-                      tracking-wide 
-                      md:row-start-2 
-                      md:col-start-1
-                      mt-4
-                      md:mt-0
-                    "
-                  >
-                    {testimonialData[activeIndex].secondRowTitle}
-                  </p>
-
-                  {/* Second Row Icon/Token/Text */}
-                  <div
-                    className="
-                      flex 
-                      flex-col 
-                      items-start
-                      md:row-start-2 
-                      md:col-start-2
-                      mt-2
-                      md:mt-0
-                    "
-                  >
-                    <span className="inline-flex items-center gap-1 py-[.8px] px-1.5 text-sm font-medium text-white bg-white/5 rounded-md mb-2">
-                      <span>{testimonialData[activeIndex].secondRowIcon}</span>
-                      {testimonialData[activeIndex].secondRowToken}
-                    </span>
-                    <p className="text-sm text-gray-300">
-                      {testimonialData[activeIndex].secondRowText}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="w-[1.5px] bg-gray-900 h-full my-auto md:mx-4 rounded-full" />
-
-              {/* Quote */}
-              <div className="flex items-center justify-center md:justify-start self-center">
-                <blockquote className="relative leading-relaxed max-w-xl text-left">
-                  <p
-                    style={{ color: "#6A6B6C" }}
-                    className="
-                      relative
-                      text-base
-                      sm:text-lg
-                      md:text-xl
-                      font-medium
-                      mb-2
-                      leading-relaxed
-                      before:font-serif
-                      after:font-serif
-                      before:content-['“']
-                      after:content-['”']
-                      before:absolute
-                      after:absolute
-                      before:text-4xl
-                      sm:before:text-5xl
-                      after:text-4xl
-                      sm:after:text-5xl
-                      before:text-gray-800
-                      after:text-gray-800
-                      before:-top-6
-                      before:-left-6
-                      after:-bottom-6
-                      after:-right-6
-                    "
-                    dangerouslySetInnerHTML={{
-                      __html: testimonialData[activeIndex].bigQuoteHtml,
-                    }}
-                  />
-                </blockquote>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </section>
-    </>
+        {/* Perk 3 */}
+        <div
+          className="
+            flex w-full lg:w-1/3 flex-col items-center justify-start gap-4 
+            rounded-xl border border-gray-800 
+            bg-[#0e0e0e] px-4 py-8 text-center 
+            text-gray-100
+          "
+        >
+          <div className="h-10 w-10 mb-4">
+            <CommunityIcon />
+          </div>
+          <h5 className="text-xl font-bold">Revolver.ag</h5>
+          <p className="text-sm text-gray-300">
+            Play with $RVR. Enjoy the best odds and highest limits. 
+            House revenue is burned or redistributed to the community.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
