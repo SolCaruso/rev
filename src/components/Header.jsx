@@ -72,7 +72,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
           </Link>
           <nav className="mx-auto">
             <ul className="hidden md:flex items-center gap-8 absolute top-4 left-1/2 transform -translate-x-1/2 font-semibold">
-              <TopLevelNavItem href="#">NFT</TopLevelNavItem>
+              <TopLevelNavItem href="/nft">NFT</TopLevelNavItem>
               <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
