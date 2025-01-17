@@ -1,4 +1,3 @@
-import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Gradient, GradientBackground } from '@/components/gradient'
 import { Heading, Lead, Subheading } from '@/components/text'
@@ -117,7 +116,7 @@ function PlusIcon(props) {
 }
 
 
-export default function Pricing({ searchParams }) {
+export default function Pricing() {
   
 
   return (
