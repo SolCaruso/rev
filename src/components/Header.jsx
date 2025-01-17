@@ -74,6 +74,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
             <ul className="hidden md:flex items-center gap-8 absolute top-4 left-1/2 transform -translate-x-1/2 font-semibold">
               <TopLevelNavItem href="/nft">NFT</TopLevelNavItem>
               <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
+              <TopLevelNavItem href="/revolver">Revolver.ag</TopLevelNavItem>
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
           </nav>
@@ -89,8 +90,9 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         <div className="ml-auto flex items-center gap-5">
           <nav className="hidden md:block">
             <ul role="list" className="flex items-center gap-8">
-              <TopLevelNavItem href="#">NFT</TopLevelNavItem>
+              <TopLevelNavItem href="/nft">NFT</TopLevelNavItem>
               <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
+              <TopLevelNavItem href="/revolver">Revolver.ag</TopLevelNavItem>
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
           </nav>

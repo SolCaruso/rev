@@ -6,9 +6,9 @@ const SvgComponent = (props) => (
     viewBox="0 0 16 15"
     {...props}
   >
-    <g clipPath="url(#a)">
+    <g clipPath="url(#apple)">
       <mask
-        id="b"
+        id="bat"
         width={11}
         height={14}
         x={3}
@@ -28,12 +28,12 @@ const SvgComponent = (props) => (
           <path fill="#fff" stroke="#000" d="M6.03 4.25h4.17v2.98H6.03V4.25Z" />
         </g>
       </mask>
-      <g mask="url(#b)">
+      <g mask="url(#bat)">
         <path fill="#000" d="M.96.68h14.3v14.3H.96V.67Z" />
       </g>
     </g>
     <defs>
-      <clipPath id="a">
+      <clipPath id="apple">
         <path fill="#fff" d="M.96.68h14.29v14.29H.96z" />
       </clipPath>
     </defs>

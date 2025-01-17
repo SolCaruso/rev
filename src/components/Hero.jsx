@@ -118,9 +118,9 @@ export default function Hero() {
         <div className="flex justify-center mt-8">
           <div className={`${styles.wishlistOuter} ${styles.wishlistAnimate}`}>
             <div className={styles.wishlistAnnouncement}>
-              <span>Wishlist now open</span>
+              <span>Whitelist now open</span>
               <span className={styles.wishlistMuted}>
-                Join wishlist
+                Join whitelist
                 <RightArrowIcon />
               </span>
             </div>

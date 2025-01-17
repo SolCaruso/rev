@@ -12,7 +12,7 @@ export function Heading({
       data-dark={dark ? 'true' : undefined}
       className={clsx(
         className,
-        'text-pretty text-4xl font-medium tracking-tighter text-gray-950 data-[dark]:text-white sm:text-6xl',
+        'text-pretty text-4xl font-medium tracking-tighter text-white data-[dark]:text-white sm:text-6xl',
       )}
     />
   )
@@ -39,7 +39,7 @@ export function Subheading({
 export function Lead({ className, ...props }) {
   return (
     <p
-      className={clsx(className, 'text-2xl font-medium text-gray-500')}
+      className={clsx(className, 'md:text-2xl font-medium text-gray-400')}
       {...props}
     />
   )

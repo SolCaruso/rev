@@ -5,8 +5,8 @@ import '@/styles/tailwind.css'
 import { HeroPattern } from '@/components/HeroPattern'
 
 export const metadata = {
-  title: 'Revolver Bettors Club',
-  description: 'Private betting club on Solana; to be a member, you must hold a Revolver Underdawg NFT.',
+  title: 'The Underdawgs NFT',
+  description: 'Unlock exclusive betting perks, sharp picks, and rare collectibles with the Underdawg NFT.',
 }
 
 export default function BettorsClubPage() {

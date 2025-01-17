@@ -5,6 +5,9 @@ import React from "react";
 import AirdropIcon from "@/components/icons/Airdrop";
 import CommunityIcon from "@/components/icons/Community";
 import TargetIcon from "@/components/icons/Target";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import DocsIcon from "@/components/icons/Docs";
 
 export default function BettorsClub() {
   return (
@@ -13,10 +16,8 @@ export default function BettorsClub() {
       <div
         className="
           relative 
-
           mt-16
           md:mt-2
-
           p-2 
           rounded-2xl
           bg-gradient-to-br from-[#352b2c] via-[#110818] to-[#45223e]
@@ -60,7 +61,7 @@ export default function BettorsClub() {
             className="
               flex w-full justify-center 
               overflow-hidden rounded-xl 
-              bg-[#FF6E6D] 
+              bg-gradient-to-b from-[#db2e20] to-[#f20165] border border-[#3a3a3a]
               lg:w-96
             "
           >
@@ -104,26 +105,53 @@ export default function BettorsClub() {
             </ul>
 
             {/* Join Discord Button */}
-            <a
+            <Link href="/docs" passHref>
+            <motion.div
               className="
-                inline-block w-full 
-                rounded-full border-2 border-red-500 
-                px-16 py-3 text-base font-bold text-red-500 
-                hover:bg-red-500 hover:text-white 
-                lg:w-auto
+                inline-flex 
+                items-center 
+                justify-center
+                gap-2
+                min-h-[36px]
+                px-3.5 py-1.5
+                text-[14px] 
+                font-medium 
+                leading-[16px]
+                tracking-[0.2px]
+                whitespace-nowrap
+                cursor-pointer
+                border-none
+                rounded-md
+                transition-colors
+                duration-200
+                ease-in-out
+                bg-[#E6E6E6]
+                hover:bg-[#FFF]
+                shadow-[0_0_2px_rgba(0,0,0,0.5),_0_0_14px_rgba(255,255,255,0.19),_inset_0_-1px_0.4px_rgba(0,0,0,0.2)]
+                opacity-90
+                hover:opacity-100
+                text-black
               "
-              href="https://discord.gg/revolver-ag"
             >
-              Join Discord
-            </a>
+              <DocsIcon className="sm:w-4 h-4" />
+              <span>Learn more</span>
+            </motion.div>
+          </Link>
           </div>
         </div>
       </div>
 
-      {/* Club Perks */}
-      <div className="text-center text-white mb-5">
-        <h4 className="py-2 text-2xl font-bold">Club Perks</h4>
-      </div>
+      <h1 className="mt-4 text-lg font-semibold text-center sm:text-xl">
+        Bettors Club Perks
+      </h1>
+      <p
+        className="text-xl font-semibold text-transparent bg-clip-text text-center mb-12"
+        style={{
+          backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
+        }}
+      >
+        Unlock exclusive rewards & winning advantages.
+      </p>
 
       <div
         className="
@@ -171,7 +199,7 @@ export default function BettorsClub() {
               text-center
             "
           >
-            <AirdropIcon />
+            <AirdropIcon className="w-16 h-16 flex-shrink-0 sm:w-20 sm:h-20" />
             <h5 className="text-xl font-bold text-gray-200">Underdog NFT</h5>
             <p className="text-sm text-gray-300">
               Receive airdrops and staking rewards for the $RVR token.
@@ -213,7 +241,7 @@ export default function BettorsClub() {
               text-center
             "
           >
-            <TargetIcon />
+            <TargetIcon className="w-16 h-16 flex-shrink-0 sm:w-20 sm:h-20"/>
             <h5 className="text-xl font-bold text-gray-200">Sharp picks</h5>
             <p className="text-sm text-gray-300">
               Get profitable plays from our Sharpshooter Aggregator,
@@ -256,7 +284,7 @@ export default function BettorsClub() {
               text-center
             "
           >
-            <CommunityIcon />
+            <CommunityIcon className="w-16 h-16 flex-shrink-0 sm:w-20 sm:h-20"/>
             <h5 className="text-xl font-bold text-gray-200">Revolver.ag</h5>
             <p className="text-sm text-gray-300">
               Play with $RVR. Enjoy the best odds and highest limits.
