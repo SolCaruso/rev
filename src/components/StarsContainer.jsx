@@ -5,16 +5,17 @@ import { topStars, rightStars, bottomStars, leftStars } from '@/components/starD
 
 const POSSIBLE_STATES = ['off', 'medium', 'high']
 
-function getRandomState() {
-  return POSSIBLE_STATES[Math.floor(Math.random() * POSSIBLE_STATES.length)]
+function getRandomStateExcluding(current) {
+  const otherStates = POSSIBLE_STATES.filter(s => s !== current)
+  return otherStates[Math.floor(Math.random() * otherStates.length)]
 }
 
-/** This picks ~10% of the stars to randomly change state. */
 function twinkleSomeStars(stars) {
   return stars.map(star => {
-    const shouldChange = Math.random() < 0.1
+    const shouldChange = Math.random() < 0.5 // 50% chance, for example
     if (shouldChange) {
-      return { ...star, currentState: getRandomState() }
+      const newState = getRandomStateExcluding(star.currentState)
+      return { ...star, currentState: newState }
     }
     return star
   })
