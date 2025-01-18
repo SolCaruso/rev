@@ -77,6 +77,88 @@
         hsla(0, 100%, 88%, 0) 140%
       );
   }
+
+  .Features_stars__YRhs6 {
+    position: absolute;
+    /* Instead of huge negative offsets, just do smaller ones
+       so they stay close to the screenshot edges. Adjust as you wish. */
+    top: -30px;
+    bottom: -30px;
+    left: -80px;
+    right: -80px;
+  }
+  
+  /* Each of the four sub-containers is absolutely positioned inside. */
+  .Features_stars__YRhs6 > * {
+    position: absolute;
+  }
+  
+  /* Adjust these heights/widths if needed */
+  .Features_top__hfxko {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+  }
+  .Features_bottom__lzPWj {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45px;
+  }
+  .Features_left__nIVgE {
+    top: 82px;
+    bottom: 82px;
+    left: 50px;
+    width: 86px;
+  }
+  .Features_right___pNrD {
+    top: 82px;
+    right: 50px;
+    bottom: 82px;
+    width: 86px;
+  }
+  
+  /* Star base style */
+  .Features_star__CMn8R {
+    position: absolute;
+    background: #fff; /* White core */
+    border-radius: 100%;
+  }
+  
+  /* The glow effects */
+  .Features_star__CMn8R:after,
+  .Features_star__CMn8R:before {
+    position: absolute;
+    inset: 0;
+    width: inherit;
+    height: inherit;
+    content: "";
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease;
+  }
+  .Features_star__CMn8R:after {
+    background: #fff;
+    /* A bluish glow */
+    box-shadow:
+      0 0 2px 1px rgba(50,145,255,.8),
+      0 0 3px 1px rgba(50,145,255,.25);
+  }
+  .Features_star__CMn8R:before {
+    box-shadow:
+      0 0 2px 1px rgba(50,145,255,.25);
+  }
+  
+  /* data-state="off" => no glow, just 1px white dot */
+  .Features_star__CMn8R[data-state="off"] {
+    background: #fff;
+  }
+  /* data-state=high => .:after glows; data-state=medium => .:before glows */
+  .Features_star__CMn8R[data-state="high"]:after,
+  .Features_star__CMn8R[data-state="medium"]:before {
+    opacity: 1;
+  }
   
 
   

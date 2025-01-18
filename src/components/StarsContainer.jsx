@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from 'react'
 import { topStars, rightStars, bottomStars, leftStars } from '@/components/starData'
 
@@ -8,13 +9,9 @@ function getRandomState() {
   return POSSIBLE_STATES[Math.floor(Math.random() * POSSIBLE_STATES.length)]
 }
 
-/**
- * Picks a random subset (like 10%) of the stars
- * and sets them to a random state: 'off', 'medium', or 'high'.
- */
+/** This picks ~10% of the stars to randomly change state. */
 function twinkleSomeStars(stars) {
   return stars.map(star => {
-    // Maybe only 10% chance we change this star
     const shouldChange = Math.random() < 0.1
     if (shouldChange) {
       return { ...star, currentState: getRandomState() }
@@ -24,8 +21,7 @@ function twinkleSomeStars(stars) {
 }
 
 export function StarsContainer() {
-  // We store "currentState" for each star in an array.
-  // By default, it’s whatever the star’s initialState was.
+  // We store the "currentState" for each star in React state.
   const [top, setTop] = useState(
     topStars.map(star => ({ ...star, currentState: star.initialState }))
   )
@@ -39,10 +35,9 @@ export function StarsContainer() {
     leftStars.map(star => ({ ...star, currentState: star.initialState }))
   )
 
-  // This effect will “twinkle” random stars every 1 second.
+  // On mount, start an interval to "twinkle" every 1 second
   useEffect(() => {
     const interval = setInterval(() => {
-      // For each region, randomly pick ~10% of the stars to change state
       setTop(old => twinkleSomeStars(old))
       setRight(old => twinkleSomeStars(old))
       setBottom(old => twinkleSomeStars(old))
