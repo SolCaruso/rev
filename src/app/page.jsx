@@ -1,14 +1,16 @@
 import LandingLayout from "@/components/LandingLayout";
 import Hero from "@/components/Hero";
 import CardSection from "@/components/CardSection";
-import SportsbookShowcase from "@/components/SportsbookShowcase";
+import { FeatureSection } from "@/components/FeatureSection";
 
 export default function Home() {
   return (
     <LandingLayout>
       <Hero />
       <CardSection />
-      <SportsbookShowcase />
+      <div className=" py-32 relative">
+          <FeatureSection />
+      </div>
     </LandingLayout>
   )
 }

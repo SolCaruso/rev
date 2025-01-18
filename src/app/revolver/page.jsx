@@ -9,6 +9,7 @@ import Target from "@/components/icons/Target";
 import Market from "@/components/icons/Market";
 import Bonus from "@/components/icons/Bonus";
 
+
 export const metadata = {
   title: "Solana’s community Sportsbook & Casino",
   description:
@@ -18,7 +19,7 @@ export const metadata = {
 
 function Header() {
   return (
-    <Container className="mt-16 lg:mt-64">
+    <Container className="mt-16 md:mt-32 3xl:mt-64">
       <Heading as="h1">Solana’s community Sportsbook & Casino</Heading>
       <Lead className="mt-6 max-w-3xl">
       Experience the best odds, exclusive casino games, and community-powered rewards with $RVR.
@@ -67,7 +68,7 @@ function PricingCard({ icon, title, bullets }) {
 
 function PricingCards() {
   return (
-    <div className="relative py-24">
+    <div className="relative py-24 mb-12 md:mb-32 lg:py-32">
       <Gradient className="absolute inset-x-2 bottom-0 top-48 rounded-4xl ring-1 ring-inset ring-black/5" />
       <Container className="relative">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

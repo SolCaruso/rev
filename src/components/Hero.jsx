@@ -7,6 +7,7 @@ import RightArrowIcon from "@/components/icons/RightArrow";
 import pokerImage from "@/images/webp/poker.webp";
 import Link from "next/link";
 import styles from "./WishList.module.css";
+import { Heading } from '@/components/text'
 
 export default function Hero() {
   return (
@@ -14,25 +15,9 @@ export default function Hero() {
       {/* The main hero content is above the background (z-10) */}
       <div className="max-w-[540px] mx-auto text-center relative z-10">
         {/* Headline */}
-        <h1
-          className="
-            text-[2.5rem]
-            md:text-[3.3rem]
-            font-bold
-            md:leading-tight
-            leading-10
-            [text-shadow:0_4px_4px_rgba(0,0,0,0.15)]
-            [font-feature-settings:'ss08'_on,'ss02'_on,'liga'_off]
-          "
-        >
-          Bet smarter,{" "}
-          <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] text-transparent bg-clip-text">
-            together
-          </span>
-          <span className="text-[#f20165] text-5xl font-bold">.</span>
-        </h1>
-
-        {/* Subtitle */}
+        <Heading as="h2" className="max-w-3xl">
+          Bet smarter, <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] text-transparent bg-clip-text">together.</span>
+        </Heading>
         <p
           className="transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] bg-clip-text text-transparent mt-4 font-medium"
         >

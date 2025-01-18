@@ -28,9 +28,11 @@ module.exports = {
     extend: {
       screens: {
         'xs-440': '440px',
+        "3xl": "2000px",
       },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',
+        white: '0 10px 15px -3px rgba(255, 255, 255, 0.5), 0 4px 6px -2px rgba(255, 255, 255, 0.3)',
       },
       maxWidth: {
         lg: '33rem',
