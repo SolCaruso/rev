@@ -1,5 +1,4 @@
 import React from "react";
-import CardIcon from "@/components/icons/CardIcon";
 
 export default function Card({
   image,      

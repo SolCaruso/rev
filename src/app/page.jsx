@@ -1,7 +1,6 @@
 import LandingLayout from "@/components/LandingLayout";
 import Hero from "@/components/Hero";
 import CardSection from "@/components/CardSection";
-import SportsbookShowcase from "@/components/SportsbookShowcase";
 import { Container } from '@/components/container'
 import { Screenshot } from '@/components/screenshot'
 import { Heading } from '@/components/text'

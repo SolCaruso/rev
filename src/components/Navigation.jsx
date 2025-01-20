@@ -19,7 +19,7 @@ function useInitialValue(value, condition = true) {
 
 function TopLevelNavItem({ href, children }) {
   return (
-    <li className="md:hidden">
+    <li className="lg:hidden">
       <Link
         href={href}
         className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
@@ -204,14 +204,15 @@ export function Navigation(props) {
       {...props}
     >
       <ul role="list">
-        <TopLevelNavItem href="#">NFT</TopLevelNavItem>
+        <TopLevelNavItem href="/nft">NFT</TopLevelNavItem>
         <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
+        <TopLevelNavItem href="/revolver">Revolver.ag</TopLevelNavItem>
         <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
             group={group}
-            className={groupIndex === 0 ? 'md:mt-0' : ''}
+            className={groupIndex === 0 ? 'lg:mt-0' : ''}
           />
         ))}
         <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">

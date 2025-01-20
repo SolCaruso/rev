@@ -71,7 +71,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
             <Logo className="h-7" variant="desktop" />
           </Link>
           <nav className="mx-auto">
-            <ul className="hidden md:flex items-center gap-8 absolute top-4 left-1/2 transform -translate-x-1/2 font-semibold">
+            <ul className="hidden lg:flex items-center gap-8 absolute top-4 left-1/2 transform -translate-x-1/2 font-semibold">
               <TopLevelNavItem href="/nft">NFT</TopLevelNavItem>
               <TopLevelNavItem href="/bettors-club">Bettors Club</TopLevelNavItem>
               <TopLevelNavItem href="/revolver">Revolver.ag</TopLevelNavItem>

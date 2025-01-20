@@ -1,13 +1,17 @@
 "use client";
 import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 // Icons
 import AirdropIcon from "@/components/icons/Airdrop";
 import CommunityIcon from "@/components/icons/Community";
 import TargetIcon from "@/components/icons/Target";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import DocsIcon from "@/components/icons/Docs";
+
+// Import the cowboy dog (dog27.png)
+import dog27 from "@/images/png/dog27.png";
 
 export default function BettorsClub() {
   return (
@@ -56,7 +60,7 @@ export default function BettorsClub() {
             text-gray-100
           "
         >
-          {/* Left: Cowboy image */}
+          {/* Left: Cowboy image (dog27) */}
           <div
             className="
               flex w-full justify-center 
@@ -65,10 +69,14 @@ export default function BettorsClub() {
               lg:w-96
             "
           >
-            <img
-              className="xs:max-w-96"
-              src="/images/cowboy.webp"
+            {/* Next.js Image */}
+            <Image
+              src={dog27}
               alt="Cowboy underdog"
+              className="xs:max-w-96"
+              width={400}
+              height={400}
+              // or style={{ width: "auto", height: "auto" }} if you prefer
             />
           </div>
 
@@ -104,39 +112,39 @@ export default function BettorsClub() {
               </div>
             </ul>
 
-            {/* Join Discord Button */}
+            {/* Join Discord / Docs Button */}
             <Link href="/docs" passHref>
-            <motion.div
-              className="
-                inline-flex 
-                items-center 
-                justify-center
-                gap-2
-                min-h-[36px]
-                px-3.5 py-1.5
-                text-[14px] 
-                font-medium 
-                leading-[16px]
-                tracking-[0.2px]
-                whitespace-nowrap
-                cursor-pointer
-                border-none
-                rounded-md
-                transition-colors
-                duration-200
-                ease-in-out
-                bg-[#E6E6E6]
-                hover:bg-[#FFF]
-                shadow-[0_0_2px_rgba(0,0,0,0.5),_0_0_14px_rgba(255,255,255,0.19),_inset_0_-1px_0.4px_rgba(0,0,0,0.2)]
-                opacity-90
-                hover:opacity-100
-                text-black
-              "
-            >
-              <DocsIcon className="sm:w-4 h-4" />
-              <span>Learn more</span>
-            </motion.div>
-          </Link>
+              <motion.div
+                className="
+                  inline-flex 
+                  items-center 
+                  justify-center
+                  gap-2
+                  min-h-[36px]
+                  px-3.5 py-1.5
+                  text-[14px] 
+                  font-medium 
+                  leading-[16px]
+                  tracking-[0.2px]
+                  whitespace-nowrap
+                  cursor-pointer
+                  border-none
+                  rounded-md
+                  transition-colors
+                  duration-200
+                  ease-in-out
+                  bg-[#E6E6E6]
+                  hover:bg-[#FFF]
+                  shadow-[0_0_2px_rgba(0,0,0,0.5),_0_0_14px_rgba(255,255,255,0.19),_inset_0_-1px_0.4px_rgba(0,0,0,0.2)]
+                  opacity-90
+                  hover:opacity-100
+                  text-black
+                "
+              >
+                <DocsIcon className="sm:w-4 h-4" />
+                <span>Learn more</span>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </div>
@@ -150,7 +158,7 @@ export default function BettorsClub() {
           backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
         }}
       >
-        Unlock exclusive rewards & winning advantages.
+        Unlock exclusive rewards &amp; winning advantages.
       </p>
 
       <div

@@ -1,12 +1,20 @@
 import React from "react";
-import { Container } from '@/components/container';
-import { Heading, Lead, Subheading } from '@/components/text';
+import Image from "next/image";
+
+import { Container } from "@/components/container";
+import { Heading, Lead, Subheading } from "@/components/text";
 import Mint from "@/components/icons/Mint";
 import Supply from "@/components/icons/Supply";
 import Server from "@/components/icons/Server";
 import NFT from "@/components/icons/Nft";
 import Traits from "@/components/icons/Traits";
 import Dog from "@/components/icons/Dog";
+
+// Import your new images
+import dog39 from "@/images/png/dog39.png";
+import dog40 from "@/images/png/dog40.png";
+import dog41 from "@/images/png/dog41.png";
+import dog42 from "@/images/png/dog42.png";
 
 export default function Nft() {
   return (
@@ -23,7 +31,6 @@ export default function Nft() {
         <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
           {/* Left Column: Underdog / Bettors Club / Traits */}
           <div className="max-w-lg flex flex-col gap-12">
-            
             {/* Underdog NFT (smaller on mobile) */}
             <div className="flex items-center gap-8 min-h-[4rem]">
               <NFT className="w-10 h-10 flex-shrink-0 sm:w-16 sm:h-16" />
@@ -68,31 +75,47 @@ export default function Nft() {
           {/* Images (spans 2 rows on lg) */}
           <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
             <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
+              {/* Image 1 */}
               <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-                <img
+                <Image
                   alt=""
-                  src="/images/nft/nft1.jpg"
+                  src={dog39}
+                  width={600}     // Adjust these dimensions if you like
+                  height={600}
                   className="block w-full h-full object-cover"
+                  priority       // Optional: if you want them to load immediately
                 />
               </div>
+
+              {/* Image 2 */}
               <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
-                <img
+                <Image
                   alt=""
-                  src="/images/nft/nft2.jpg"
+                  src={dog40}
+                  width={600}
+                  height={600}
                   className="block w-full h-full object-cover"
                 />
               </div>
+
+              {/* Image 3 */}
               <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10">
-                <img
+                <Image
                   alt=""
-                  src="/images/nft/nft3.jpg"
+                  src={dog41}
+                  width={600}
+                  height={600}
                   className="block w-full h-full object-cover"
                 />
               </div>
+
+              {/* Image 4 */}
               <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-32">
-                <img
+                <Image
                   alt=""
-                  src="/images/nft/nft4.jpg"
+                  src={dog42}
+                  width={600}
+                  height={600}
                   className="block w-full h-full object-cover"
                 />
               </div>
@@ -112,9 +135,7 @@ export default function Nft() {
                   <dd className="order-first text-base font-medium tracking-tight sm:text-xl">
                     Mint Date
                   </dd>
-                  <dt className="text-sm text-gray-400 sm:text-base">
-                    TBD
-                  </dt>
+                  <dt className="text-sm text-gray-400 sm:text-base">TBD</dt>
                 </div>
               </div>
 
@@ -125,9 +146,7 @@ export default function Nft() {
                   <dd className="order-first text-base font-medium tracking-tight sm:text-xl">
                     Supply
                   </dd>
-                  <dt className="text-sm text-gray-400 sm:text-base">
-                    TBD
-                  </dt>
+                  <dt className="text-sm text-gray-400 sm:text-base">TBD</dt>
                 </div>
               </div>
 
