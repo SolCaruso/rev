@@ -161,8 +161,8 @@ export default function CardSection() {
           })}
         </div>
         {/* Edge Gradients */}
-        <div className="pointer-events-none absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#111] to-transparent" />
-        <div className="pointer-events-none absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#111] to-transparent" />
+        <div className="pointer-events-none absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-[#111] to-transparent" />
+        <div className="pointer-events-none absolute top-0 right-0 w-4 h-full bg-gradient-to-l from-[#111] to-transparent" />
       </div>
 
       {/* Footer */}
