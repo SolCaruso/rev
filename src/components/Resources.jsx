@@ -74,22 +74,15 @@ function ResourceIcon({ icon: Icon }) {
     <div
       className="
         flex h-7 w-7 items-center justify-center 
-        rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 
+        rounded-full bg-white/7.5 ring-white/15 
         backdrop-blur-[2px] transition duration-300
-        /* 2) Light mode hover => faint brand color */
-        group-hover:bg-[#FF494D]/10 group-hover:ring-[#FF494D]/25 
-        dark:bg-white/7.5 dark:ring-white/15 
-        /* 3) Dark mode can stay slightly stronger if desired */
-        dark:group-hover:bg-[#FF494D]/10 dark:group-hover:ring-[#FF494D]/50
+        group-hover:bg-[#FF494D]/10 group-hover:ring-[#FF494D]/50
       "
     >
       <Icon
         className="
-          h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 
-          /* Light mode icon stroke changes to brand color on hover? */
-          group-hover:stroke-zinc-900 
-          dark:fill-white/10 dark:stroke-zinc-400 
-          dark:group-hover:fill-[#FF494D]/10 dark:group-hover:stroke-[#FF494D]
+          h-5 w-5 fill-white/10 stroke-zinc-400 transition-colors duration-300 
+          group-hover:fill-[#FF494D]/10 group-hover:stroke-[#FF494D]
         "
       />
     </div>
@@ -110,29 +103,24 @@ function ResourcePattern({ mouseX, mouseY, ...gridProps }) {
           x="50%"
           className="
             absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] 
-            fill-black/[0.02] stroke-black/5 
-            dark:fill-white/1 dark:stroke-white/2.5
+            fill-white/1 stroke-white/2.5
           "
           {...gridProps}
         />
       </div>
 
-      {/* 4) Light mode brand gradient => lower alpha. 
-            Dark mode can remain or also be toned down. */}
       <motion.div
         className="
           absolute inset-0 rounded-2xl 
           bg-gradient-to-r from-[#E71744]/10 to-[#FF494D]/10 
           opacity-0 transition duration-300 group-hover:opacity-100
-          dark:from-[#E71744]/10 dark:to-[#FF494D]/10
         "
         style={style}
       />
       <motion.div
         className="
           absolute inset-0 rounded-2xl 
-          opacity-0 mix-blend-overlay transition duration-300 
-          group-hover:opacity-100
+          opacity-0 mix-blend-overlay transition duration-300 group-hover:opacity-100
         "
         style={style}
       >
@@ -142,8 +130,7 @@ function ResourcePattern({ mouseX, mouseY, ...gridProps }) {
           x="50%"
           className="
             absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] 
-            fill-black/50 stroke-black/70 
-            dark:fill-white/2.5 dark:stroke-white/10
+            fill-white/2.5 stroke-white/10
           "
           {...gridProps}
         />
@@ -166,29 +153,21 @@ function Resource({ resource }) {
     <div
       key={resource.href}
       onMouseMove={onMouseMove}
-      className="
-        group relative flex rounded-2xl 
-        bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 
-        dark:bg-white/2.5 dark:hover:shadow-black/5
-      "
+      className="group relative flex rounded-2xl bg-white/2.5 transition-shadow hover:shadow-black/5"
     >
       <ResourcePattern {...resource.pattern} mouseX={mouseX} mouseY={mouseY} />
       <div
-        className="
-          absolute inset-0 rounded-2xl ring-1 ring-inset 
-          ring-zinc-900/7.5 group-hover:ring-zinc-900/10 
-          dark:ring-white/10 dark:group-hover:ring-white/20
-        "
+        className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20"
       />
       <div className="relative rounded-2xl px-4 pb-4 pt-16">
         <ResourceIcon icon={resource.icon} />
-        <h3 className="mt-4 text-sm font-semibold leading-7 text-zinc-900 dark:text-white">
+        <h3 className="mt-4 text-sm font-semibold leading-7 text-white">
           <Link href={resource.href}>
             <span className="absolute inset-0 rounded-2xl" />
             {resource.name}
           </Link>
         </h3>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="mt-1 text-sm text-zinc-400">
           {resource.description}
         </p>
       </div>
@@ -205,9 +184,8 @@ export function Resources() {
       <div
         className="
           not-prose mt-4 grid grid-cols-1 gap-8 
-          border-t border-zinc-900/5 pt-10 
-          sm:grid-cols-2 xl:grid-cols-4 
-          dark:border-white/5
+          border-t border-white/5 pt-10 
+          sm:grid-cols-2 xl:grid-cols-4
         "
       >
         {resources.map((resource) => (

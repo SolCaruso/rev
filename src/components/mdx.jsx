@@ -52,23 +52,16 @@ export function Note({ children }) {
     <div
       className={clsx(
         'my-6 flex gap-2.5 rounded-2xl border p-4 leading-6',
-        // Brand-red border & background in light mode
-        'border-[#DB2E20]/20 bg-[#DB2E20]/10 text-[#DB2E20]',
-        // Dark mode
-        'dark:border-[#DB2E20]/30 dark:bg-[#DB2E20]/5 dark:text-[#DB2E20]/80',
-        // Optionally update prose link colors in dark mode
-        // (if you want “links” in the note to match your brand color)
-        'dark:[--tw-prose-links:theme(colors.white)] ' +
-          'dark:[--tw-prose-links-hover:#DB2E20]'
+        // Always use dark mode styles:
+        'border-[#DB2E20]/30 bg-[#DB2E20]/5 text-[#DB2E20]/80',
+        '[--tw-prose-links:theme(colors.white)] [--tw-prose-links-hover:#DB2E20]'
       )}
     >
       <InfoIcon
         className={clsx(
-          'mt-1 h-4 w-4 flex-none stroke-white',
-          // Fill brand red in light mode
-          'fill-[#DB2E20]',
-          // In dark mode, we could do a subtle effect:
-          'dark:fill-[#DB2E20]/30 dark:stroke-[#DB2E20]'
+          'mt-1 h-4 w-4 flex-none',
+          'fill-[#DB2E20]/30',
+          'stroke-[#DB2E20]'
         )}
       />
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">{children}</div>
@@ -108,7 +101,7 @@ export function Properties({ children }) {
     <div className="my-6">
       <ul
         role="list"
-        className="m-0 max-w-[calc(theme(maxWidth.lg)-theme(spacing.8))] list-none divide-y divide-zinc-900/5 p-0 dark:divide-white/5"
+        className="m-0 max-w-[calc(theme(maxWidth.lg)-theme(spacing.8))] list-none divide-y divide-white/5 p-0"
       >
         {children}
       </ul>
@@ -127,7 +120,7 @@ export function Property({ name, children, type }) {
         {type && (
           <>
             <dt className="sr-only">Type</dt>
-            <dd className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
+            <dd className="font-mono text-xs text-zinc-500">
               {type}
             </dd>
           </>

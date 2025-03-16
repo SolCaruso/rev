@@ -1,13 +1,15 @@
-import { Container } from '@/components/container'
-import { Gradient, GradientBackground } from '@/components/gradient'
-import { Heading, Lead, Subheading } from '@/components/text'
-import React from 'react'
-import LandingLayout from '@/components/LandingLayout'
-import '@/styles/tailwind.css' 
-import { HeroPattern } from '@/components/HeroPattern'
+import { Container } from '@/components/container';
+import { Gradient} from '@/components/gradient';
+import { Heading, Lead, Subheading } from '@/components/text';
+import React from 'react';
+import LandingLayout from '@/components/LandingLayout';
+import '@/styles/tailwind.css'; 
+import { HeroPattern } from '@/components/HeroPattern';
 import Target from "@/components/icons/Target";
 import Market from "@/components/icons/Market";
 import Bonus from "@/components/icons/Bonus";
+import Image from "next/image";
+import screenshot from '@/images/jpg/screenshot.jpg';
 
 
 export const metadata = {
@@ -116,16 +118,30 @@ function PlusIcon(props) {
   )
 }
 
+function Screenshot() {
+  return (
+    <div className="flex justify-center mb-44">
+      <Image
+        src={screenshot}
+        alt="Screenshot of the Revolver website"
+        width={1280}
+        height={720}
+        className="rounded-3xl shadow-2xl ring-1 ring-black/5"
+      />
+    </div>
+  )
+}
+
 
 export default function Pricing() {
   
 
   return (
     <LandingLayout>
-      <GradientBackground/>
       <HeroPattern  />
       <Header />
       <PricingCards />
+      <Screenshot />
     </LandingLayout>
   )
 }

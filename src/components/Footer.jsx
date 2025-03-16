@@ -1,8 +1,7 @@
-'use client'
-
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { Button } from '@/components/Button'
+import { Heading } from '@/components/Heading'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { navigation } from '@/components/Navigation'
 
 function PageLink({ label, page, previous = false }) {
@@ -20,7 +19,7 @@ function PageLink({ label, page, previous = false }) {
         href={page.href}
         tabIndex={-1}
         aria-hidden="true"
-        className="text-base font-semibold text-zinc-900 transition hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
+        className="text-base font-semibold text-white transition hover:text-zinc-300"
       >
         {page.title}
       </Link>
@@ -92,15 +91,15 @@ function SocialLink({ href, icon: Icon, children }) {
   return (
     <Link href={href} className="group">
       <span className="sr-only">{children}</span>
-      <Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
+      <Icon className="h-5 w-5 fill-white transition group-hover:fill-zinc-500" />
     </Link>
   )
 }
 
 function SmallPrint() {
   return (
-    <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 sm:flex-row dark:border-white/5">
-      <p className="text-xs text-zinc-600 dark:text-zinc-400">
+    <div className="flex flex-col items-center justify-between gap-5 border-t border-white/5 pt-8 sm:flex-row">
+      <p className="text-xs text-zinc-400">
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">

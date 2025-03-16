@@ -38,7 +38,7 @@ export default function Home() {
     <LandingLayout>
       <Hero />
       <CardSection />
-      <div className="py-32 relative">
+      <div className="md:py-20 relative">
         <FeatureSection />
       </div>
     </LandingLayout>

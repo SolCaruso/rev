@@ -16,8 +16,6 @@ export function Screenshot({ width, height, src, className }) {
       {/* Optional ‘frame’ shadow */}
       <div className="absolute -inset-[var(--padding)] rounded-[calc(var(--radius)+var(--padding))] shadow-sm ring-1 ring-white/5 [--padding:theme(spacing.2)]" />
 
-
-
       {/* The actual screenshot */}
       <img
         alt=""

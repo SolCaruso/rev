@@ -169,7 +169,7 @@ export default function CardSection() {
       <div className="max-w-5xl lg:max-w-7xl mx-auto mt-8 px-4 flex items-center justify-between">
         <Link href="/docs/underdawg#benefits" passHref>
           <motion.div
-            className="mt-1 text-base font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center cursor-pointer"
+            className="mt-1 text-lg font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center cursor-pointer"
             style={{
               backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
             }}

@@ -10,7 +10,7 @@ import { Logo } from '@/components/Logo'
 import {
   MobileNavigation,
   useIsInsideMobileNavigation,
-  useMobileNavigationStore,  // <-- import the store here
+  useMobileNavigationStore,
 } from '@/components/MobileNavigation'
 import { MobileSearch, Search } from '@/components/Search'
 import SportsButton from '@/components/SportsButton'
@@ -20,7 +20,7 @@ function TopLevelNavItem({ href, children }) {
     <li>
       <Link
         href={href}
-        className="text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+        className="text-sm leading-5 text-zinc-400 transition hover:text-white"
       >
         {children}
       </Link>
@@ -44,14 +44,14 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         className,
         'fixed inset-x-0 top-0 z-50 flex h-14 items-center gap-12 px-4 transition sm:px-6',
         isDocs && !isInsideMobileNavigation && 'lg:left-72 xl:left-80',
-        'backdrop-blur-sm dark:backdrop-blur-lg dark:bg-black/50'
+        'backdrop-blur-lg bg-black/50'
       )}
     >
       <div
         className={clsx(
           'absolute inset-x-0 top-full h-px transition',
           (isInsideMobileNavigation || !mobileNavIsOpen) &&
-            (isDocs ? 'bg-zinc-900/7.5 dark:bg-white/7.5' : 'bg-transparent')
+            (isDocs ? 'bg-white/7.5' : 'bg-transparent')
         )}
       />
 
@@ -96,7 +96,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
               <TopLevelNavItem href="/docs">Docs</TopLevelNavItem>
             </ul>
           </nav>
-          <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
+          <div className="hidden md:block md:h-5 md:w-px md:bg-white/15" />
           <div className="flex gap-4">
             <MobileSearch />
           </div>

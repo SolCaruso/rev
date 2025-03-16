@@ -11,15 +11,15 @@ import { Heading } from '@/components/text'
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 md:pt-52 pb-32">
+    <section className="relative pt-20 md:pt-40 pb-20">
       {/* The main hero content is above the background (z-10) */}
-      <div className="max-w-[540px] mx-auto text-center relative z-10">
+      <div className="max-w-[600px] mx-auto text-center relative z-10">
         {/* Headline */}
-        <Heading as="h2" className="max-w-3xl">
+        <h1 className="max-w-3xl font-bold text-5xl sm:text-6xl text-white">
           Bet smarter, <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] text-transparent bg-clip-text">together.</span>
-        </Heading>
+        </h1>
         <p
-          className="transition-colors bg-gradient-to-r from-neutral-300/[35%] via-neutral-300/90 to-neutral-300/[35%] bg-clip-text text-transparent mt-4 font-medium"
+          className="transition-colors bg-gradient-to-r from-gray-50 via-neutral-300/90 to-gray-400 bg-clip-text text-transparent mt-8 font-medium text-lg"
         >
           Join Solana’s top betting society, with AI-optimized picks from
           profitable handicappers, and a dedicated, community-focused sportsbook.

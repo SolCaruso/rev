@@ -1,5 +1,4 @@
 import glob from 'fast-glob'
-import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 import '@/styles/tailwind.css'
 
@@ -24,16 +23,13 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body className="flex
-    min-h-full
-    bg-[#F8F8F8]
-    dark:bg-[#07080A]
-    antialiased">
-        <Providers>
+        min-h-full
+        bg-[#07080A]
+        antialiased">
           <div className="w-full">
             {/* Our pinned doc layout component */}
             <Layout allSections={allSections}>{children}</Layout>
           </div>
-        </Providers>
       </body>
     </html>
   )
