@@ -1,14 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
 import RightArrow from "@/components/icons/RightArrow"; // Adjust path if needed
-
-// Import the Wildhart image from src/images/webp
 import wildhartPfp from "@/images/webp/wildhart-pfp.webp";
+
+export function TypewriterParagraph({ text, className }) {
+  const [displayedText, setDisplayedText] = useState('');
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView && displayedText.length < text.length) {
+      const interval = setInterval(() => {
+        setDisplayedText((prev) => text.substring(0, prev.length + 1));
+      }, 50); // Adjust the typing speed here (50ms per character)
+      return () => clearInterval(interval);
+    }
+  }, [inView, text, displayedText]);
+
+  return (
+    <p ref={ref} className={className}>
+      {displayedText}
+    </p>
+  );
+}
 
 export default function SharpShooter() {
   const [isHovered, setIsHovered] = useState(false);
@@ -90,9 +109,9 @@ export default function SharpShooter() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => (window.location.href = "/docs/sharpshooter")}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 250, damping: 18 }}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+        transition={{ type: "spring", stiffness: 100, damping: 15 }}
         style={{ cursor: "pointer" }}
       >
         {/* Outer frame container */}
@@ -125,21 +144,20 @@ export default function SharpShooter() {
               shadow-xl
             "
           >
-            {/* Big radial gradient shape in the background */}
-            <div
-              className="
-                absolute 
-                -top-40 
-                -right-24 
-                w-[700px] 
-                h-[700px] 
-                bg-red-600/50 
-                rounded-full 
-                blur-[140px] 
-                pointer-events-none 
-                opacity-70
-              "
-            />
+          <div
+            className="
+              fixed 
+              -top-40 
+              -right-24 
+              w-[700px] 
+              h-[700px] 
+              bg-red-600/50 
+              rounded-full 
+              blur-[140px] 
+              pointer-events-none 
+              opacity-70
+            "
+          />
 
             {/* Floating note */}
             <div className="absolute top-4 left-4 flex items-center space-x-4">
@@ -177,19 +195,14 @@ export default function SharpShooter() {
 
               {/* Main content area */}
               <div className="self-center pt-6">
-                <h3 className="mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
-                  Lily Wildhart
-                </h3>
-                <p className="text-sm pb-8 font-mono text-center sm:text-left text-gray-400">
-                  Lily compiles expert picks in the Revolver Handicapper Index and
-                  shares profitable ones with Bettors Club members
-                  <span className="md:inline hidden">
-                    , along with a score reflecting consensus, historical strengths,
-                    and market data.
-                  </span>
-                  <span className="md:hidden">.</span>
-                </p>
-              </div>
+  <h3 className="mb-2 sm:text-left mt-4 text-lg font-semibold text-center sm:text-xl font-mono">
+    Lily Wildhart
+  </h3>
+  <TypewriterParagraph
+    text="Lily compiles expert picks in the Revolver Handicapper Index and shares profitable ones with Bettors Club members, along with a score reflecting consensus, historical strengths, and market data."
+    className="text-sm pb-8 font-mono text-center sm:text-left text-gray-400"
+  />
+</div>
             </div>
 
             {/* Action bar */}
@@ -200,8 +213,8 @@ export default function SharpShooter() {
 
               {/* Right arrow slides to the right on hover */}
               <motion.div
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                animate={{ x: isHovered ? 2 : 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 15 }}
               >
                 <RightArrow className="w-4 h-4" />
               </motion.div>

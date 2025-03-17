@@ -1,6 +1,7 @@
 import glob from 'fast-glob'
 import { Layout } from '@/components/Layout'
 import '@/styles/tailwind.css'
+import { Header } from "@/components/Header"
 
 export const metadata = {
   title: {
@@ -22,10 +23,10 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
-      <body className="flex
-        min-h-full
+      <body className="
         bg-[#07080A]
         antialiased">
+
           <div className="w-full">
             {/* Our pinned doc layout component */}
             <Layout allSections={allSections}>{children}</Layout>

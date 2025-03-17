@@ -11,19 +11,45 @@ import { Heading } from '@/components/text'
 
 export default function Hero() {
   return (
-    <section className="relative pt-20 md:pt-40 pb-20">
-      {/* The main hero content is above the background (z-10) */}
+<section className="relative pt-20 md:pt-40 pb-20">
+      {/* Background (fades in, no motion) */}
+      <motion.div
+        className="absolute inset-x-0 top-0 mx-auto max-w-screen-xl w-6/7 h-full z-0"
+        style={{
+          backgroundImage: `url(${pokerImage.src})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      />
+      
+      {/* Hero Content */}
       <div className="max-w-[600px] mx-auto text-center relative z-10">
-        {/* Headline */}
-        <h1 className="max-w-3xl font-bold text-5xl sm:text-6xl text-white">
-          Bet smarter, <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] text-transparent bg-clip-text">together.</span>
-        </h1>
-        <p
-          className="transition-colors bg-gradient-to-r from-gray-50 via-neutral-300/90 to-gray-400 bg-clip-text text-transparent mt-8 font-medium text-lg"
+        {/* Title */}
+        <motion.h1
+          className="max-w-3xl font-bold text-5xl sm:text-6xl text-white"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Join Solana’s top betting society, with AI-optimized picks from
-          profitable handicappers, and a dedicated, community-focused sportsbook.
-        </p>
+          Bet smarter,{" "}
+          <span className="bg-gradient-to-b from-[#db2e3b] to-[#f20165] text-transparent bg-clip-text">
+            together.
+          </span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          className="transition-colors bg-gradient-to-r from-gray-50 via-neutral-300/90 to-gray-400 bg-clip-text text-transparent mt-8 font-medium text-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          Join Solana’s top betting society, with AI-optimized picks from profitable handicappers, and a dedicated, community-focused sportsbook.
+        </motion.p>
 
         {/* Buttons */}
         <div className="flex items-center justify-center gap-4 sm:gap-8 m-12 flex-col xs-440:flex-row ">

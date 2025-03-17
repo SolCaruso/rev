@@ -41,7 +41,7 @@ const colorMap = {
   yellow: ["#CB8F05", "#FCD263"],
 };
 
-// Updated to pass card.image.src to fix [object Object] issues
+// Two copies of the array for seamless looping
 const cards = [
   { id: 1, image: dog1.src, color: "green" },
   { id: 2, image: dog2.src, color: "purple" },
@@ -64,6 +64,7 @@ const cards = [
   { id: 24, image: dog24.src, color: "red" },
   { id: 29, image: dog29.src, color: "yellow" },
 ];
+const combinedCards = [...cards, ...cards];
 
 export default function CardSection() {
   const containerRef = useRef(null);
@@ -71,49 +72,35 @@ export default function CardSection() {
 
   // xOffset is our current translateX in px
   const [xOffset, setXOffset] = useState(0);
-
   // Measured width of one copy of the card set
   const [singleSetWidth, setSingleSetWidth] = useState(0);
-
-  // Speed (pixels per second)
-  const SPEED = 100;
-
-  // Two copies of the array for seamless looping
-  const combinedCards = [...cards, ...cards];
+  const SPEED = 100; // Speed in pixels per second
 
   useEffect(() => {
     if (!trackRef.current) return;
     requestAnimationFrame(() => {
       const totalWidth = trackRef.current.scrollWidth;
-      // Round to an integer
       setSingleSetWidth(Math.round(totalWidth / 2));
     });
   }, []);
 
-  // Continuously animate with requestAnimationFrame
   useEffect(() => {
-    if (!singleSetWidth) return; // skip if 0
-
+    if (!singleSetWidth) return;
     let rafId;
     let lastTime = performance.now();
 
     function tick(now) {
-      // dt in seconds
       const dt = (now - lastTime) / 1000;
       lastTime = now;
-
       setXOffset((prev) => {
         let next = prev - SPEED * dt;
-        // Wrap around if we've moved past one full set
         while (next <= -singleSetWidth) {
           next += singleSetWidth;
         }
         return next;
       });
-
       rafId = requestAnimationFrame(tick);
     }
-
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
   }, [singleSetWidth]);
@@ -124,9 +111,20 @@ export default function CardSection() {
   };
 
   return (
-    <section className="pb-16 text-white">
-      {/* Header */}
-      <div className="max-w-5xl lg:max-w-7xl mx-auto px-4 mb-16">
+    <motion.section
+      className="pb-16 text-white"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Section Header */}
+      <motion.div
+        className="max-w-5xl lg:max-w-7xl mx-auto px-4 mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      >
         <h2 className="text-xl font-bold">Dawgs only.</h2>
         <p
           className="mt-1 text-xl font-bold text-transparent bg-clip-text max-w-sm"
@@ -134,26 +132,27 @@ export default function CardSection() {
             backgroundImage: "linear-gradient(to right, #737373, #4A4A4A)",
           }}
         >
-          Meet the underdawgs, your keys to the most exclusive bettors club on Solana.
+          Meet the underdawgs, your keys to the most exclusive bettors club on
+          Solana.
         </p>
-      </div>
+      </motion.div>
 
       {/* Carousel Container */}
-      <div
+      <motion.div
         ref={containerRef}
         className="relative mx-auto max-w-[1600px] overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
       >
         <div ref={trackRef} className="flex" style={trackStyle}>
           {combinedCards.map((card, idx) => {
-            const [topLeft, bottomRight] = colorMap[card.color] || ["#ccc", "#fff"];
+            const [topLeft, bottomRight] =
+              colorMap[card.color] || ["#ccc", "#fff"];
             return (
               <Card
                 key={`${card.id}-${idx}`}
-                style={{
-                  flex: "0 0 auto",
-                  width: 200,
-                  marginRight: 30,
-                }}
+                style={{ flex: "0 0 auto", width: 200, marginRight: 30 }}
                 image={card.image}
                 colors={[topLeft, bottomRight]}
               />
@@ -163,10 +162,15 @@ export default function CardSection() {
         {/* Edge Gradients */}
         <div className="pointer-events-none absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-[#111] to-transparent" />
         <div className="pointer-events-none absolute top-0 right-0 w-4 h-full bg-gradient-to-l from-[#111] to-transparent" />
-      </div>
+      </motion.div>
 
-      {/* Footer */}
-      <div className="max-w-5xl lg:max-w-7xl mx-auto mt-8 px-4 flex items-center justify-between">
+      {/* Section Footer */}
+      <motion.div
+        className="max-w-5xl lg:max-w-7xl mx-auto mt-8 px-4 flex items-center justify-between"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+      >
         <Link href="/docs/underdawg#benefits" passHref>
           <motion.div
             className="mt-1 text-lg font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center cursor-pointer"
@@ -179,12 +183,16 @@ export default function CardSection() {
           >
             Learn <span className="hidden xs-440:block">&nbsp;about the&nbsp;</span>
             benefits
-            <motion.div className="ml-2" variants={arrowVariants}>
+            <motion.div
+              className="ml-2"
+              variants={arrowVariants}
+              transition={{ type: "tween", duration: 0.3 }}
+            >
               <RightArrowIcon strokeColor="#4F4F4F" className="w-4 h-4" />
             </motion.div>
           </motion.div>
         </Link>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

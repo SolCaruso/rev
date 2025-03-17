@@ -13,9 +13,9 @@ function FeatureSection() {
   return (
     <div className="overflow-hidden">
       <Container className="pb-24">
-        <Heading as="h2" className="max-w-3xl">
+        <h2 as="h2" className=" text-3xl sm:text-5xl font-bold text-white max-w-2xl">
           The best odds and highest limits on Solana.
-        </Heading>
+        </h2>
 
         <div className="relative">
           <StarsContainer />

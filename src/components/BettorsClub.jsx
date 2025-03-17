@@ -15,13 +15,11 @@ import dog27 from "@/images/png/dog27.png";
 
 export default function BettorsClub() {
   return (
-    <section className="px-4 py-8 md:pt-14 lg:max-w-[1200px] lg:pt-32 mx-auto">
+    <section className="mx-auto max-w-2xl lg:max-w-7xl mt-6 lg:mt-24 px-1 py-8 ">
       {/* Bettors Club Card */}
-      <div
+      <motion.div
         className="
           relative 
-          mt-16
-          md:mt-2
           p-2 
           rounded-2xl
           bg-gradient-to-br from-[#352b2c] via-[#110818] to-[#45223e]
@@ -42,6 +40,10 @@ export default function BettorsClub() {
             inset 0 0.5px 0 rgba(255, 255, 255, 0.3)
           `,
         }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
         {/* Inner container for Bettors Club */}
         <div
@@ -56,6 +58,7 @@ export default function BettorsClub() {
             backdrop-blur-md 
             shadow-xl
             flex flex-col lg:flex-row
+            lg:gap-24
             gap-8
             text-gray-100
           "
@@ -69,20 +72,18 @@ export default function BettorsClub() {
               lg:w-96
             "
           >
-            {/* Next.js Image */}
             <Image
               src={dog27}
               alt="Cowboy underdog"
               className="xs:max-w-96"
               width={400}
               height={400}
-              // or style={{ width: "auto", height: "auto" }} if you prefer
             />
           </div>
 
           {/* Right: Club info */}
           <div className="flex flex-col items-center justify-center gap-4 text-center lg:items-start lg:text-left">
-            <h2 className="text-3xl font-bold text-white">Revolver Bettors Club</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold text-white">Revolver Bettors Club</h2>
             <p className="text-lg">
               Underdog NFT holders get access to the Revolver Bettors Club,
               including the following benefits:
@@ -147,7 +148,7 @@ export default function BettorsClub() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <h1 className="mt-4 text-lg font-semibold text-center sm:text-xl text-white">
         Bettors Club Perks
@@ -175,7 +176,7 @@ export default function BettorsClub() {
         "
       >
         {/* Perk 1 */}
-        <div
+        <motion.div
           className="
             relative 
             p-2 
@@ -191,6 +192,10 @@ export default function BettorsClub() {
               inset 0 0.5px 0 rgba(255, 255, 255, 0.3)
             `,
           }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div
             className="
@@ -208,16 +213,15 @@ export default function BettorsClub() {
             "
           >
             <AirdropIcon className="w-16 h-16 flex-shrink-0 sm:w-20 sm:h-20" />
-            <h5 className="text-xl font-bold text-gray-200">Underdog NFT</h5>
+            <h5 className="text-xl font-bold text-gray-200">$RVR Airdrop</h5>
             <p className="text-sm text-gray-300">
-              Receive airdrops and staking rewards for the $RVR token.
-              Play with $RVR on the Revolver.ag sportsbook and casino.
+              Receive an exclusive airdrop of $RVR, Revolver's token aimed at providing fun and experimental initiatives to members, such as the Revolver Community Sportsbook and Casino.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Perk 2 */}
-        <div
+        <motion.div
           className="
             relative 
             p-2 
@@ -233,6 +237,10 @@ export default function BettorsClub() {
               inset 0 0.5px 0 rgba(255, 255, 255, 0.3)
             `,
           }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <div
             className="
@@ -257,10 +265,10 @@ export default function BettorsClub() {
               high-value picks.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Perk 3 */}
-        <div
+        <motion.div
           className="
             relative 
             p-2 
@@ -276,6 +284,10 @@ export default function BettorsClub() {
               inset 0 0.5px 0 rgba(255, 255, 255, 0.3)
             `,
           }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div
             className="
@@ -295,11 +307,10 @@ export default function BettorsClub() {
             <CommunityIcon className="w-16 h-16 flex-shrink-0 sm:w-20 sm:h-20"/>
             <h5 className="text-xl font-bold text-gray-200">Revolver.ag</h5>
             <p className="text-sm text-gray-300">
-              Play with $RVR. Enjoy the best odds and highest limits.
-              House revenue is burned or redistributed to the community.
+              Play with $RVR.  Enjoy the best odds, highest limits, and generous bonuses. Plus, house revenue is burned!
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

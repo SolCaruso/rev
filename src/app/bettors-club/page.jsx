@@ -3,6 +3,7 @@ import LandingLayout from '@/components/LandingLayout'
 import BettorsClub from '@/components/BettorsClub'
 import SharpShooter from '@/components/SharpShooter'
 import '@/styles/tailwind.css' 
+import { HeroPattern } from '@/components/HeroPattern'
 
 export const metadata = {
   title: 'Revolver Bettors Club',
@@ -14,6 +15,7 @@ export default function BettorsClubPage() {
     <LandingLayout>
       <BettorsClub />
       <SharpShooter />
+      <HeroPattern  />
     </LandingLayout>
   )
 }
