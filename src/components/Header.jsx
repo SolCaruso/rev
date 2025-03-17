@@ -80,7 +80,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
           </nav>
           <div className="flex items-center gap-5">
             <div className="hidden xs-440:block">
-              <SportsButton href="#">Sportsbook</SportsButton>
+              <SportsButton href="/coming">Sportsbook</SportsButton>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
             <MobileSearch />
           </div>
           <div className="hidden xs-440:contents">
-            <SportsButton href="#">Sportsbook</SportsButton>
+            <SportsButton href="/coming">Sportsbook</SportsButton>
           </div>
         </div>
       )}

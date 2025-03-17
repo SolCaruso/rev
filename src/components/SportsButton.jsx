@@ -4,7 +4,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 export default function SportsButton({
-  href = "#",
+  href = "/coming",
   children,
   className,
   ...props
