@@ -37,7 +37,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           Bet smarter,{" "}
-          <span className="bg-gradient-to-b from-[#db2e3b] to-[#f20165] text-transparent bg-clip-text">
+          <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] text-transparent bg-clip-text">
             together.
           </span>
         </motion.h1>
@@ -127,17 +127,23 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="flex justify-center mt-8">
-          <div className={`${styles.wishlistOuter} ${styles.wishlistAnimate}`}>
-            <div className={styles.wishlistAnnouncement}>
-              <span>Whitelist now open</span>
-              <span className={styles.wishlistMuted}>
-                Join whitelist
-                <RightArrowIcon />
-              </span>
+        <a
+          href="https://discord.gg/revolver-ag"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="flex justify-center mt-8">
+            <div className={`${styles.wishlistOuter} ${styles.wishlistAnimate}`}>
+              <div className={styles.wishlistAnnouncement}>
+                <span>Whitelist now open</span>
+                <span className={styles.wishlistMuted}>
+                  Join whitelist
+                  <RightArrowIcon />
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       {/* Absolutely-positioned background image */}
