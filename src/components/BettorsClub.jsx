@@ -114,7 +114,7 @@ export default function BettorsClub() {
             </ul>
 
             {/* Join Discord / Docs Button */}
-            <Link href="/docs" passHref>
+            <Link href="/revolver" passHref>
               <motion.div
                 className="
                   inline-flex 

@@ -171,7 +171,7 @@ export default function CardSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        <Link href="/docs/underdawg#benefits" passHref>
+        <Link href="/revolver" passHref>
           <motion.div
             className="mt-1 text-lg font-bold text-transparent bg-clip-text max-w-sm inline-flex items-center cursor-pointer"
             style={{

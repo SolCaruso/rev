@@ -8,6 +8,7 @@ import pokerImage from "@/images/webp/poker.webp";
 import Link from "next/link";
 import styles from "./WishList.module.css";
 import { Heading } from '@/components/text'
+import Paw from "@/components/icons/Paw";
 
 export default function Hero() {
   return (
@@ -54,7 +55,7 @@ export default function Hero() {
         {/* Buttons */}
         <div className="flex items-center justify-center gap-4 sm:gap-8 m-12 flex-col xs-440:flex-row ">
           {/* "Read more" button */}
-          <Link href="/docs" passHref>
+          <Link href="/nft" passHref>
             <motion.div
               className="
                 inline-flex 
@@ -83,12 +84,12 @@ export default function Hero() {
               "
             >
               <DocsIcon className="sm:w-4 h-4" />
-              <span>Read more</span>
+              <span>Learn more</span>
             </motion.div>
           </Link>
 
           {/* Motion-enabled "Join the pack" button */}
-          <Link href="https://discord.gg/revolver-ag" passHref>
+          <Link href="/bettors-club" passHref>
             <motion.div
               className="
                 inline-flex
@@ -108,7 +109,7 @@ export default function Hero() {
               initial="rest"
               animate="rest"
             >
-              <DiscordIcon className="w-4 h-4 mr-2" />
+              <Paw className="w-4 h-auto mr-2" />
               Join the pack
 
               {/* Hover animation for arrow */}
