@@ -89,8 +89,11 @@ export default function Example() {
       {/* Center Content */}
       <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-56 2xl:py-72 3xl:py-96 lg:px-8">
         <p className="text-base/8 font-semibold text-white">Stay tuned!</p>
-        <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-          Coming Soon
+        <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight sm:text-7xl text-white">
+          Coming{" "}
+          <span className="bg-gradient-to-b from-[#db2e20] to-[#f20165] bg-clip-text text-transparent">
+            Soon
+          </span>
         </h1>
         <p className="mt-6 text-pretty text-lg font-medium text-white/70 sm:text-xl/8">
           Solana's community Sportsbook & Casino.
