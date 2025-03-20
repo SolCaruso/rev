@@ -10,7 +10,7 @@ import Market from "@/components/icons/Market";
 import Bonus from "@/components/icons/Bonus";
 import Image from "next/image";
 import screenshot from '@/images/jpg/screenshot.jpg';
-import SocialIcon from '@/components/Icons/SocialIcon';
+import SocialIcon from '@/components/icons/SocialIcon';
 
 export const metadata = {
   title: "Solana’s community Sportsbook & Casino",
