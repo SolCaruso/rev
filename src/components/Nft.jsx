@@ -72,7 +72,7 @@ export default function Nft() {
               <NFT className="w-10 h-10 flex-shrink-0 sm:w-16 sm:h-16" />
               <div className="flex-1">
                 <h2 className="text-lg font-medium tracking-tight sm:text-2xl text-white">
-                  Underdog NFT
+                  Underdawg NFT
                 </h2>
                 <p className="mt-1 text-sm font-semibold text-gray-400 sm:text-lg">
                   Grants access to the Revolver.ag Bettors Club.
