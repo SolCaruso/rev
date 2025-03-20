@@ -19,7 +19,7 @@ export function Layout({ children, allSections }) {
           className={
             isDocs
               ? "relative flex h-full flex-col lg:ml-72 xl:ml-80 px-4 pt-14 sm:px-6 lg:px-8"
-              : "relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8"
+              : "relative flex h-full flex-col pt-14"
           }
         >
           <main className="flex-auto">{children}</main>

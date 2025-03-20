@@ -15,7 +15,7 @@ import dog27 from "@/images/png/dog27.png";
 
 export default function BettorsClub() {
   return (
-    <section className="mx-auto max-w-2xl lg:max-w-7xl mt-6 lg:mt-24 px-1 py-8 ">
+    <section className="mx-auto max-w-2xl lg:max-w-7xl mt-6 lg:mt-24 py-8 px-4 sm:px-6 lg:px-8 ">
       {/* Bettors Club Card */}
       <motion.div
         className="
@@ -29,7 +29,7 @@ export default function BettorsClub() {
           max-w-2xl 
           flex-col 
           gap-8 
-          mb-32 
+          mb-4 
           lg:max-w-full 
           lg:flex-row 
           lg:gap-20
@@ -150,7 +150,7 @@ export default function BettorsClub() {
         </div>
       </motion.div>
 
-      <h1 className="mt-4 text-lg font-semibold text-center sm:text-xl text-white">
+      {/* <h1 className="mt-4 text-lg font-semibold text-center sm:text-xl text-white">
         Bettors Club Perks
       </h1>
       <p
@@ -160,7 +160,7 @@ export default function BettorsClub() {
         }}
       >
         Unlock exclusive rewards &amp; winning advantages.
-      </p>
+      </p> */}
 
       <div
         className="
@@ -171,8 +171,7 @@ export default function BettorsClub() {
           gap-5 
           lg:max-w-full 
           lg:flex-row
-          mb-20
-          md:mb-0
+     
         "
       >
         {/* Perk 1 */}

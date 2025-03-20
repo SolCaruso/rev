@@ -29,6 +29,7 @@ module.exports = {
       screens: {
         'xs-440': '440px',
         "3xl": "2000px",
+        'roundxl' : '1280px',
       },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',

@@ -133,7 +133,7 @@ export function Footer() {
       className={
         isDocs
           ? 'mx-auto w-full max-w-2xl space-y-10 pb-16 lg:max-w-5xl'
-          : 'mx-auto w-full max-w-7xl space-y-10 pb-16'
+          : 'mx-auto w-full max-w-7xl space-y-10 pb-16 px-4 sm:px-6 lg:px-8'
       }
     >
       <PageNavigation />

@@ -131,13 +131,13 @@ function PlusIcon(props) {
 
 function Screenshot() {
   return (
-    <div className="flex justify-center mb-44">
+    <div className="flex justify-center mb-44 ">
       <Image
         src={screenshot}
         alt="Screenshot of the Revolver website"
         width={1280}
         height={720}
-        className="rounded-3xl shadow-2xl ring-1 ring-black/5"
+        className="roundxl:rounded-3xl shadow-2xl ring-1 ring-black/5"
       />
     </div>
   )

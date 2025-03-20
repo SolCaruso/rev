@@ -12,7 +12,7 @@ import Paw from "@/components/icons/Paw";
 
 export default function Hero() {
   return (
-<section className="relative pt-20 md:pt-40 pb-20">
+<section className="relative pt-20 md:pt-40 pb-20 px-4 sm:px-6 lg:px-8">
       {/* Background (fades in, no motion) */}
       <motion.div
         className="absolute inset-x-0 top-0 mx-auto max-w-screen-xl w-6/7 h-full z-0"

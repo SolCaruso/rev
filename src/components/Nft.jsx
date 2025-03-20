@@ -109,7 +109,7 @@ export default function Nft() {
           </div>
 
           {/* Right Column: Animated Images */}
-          <div className="pt-20 lg:pt-0 lg:row-span-2 lg:-mr-16 xl:mr-auto z-10">
+          <div className="pt-20 lg:pt-0 lg:row-span-2 lg:-mr-16 xl:mr-auto z-10 px-4 sm:px-6 lg:px-8">
             <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
               {images.map((img, index) => (
                 <motion.div

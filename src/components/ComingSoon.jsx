@@ -11,6 +11,7 @@ import dice3 from "@/images/png/3.png";
 import dice4 from "@/images/png/4.png";
 import dice5 from "@/images/png/5.png";
 import dice6 from "@/images/png/6.png";
+import Solana from '@/components/icons/Solana'
 
 // Background image
 import comingImage from "@/images/jpg/coming.jpg";
@@ -24,6 +25,12 @@ export default function Example() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 0%, black 50%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to bottom, black 0%, black 50%, transparent 100%)",
+        }}
       >
         <Image
           alt=""
@@ -96,12 +103,13 @@ export default function Example() {
           </span>
         </h1>
         <p className="mt-6 text-pretty text-lg font-medium text-white/70 sm:text-xl/8">
-          Solana's community Sportsbook & Casino.
+          Solana's Community Sportsbook & Casino.
         </p>
-        <div className="mt-10 flex justify-center">
-          <Link href="/" className="text-sm/7 font-semibold text-white">
+        <div className=" flex justify-center">
+          <Solana className="w-24 h-24 flex-shrink-0 sm:w-40 sm:h-40" />
+          {/* <Link href="/" className="text-sm/7 font-semibold text-white">
             <span aria-hidden="true">&larr;</span> Back to home
-          </Link>
+          </Link> */}
         </div>
       </div>
     </main>

@@ -33,7 +33,7 @@ export default function SharpShooter() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center w-full pt-8 md:pt-24 pb-24 px-4 text-white lg:max-w-[1200px] mx-auto">
+    <div className="relative flex flex-col items-center w-full pt-8 md:pt-16 pb-24 px-4 text-white lg:max-w-[1200px] mx-auto">
       {/* -------------- AI Stroke Row -------------- */}
       <div className="relative mt-4 pb-8 flex items-center justify-center">
         {/* Left gradient stroke */}
