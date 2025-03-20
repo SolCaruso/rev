@@ -85,7 +85,7 @@ export default function BettorsClub() {
           <div className="flex flex-col items-center justify-center gap-4 text-center lg:items-start lg:text-left">
             <h2 className="text-3xl lg:text-5xl font-bold text-white">Revolver Bettors Club</h2>
             <p className="text-lg">
-              Underdog NFT holders get access to the Revolver Bettors Club,
+              Underdawg NFT holders get access to the Revolver Bettors Club,
               including the following benefits:
             </p>
 
