@@ -1,7 +1,7 @@
 import glob from 'fast-glob'
 import { Layout } from '@/components/Layout'
 import '@/styles/tailwind.css'
-import { Header } from "@/components/Header"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: {
@@ -31,6 +31,7 @@ export default async function RootLayout({ children }) {
             {/* Our pinned doc layout component */}
             <Layout allSections={allSections}>{children}</Layout>
           </div>
+          <SpeedInsights />
       </body>
     </html>
   )

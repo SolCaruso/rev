@@ -18,7 +18,7 @@ const resources = [
     href: '/docs/sharpshooter',
     name: 'Sharpshooter AI Agent',
     description:
-      'Reviews picks and analyses from experts across various sports (the Revolver Handicapper Index).',
+      'Reviews picks and analyses from experts across various sports (the Revolver Handicapper Index), and provide weighted picks to Bettors Club members.',
     icon: UserIcon,
     pattern: {
       y: 16,
@@ -32,7 +32,7 @@ const resources = [
     href: '/docs/sportsbook',
     name: 'Revolver Sportsbook & Casino',
     description:
-      'An online sportsbook and casino that uses the $RVR token for all deposits, wagers, and withdrawals.',
+      "Revolver's Community-centered Sportsbook & Casino, fully focused on providing a fun and fair experience to $RVR holders and Bettors Club members.",
     icon: ChatBubbleIcon,
     pattern: {
       y: -6,
@@ -46,7 +46,7 @@ const resources = [
     href: '/docs/underdawg',
     name: 'Underdawg NFT',
     description:
-      'The Revolver Underdawg NFT collection is a generative, hand-drawn NFT collection on Solana.',
+      'The Revolver Underdawg NFT collection is a generative, hand-drawn NFT collection on Solana. Provides access to the Revolver Bettors Club and entitlement to the $RVR Airdrop.',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
@@ -60,7 +60,7 @@ const resources = [
     href: '/docs/token',
     name: '$RVR Token',
     description:
-      "$RVR is Revolver's token on Solana.",
+      "$RVR aims to enable fun and experimental initiatives for members, such as the Revolver Community Sportsbook and Casino.",
     icon: UsersIcon,
     pattern: {
       y: 22,

@@ -102,7 +102,7 @@ export default function Nft() {
                   Traits
                 </h2>
                 <p className="mt-1 text-sm font-semibold text-gray-400 sm:text-lg">
-                  Over 170 traits, including 10+ 1-of-1s.
+                  Over 170 traits, including 20+ 1-of-1s.
                 </p>
               </div>
             </div>

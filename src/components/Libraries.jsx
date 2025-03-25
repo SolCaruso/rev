@@ -10,7 +10,7 @@ const libraries = [
   { name: 'Best odds', description: 'Play with the lowest vig on Revolver!', logo: BestOddsIcon },
   { name: 'Highest betting limits', description: 'Bet large amounts of $RVR, even on niche markets.', logo: HighestIcon },
   { name: 'Prop markets', description: 'Solana, crypto-focused, and other fun prop markets.', logo: PropIcon },
-  { name: 'Community-driven', description: 'A portion of house revenue is burned, the rest goes to the treasury.', logo: CommunityIcon },
+  { name: 'Community-driven', description: 'All $RVR house revenue is burned or recycled to the project treasury.', logo: CommunityIcon },
 ]
 
 export function Libraries() {

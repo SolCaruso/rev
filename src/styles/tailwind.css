@@ -169,3 +169,19 @@
 html {
   overflow-x: hidden;
 }
+
+.doc-title {
+  @apply text-lg font-semibold text-white mt-[64px] mb-[8px];
+}
+
+.doc-body {
+  @apply  mt-0 pt-0;
+}
+
+.bullet-doc {
+  @apply text-base;
+}
+
+.image-doc {
+  @apply w-full h-auto rounded-xl shadow-xl border border-white/10;
+}

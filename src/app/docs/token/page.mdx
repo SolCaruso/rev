@@ -1,37 +1,34 @@
+import Graph from '@/images/webp/Graph.webp';
+import Image from 'next/image'
+
 export const metadata = {
   title: '$RVR Token',
-  description:
-    "$RVR is Revolver's token on Solana. ",
+  description: "$RVR is Revolver's token on Solana. ",
 }
 
 # $RVR Token
 
-$RVR is Revolver's token on Solana. $RVR aimed at providing fun and experimental initiatives to members, such as the [Revolver Community Sportsbook and Casino](/docs/sportsbook).  {{ className: 'lead' }}
+$RVR aims to enable fun and experimental initiatives for members, such as the [Revolver Community Sportsbook and Casino](/docs/sportsbook).  {{ className: 'lead' }}
 
 ## Tokenomics and Airdrop
 
-$RVR will be airdropped to all NFT holders at a time to be announced after mint. The $RVR tokenomics are detailed below and subject to change. {{ className: 'lead' }}
+$RVR will be airdropped to all [Underdawg NFT](/docs/underdawg) holders at a time to be announced after mint. The $RVR tokenomics are detailed below and subject to change. {{ className: 'lead' }}
+
+<Image src={Graph} alt="Tokenomics Graph" className="image-doc" />
 
 <Row>
   <Col>          
-
     <Properties>
-      <Property name="TOKENOMICS GRAPH" type="1,000,000,000 total tokens.">
-        - Airdrop to Underdawg NFT holders and eligible communities 25% 
-        - Revolver Sportsbook & Casino Risk Management and Rewards allocation 15% 
-        - Treasury for project management, liquidity, future initiatives and general promotion 40% 
-        - Team 20%
-
+      <Property name="TOKENOMICS" type="1,000,000,000 total tokens.">
+        - Airdrop to Underdawg NFT holders and eligible communities 35% {{ className: 'bullet-doc' }}
+        - Revolver Sportsbook & Casino Risk Management, Rewards, and Promotion 15% {{ className: 'bullet-doc' }}
+        - Treasury for project management, liquidity, future initiatives and general promotion 40% {{ className: 'bullet-doc' }}
+        - Team 10% {{ className: 'bullet-doc' }}
       </Property>
     </Properties>
-
   </Col>
   <Col>
-
-## Uitlity
-
-$RVR can be wagered on the Revolver Sportsbook and Casino. Sportsbook & Casino house $RVR revenue is burned. {{ className: 'lead' }}
-
-
+    ## Utility 
+    $RVR can be wagered on the Revolver Sportsbook and Casino and used to interact with future Revolver products. {{ className: 'lead' }}
   </Col>
 </Row>
